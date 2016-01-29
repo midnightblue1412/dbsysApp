@@ -13,16 +13,30 @@ namespace ItemInventory
     public partial class MainForm : Form
     {
         internal RegItemsForm regItemsForm;
+        internal RegClientsForm regClientsForm;
+        internal RegWarehousesForm regWarehousesForm;
 
         public MainForm()
         {
             InitializeComponent();
             regItemsForm = new RegItemsForm();
+            regClientsForm = new RegClientsForm();
+            regWarehousesForm = new RegWarehousesForm();
         }
 
         private void registerItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             regItemsForm.ShowDialog();
+        }
+
+        private void registerClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            regClientsForm.ShowDialog();
+        }
+
+        private void registerWarehouseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            regWarehousesForm.ShowDialog();
         }
     }
 }

@@ -38,6 +38,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registerClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registerWarehouseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serveOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -108,7 +113,9 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(709, 24);
@@ -118,7 +125,9 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.registerItemsToolStripMenuItem});
+            this.registerItemsToolStripMenuItem,
+            this.registerClientToolStripMenuItem,
+            this.registerWarehouseToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
@@ -126,9 +135,42 @@
             // registerItemsToolStripMenuItem
             // 
             this.registerItemsToolStripMenuItem.Name = "registerItemsToolStripMenuItem";
-            this.registerItemsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.registerItemsToolStripMenuItem.Text = "&Register Items";
+            this.registerItemsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.registerItemsToolStripMenuItem.Text = "Register &Items";
             this.registerItemsToolStripMenuItem.Click += new System.EventHandler(this.registerItemsToolStripMenuItem_Click);
+            // 
+            // registerClientToolStripMenuItem
+            // 
+            this.registerClientToolStripMenuItem.Name = "registerClientToolStripMenuItem";
+            this.registerClientToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.registerClientToolStripMenuItem.Text = "Register &Clients";
+            this.registerClientToolStripMenuItem.Click += new System.EventHandler(this.registerClientToolStripMenuItem_Click);
+            // 
+            // registerWarehouseToolStripMenuItem
+            // 
+            this.registerWarehouseToolStripMenuItem.Name = "registerWarehouseToolStripMenuItem";
+            this.registerWarehouseToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.registerWarehouseToolStripMenuItem.Text = "Register &Warehouses";
+            this.registerWarehouseToolStripMenuItem.Click += new System.EventHandler(this.registerWarehouseToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serveOrderToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // serveOrderToolStripMenuItem
+            // 
+            this.serveOrderToolStripMenuItem.Name = "serveOrderToolStripMenuItem";
+            this.serveOrderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.serveOrderToolStripMenuItem.Text = "Serve &Order";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(94, 20);
             // 
             // MainForm
             // 
@@ -170,6 +212,11 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registerItemsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registerClientToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registerWarehouseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serveOrderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 
