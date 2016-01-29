@@ -40,13 +40,9 @@
             this.registerItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerClientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerWarehouseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serveOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.label3 = new System.Windows.Forms.Label();
-            this.addItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -109,7 +105,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(513, 145);
+            this.dateTimePicker1.Location = new System.Drawing.Point(455, 100);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(109, 25);
             this.dateTimePicker1.TabIndex = 7;
@@ -118,8 +114,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.editToolStripMenuItem});
+            this.editToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(709, 24);
@@ -131,8 +127,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.registerItemsToolStripMenuItem,
             this.registerClientToolStripMenuItem,
-            this.registerWarehouseToolStripMenuItem,
-            this.exitToolStripMenuItem});
+            this.registerWarehouseToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
@@ -140,7 +135,7 @@
             // registerItemsToolStripMenuItem
             // 
             this.registerItemsToolStripMenuItem.Name = "registerItemsToolStripMenuItem";
-            this.registerItemsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.registerItemsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.registerItemsToolStripMenuItem.Text = "Register &Items";
             this.registerItemsToolStripMenuItem.Click += new System.EventHandler(this.registerItemsToolStripMenuItem_Click);
             // 
@@ -158,58 +153,24 @@
             this.registerWarehouseToolStripMenuItem.Text = "Register &Warehouses";
             this.registerWarehouseToolStripMenuItem.Click += new System.EventHandler(this.registerWarehouseToolStripMenuItem_Click);
             // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.exitToolStripMenuItem.Text = "E&xit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
             // editToolStripMenuItem
             // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serveOrderToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
-            this.editToolStripMenuItem.Text = "Serve &Order";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // serveOrderToolStripMenuItem
+            // 
+            this.serveOrderToolStripMenuItem.Name = "serveOrderToolStripMenuItem";
+            this.serveOrderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.serveOrderToolStripMenuItem.Text = "Serve &Order";
             // 
             // toolStripMenuItem1
             // 
-            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addItemsToolStripMenuItem,
-            this.removeItemsToolStripMenuItem,
-            this.viewToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(69, 20);
-            this.toolStripMenuItem1.Text = "&Inventory";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(453, 151);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 17);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "label3";
-            // 
-            // addItemsToolStripMenuItem
-            // 
-            this.addItemsToolStripMenuItem.Name = "addItemsToolStripMenuItem";
-            this.addItemsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addItemsToolStripMenuItem.Text = "&Add Items";
-            this.addItemsToolStripMenuItem.Click += new System.EventHandler(this.addItemsToolStripMenuItem_Click);
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.viewToolStripMenuItem.Text = "&View";
-            // 
-            // removeItemsToolStripMenuItem
-            // 
-            this.removeItemsToolStripMenuItem.Name = "removeItemsToolStripMenuItem";
-            this.removeItemsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.removeItemsToolStripMenuItem.Text = "&Remove Items";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(94, 20);
             // 
             // MainForm
             // 
@@ -217,7 +178,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(709, 407);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
@@ -227,10 +187,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item Inventory";
@@ -257,12 +215,8 @@
         private System.Windows.Forms.ToolStripMenuItem registerClientToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registerWarehouseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serveOrderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ToolStripMenuItem addItemsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeItemsToolStripMenuItem;
     }
 }
 
