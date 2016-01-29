@@ -1,0 +1,26 @@
+﻿--EXECUTE CREATE FUNCTION SQL BEFORE THIS ONE
+CREATE TABLE Inventory
+(
+	warehouseId		VARCHAR(16)		REFERENCES Warehouse(id),
+	itemId			VARCHAR(32)		REFERENCES Item(id),
+	quantity		INT				NOT NULL,
+	CONSTRAINT PK_INVENTORY PRIMARY KEY(warehouseId, itemId),
+	CONSTRAINT ITEM_STAT	CHECK (GetItemStatus(itemId) IN ('AV', 'av')),
+	CONSTRAINT LIMIT_IQTY	CHECK (quantity >= 0)
+);
+
+CREATE TABLE OrderSet
+(
+	invoiceNo	VARCHAR(8)	PRIMARY KEY		NOT NULL,
+	orderDate	DATE		NOT NULL,
+	clientId	VARCHAR(32)	NOT NULL		REFERENCES Client(id)
+);
+
+CREATE TABLE ItemOrder
+(
+	invoiceNo	VARCHAR(8)	REFERENCES OrderSet(invoiceNo),
+	itemId		VARCHAR(32)	NOT NULL	REFERENCES Item(id),
+	quantity	INT			NOT NULL,
+	CONSTRAINT	ITEM_ORDERED_STAT	CHECK (GetItemStatus(itemId) IN ('AV', 'av')),
+	CONSTRAINT	LIMIT_OQTY	CHECK (quantity > 0)
+);
