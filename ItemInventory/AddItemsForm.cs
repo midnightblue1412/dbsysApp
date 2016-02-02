@@ -10,14 +10,17 @@ using System.Windows.Forms;
 
 namespace ItemInventory
 {
-    public partial class AddItemsForm : Form
+    public partial class AddItemsForm : ChildForm
     {
-        internal SelectWarehouseForm sel;
+        SelectWarehouseForm sel;
+        internal string warehouseId;
 
         public AddItemsForm()
         {
             InitializeComponent();
-            sel = new SelectWarehouseForm();
+            sel = new SelectWarehouseForm(this);
+
+            sel.ShowDialog();            
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
@@ -28,11 +31,6 @@ namespace ItemInventory
         private void btn_add_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void AddItemsForm_Load(object sender, EventArgs e)
-        {
-            sel.ShowDialog();
         }
     }
 }

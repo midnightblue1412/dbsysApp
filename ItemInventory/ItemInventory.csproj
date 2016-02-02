@@ -66,7 +66,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppRecordsDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ChildForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChildForm.Designer.cs">
+      <DependentUpon>ChildForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseModule.cs" />
+    <Compile Include="DbForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DbForm.Designer.cs">
+      <DependentUpon>DbForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

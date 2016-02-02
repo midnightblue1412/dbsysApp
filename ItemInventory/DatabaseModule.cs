@@ -8,7 +8,7 @@ using ItemInventory.AppRecordsDataSetTableAdapters;
 
 namespace ItemInventory
 {
-    class DatabaseModule
+    public class DatabaseModule
     {
         internal readonly AppRecordsDataSet db;
         internal readonly TableAdapterManager dbmgr;

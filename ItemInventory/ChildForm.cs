@@ -10,9 +10,18 @@ using System.Windows.Forms;
 
 namespace ItemInventory
 {
-    public partial class RegClientsForm : ChildForm
+    public partial class ChildForm :Form
     {
-        public RegClientsForm()
+        protected DatabaseModule dbm;
+        protected Form parent;
+
+        public void setParent(DbForm parent)
+        {
+            this.parent = parent;
+            dbm = parent.dbm;
+        }
+
+        public ChildForm()
         {
             InitializeComponent();
         }

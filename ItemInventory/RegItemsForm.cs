@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace ItemInventory
 {
-    public partial class RegItemsForm : Form
+    public partial class RegItemsForm : ChildForm
     {
         public RegItemsForm()
         {
             InitializeComponent();
         }
+
+        internal void initTable()
+        {
+            dbm.dbmgr.ItemTableAdapter.Fill(dbm.db.Item);
+        }
+
     }
 }

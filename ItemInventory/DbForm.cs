@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace ItemInventory
 {
-    public partial class RegClientsForm : ChildForm
+    public partial class DbForm : Form
     {
-        public RegClientsForm()
+        internal readonly DatabaseModule dbm;
+
+        public DbForm()
         {
             InitializeComponent();
+            dbm = new DatabaseModule();
         }
     }
 }

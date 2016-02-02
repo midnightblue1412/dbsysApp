@@ -10,14 +10,42 @@ using System.Windows.Forms;
 
 namespace ItemInventory
 {
-    public partial class SelectWarehouseForm : Form
+    public partial class SelectWarehouseForm : ChildForm
     {
-        SelectWarehouseForm parent;
-
-        public SelectWarehouseForm(SelectWarehouseForm parent)
+        public SelectWarehouseForm(AddItemsForm parent)
         {
             InitializeComponent();
             this.parent = parent;
+        }
+
+        private void SelectWarehouseForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            parent.Close();            
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            parent.Close();
+        }
+
+        private void btn_proceed_Click(object sender, EventArgs e)
+        {
+            object warehouseId = input_warehouseId.SelectedItem;
+            if (warehouseId != null)
+            {
+                ((AddItemsForm)parent).warehouseId = warehouseId.ToString();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Please Select a Warehouse",
+                    "Error!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+            }
         }
     }
 }

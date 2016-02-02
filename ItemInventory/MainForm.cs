@@ -10,33 +10,61 @@ using System.Windows.Forms;
 
 namespace ItemInventory
 {
-    public partial class MainForm : Form
+    public partial class MainForm : DbForm
     {
-        internal RegItemsForm regItemsForm;
-        internal RegClientsForm regClientsForm;
-        internal RegWarehousesForm regWarehousesForm;
-
         public MainForm()
         {
-            InitializeComponent();
-            regItemsForm = new RegItemsForm();
-            regClientsForm = new RegClientsForm();
-            regWarehousesForm = new RegWarehousesForm();
+            InitializeComponent();            
         }
 
         private void registerItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            RegItemsForm regItemsForm = new RegItemsForm();
+            regItemsForm.setParent(this);
             regItemsForm.ShowDialog();
         }
 
         private void registerClientToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            RegClientsForm regClientsForm = new RegClientsForm();
+            regClientsForm.setParent(this);
             regClientsForm.ShowDialog();
         }
 
         private void registerWarehouseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            RegWarehousesForm regWarehousesForm = new RegWarehousesForm();
+            regWarehousesForm.setParent(this);
+            regWarehousesForm.initTable();
             regWarehousesForm.ShowDialog();
+        }
+
+        private void addItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddItemsForm addItemsForm = new AddItemsForm();
+            if(!addItemsForm.IsDisposed)
+            {
+                addItemsForm.setParent(this);
+                addItemsForm.ShowDialog();
+            }
+        }
+
+        public static void showSuccessMessage(string msg)
+        {
+            MessageBox.Show(
+                msg,
+                "Success!",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+
+        public static void showErrorMessage(string msg)
+        {
+            MessageBox.Show(
+                msg,
+                "Error!",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
         }
     }
 }
