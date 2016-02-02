@@ -4,7 +4,7 @@
 	itemName	VARCHAR(64)		NOT NULL,
 	itemDesc	VARCHAR(128)	NOT NULL,
 	itemStatus	VARCHAR(2)		NOT NULL,
-	CONSTRAINT	VALUES_ITEMSTAT	CHECK (itemStatus IN ('AV', 'NA', 'av', 'na'))
+	CONSTRAINT	VALUES_ITEMSTAT	CHECK (itemStatus IN ('AV', 'NA'))
 );
 
 CREATE TABLE Client
@@ -20,5 +20,5 @@ CREATE TABLE Warehouse
 	warehouseName	VARCHAR(64)		UNIQUE			NOT NULL,
 	warehouseDesc	VARCHAR(128)	NOT NULL,
 	warehouseStatus	VARCHAR(2)		NOT NULL,
-	CONSTRAINT	VALUES_WAREHOUSESTAT	CHECK (warehouseStatus in ('OP', 'CL', 'op', 'cl'))
+	CONSTRAINT	VALUES_WAREHOUSESTAT	CHECK (warehouseStatus in ('OP', 'CL'))
 );

@@ -5,8 +5,18 @@ CREATE TABLE Inventory
 	itemId			VARCHAR(32)		REFERENCES Item(id),
 	quantity		INT				NOT NULL,
 	CONSTRAINT PK_INVENTORY PRIMARY KEY(warehouseId, itemId),
-	CONSTRAINT ITEM_STAT	CHECK (GetItemStatus(itemId) IN ('AV', 'av')),
+	CONSTRAINT ITEM_STAT	CHECK (GetItemStatus(itemId) = 'AV'),
 	CONSTRAINT LIMIT_IQTY	CHECK (quantity >= 0)
+);
+
+CREATE TABLE ReturnsInventory
+(
+	warehouseId		VARCHAR(16)		REFERENCES Warehouse(id),
+	itemId			VARCHAR(32)		REFERENCES Item(id),
+	quantity		INT				NOT NULL,
+	CONSTRAINT PK_RINVENTORY PRIMARY KEY(warehouseId, itemId),
+	CONSTRAINT ITEM_STAT	CHECK (GetItemStatus(itemId) = 'AV'),
+	CONSTRAINT LIMIT_RQTY	CHECK (quantity >= 0)
 );
 
 CREATE TABLE OrderSet
@@ -21,6 +31,25 @@ CREATE TABLE ItemOrder
 	invoiceNo	VARCHAR(8)	REFERENCES OrderSet(invoiceNo),
 	itemId		VARCHAR(32)	NOT NULL	REFERENCES Item(id),
 	quantity	INT			NOT NULL,
-	CONSTRAINT	ITEM_ORDERED_STAT	CHECK (GetItemStatus(itemId) IN ('AV', 'av')),
+	CONSTRAINT	ITEM_ORDERED_STAT	CHECK (GetItemStatus(itemId) = 'AV'),
 	CONSTRAINT	LIMIT_OQTY	CHECK (quantity > 0)
+);
+
+CREATE TABLE InventoryChanges
+(
+	itemId			VARCHAR(32)		REFERENCES Item(itemId),
+	warehouseId		VARCHAR(16)		REFERENCES Warehouse(warehouseId),		
+	changeDate		DATE,
+	increase		INT,
+	decrease		INT
+);
+
+CREATE TABLE ReturnsInventoryChanges
+(
+	invoiceNo		VARCHAR(8)		REFERENCES OrderSet(invoiceNo),
+	itemId			VARCHAR(32)		REFERENCES Item(itemId),
+	warehouseId		VARCHAR(16)		REFERENCES Warehouse(warehouseId),		
+	changeDate		DATE,
+	increase		INT,
+	decrease		INT
 );
