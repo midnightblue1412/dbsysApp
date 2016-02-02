@@ -31,6 +31,8 @@ CREATE TABLE ItemOrder
 	invoiceNo	VARCHAR(8)	REFERENCES OrderSet(invoiceNo),
 	itemId		VARCHAR(32)	NOT NULL	REFERENCES Item(id),
 	quantity	INT			NOT NULL,
+	orderStatus	VARCHAR(16) NOT NULL,
+	CONSTRAINT	VALUES_IORDERSTAT CHECK (orderStatus IN ('PENDING', 'SERVED', 'CANCELLED')),
 	CONSTRAINT	ITEM_ORDERED_STAT	CHECK (GetItemStatus(itemId) = 'AV'),
 	CONSTRAINT	LIMIT_OQTY	CHECK (quantity > 0)
 );
@@ -51,5 +53,6 @@ CREATE TABLE ReturnsInventoryChanges
 	warehouseId		VARCHAR(16)		REFERENCES Warehouse(warehouseId),		
 	changeDate		DATE,
 	increase		INT,
-	decrease		INT
+	decrease		INT,
+	CONSTRAINT DATE_REF CHECK (changeDate < GetOrderDate(itemId))
 );
