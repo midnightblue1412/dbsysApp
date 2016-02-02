@@ -5,7 +5,7 @@ CREATE TABLE Inventory
 	itemId			VARCHAR(32)		REFERENCES Item(id),
 	quantity		INT				NOT NULL,
 	CONSTRAINT PK_INVENTORY PRIMARY KEY(warehouseId, itemId),
-	CONSTRAINT ITEM_STAT	CHECK (GetItemStatus(itemId) = 'AV'),
+	CONSTRAINT ITEM_STAT	CHECK (dbo.GetItemStatus(itemId) = 'AV'),
 	CONSTRAINT LIMIT_IQTY	CHECK (quantity >= 0)
 );
 
@@ -15,7 +15,7 @@ CREATE TABLE ReturnsInventory
 	itemId			VARCHAR(32)		REFERENCES Item(id),
 	quantity		INT				NOT NULL,
 	CONSTRAINT PK_RINVENTORY PRIMARY KEY(warehouseId, itemId),
-	CONSTRAINT ITEM_STAT	CHECK (GetItemStatus(itemId) = 'AV'),
+	CONSTRAINT RITEM_STAT	CHECK (dbo.GetItemStatus(itemId) = 'AV'),
 	CONSTRAINT LIMIT_RQTY	CHECK (quantity >= 0)
 );
 
@@ -33,14 +33,14 @@ CREATE TABLE ItemOrder
 	quantity	INT			NOT NULL,
 	orderStatus	VARCHAR(16) NOT NULL,
 	CONSTRAINT	VALUES_IORDERSTAT CHECK (orderStatus IN ('PENDING', 'SERVED', 'CANCELLED')),
-	CONSTRAINT	ITEM_ORDERED_STAT	CHECK (GetItemStatus(itemId) = 'AV'),
+	CONSTRAINT	ITEM_ORDERED_STAT	CHECK (dbo.GetItemStatus(itemId) = 'AV'),
 	CONSTRAINT	LIMIT_OQTY	CHECK (quantity > 0)
 );
 
 CREATE TABLE InventoryChanges
 (
-	itemId			VARCHAR(32)		REFERENCES Item(itemId),
-	warehouseId		VARCHAR(16)		REFERENCES Warehouse(warehouseId),		
+	itemId			VARCHAR(32)		REFERENCES Item(id),
+	warehouseId		VARCHAR(16)		REFERENCES Warehouse(id),		
 	changeDate		DATE,
 	increase		INT,
 	decrease		INT
@@ -49,10 +49,10 @@ CREATE TABLE InventoryChanges
 CREATE TABLE ReturnsInventoryChanges
 (
 	invoiceNo		VARCHAR(8)		REFERENCES OrderSet(invoiceNo),
-	itemId			VARCHAR(32)		REFERENCES Item(itemId),
-	warehouseId		VARCHAR(16)		REFERENCES Warehouse(warehouseId),		
+	itemId			VARCHAR(32)		REFERENCES Item(id),
+	warehouseId		VARCHAR(16)		REFERENCES Warehouse(id),		
 	changeDate		DATE,
 	increase		INT,
 	decrease		INT,
-	CONSTRAINT DATE_REF CHECK (changeDate < GetOrderDate(itemId))
+	CONSTRAINT DATE_REF CHECK (changeDate < dbo.GetOrderDate(itemId))
 );
