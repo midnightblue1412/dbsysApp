@@ -43,7 +43,10 @@ CREATE TABLE InventoryChanges
 	warehouseId		VARCHAR(16)		REFERENCES Warehouse(id),		
 	changeDate		DATE,
 	increase		INT,
-	decrease		INT
+	decrease		INT,
+    CONSTRAINT [INV_INC_DEC] CHECK (
+		[increase] IS NULL AND [decrease] IS NOT NULL OR
+		 [increase] IS NOT NULL AND [decrease] IS NULL)
 );
 
 CREATE TABLE ReturnsInventoryChanges
@@ -54,5 +57,8 @@ CREATE TABLE ReturnsInventoryChanges
 	changeDate		DATE,
 	increase		INT,
 	decrease		INT,
-	CONSTRAINT DATE_REF CHECK (changeDate < dbo.GetOrderDate(itemId))
+	CONSTRAINT DATE_REF CHECK (changeDate > dbo.GetOrderDate(itemId)),
+    CONSTRAINT [RET_INC_DEC] CHECK (
+		[increase] IS NULL AND [decrease] IS NOT NULL OR 
+		[increase] IS NOT NULL AND [decrease] IS NULL)
 );
