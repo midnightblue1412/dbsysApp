@@ -1,11 +1,11 @@
-﻿CREATE FUNCTION GetOrderDate(@itemId VARCHAR(32))
+﻿CREATE FUNCTION GetOrderDate(@invoiceNo VARCHAR(8))
 RETURNS DATE
 AS
 BEGIN
 	DECLARE @date DATE
 
 	SELECT @date = orderDate FROM OrderSet
-	WHERE id = @itemId
+	WHERE invoiceNo = @invoiceNo
 
 	RETURN @date
 END;

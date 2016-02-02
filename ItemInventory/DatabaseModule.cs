@@ -10,13 +10,15 @@ namespace ItemInventory
 {
     class DatabaseModule
     {
-        internal AppRecordsDataSet db;
-        internal TableAdapterManager dbmgr;
+        internal readonly AppRecordsDataSet db;
+        internal readonly TableAdapterManager dbmgr;
+        internal readonly QueriesTableAdapter qadp;
 
         public DatabaseModule()
         {
             db = new AppRecordsDataSet();
             dbmgr = new TableAdapterManager();
+            qadp = new QueriesTableAdapter();
 
             //Initialize Adapters for Reference Tables
             dbmgr.ClientTableAdapter = new ClientTableAdapter();
@@ -32,6 +34,16 @@ namespace ItemInventory
 
             dbmgr.InventoryChangesTableAdapter = new InventoryChangesTableAdapter();
             dbmgr.ReturnsInventoryChangesTableAdapter = new ReturnsInventoryChangesTableAdapter();
+        }        
+
+        public string getItemStatus(string itemId)
+        {
+            return qadp.GetItemStatus(itemId);
+        }        
+
+        public DateTime? getOrderDate(string invoiceNo)
+        {
+            return qadp.GetOrderDate(invoiceNo);
         }
     }
 }

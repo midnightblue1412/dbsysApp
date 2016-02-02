@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppRecordsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppRecordsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModule.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,17 @@
     <EmbeddedResource Include="SelectWarehouseForm.resx">
       <DependentUpon>SelectWarehouseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="AppRecordsDataSet.xsc">
+      <DependentUpon>AppRecordsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AppRecordsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AppRecordsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AppRecordsDataSet.xss">
+      <DependentUpon>AppRecordsDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -146,11 +163,17 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="db\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="db\AppRecords.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="db\AppRecords_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>AppRecords.mdf</DependentUpon>
+    </Content>
     <Content Include="sql\CREATE FUNCTION - GetItemStatus.sql" />
+    <Content Include="sql\CREATE FUNCTION - GetOrderDate.sql" />
     <Content Include="sql\CREATE_REFERENCE_TABLES.sql" />
     <Content Include="sql\CREATE_TRANSACTION_TABLES.sql" />
   </ItemGroup>
