@@ -66,7 +66,7 @@ namespace ItemInventory
 
         public int? getRetInventoryQty(string itemId, string warehouseId)
         {
-            return qadp.GetRetInventoryQty(itemId, warehouseId);
+            return qadp.GetRetItemQuantity(itemId, warehouseId);
         }
     }
 }
