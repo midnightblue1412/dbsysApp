@@ -32,18 +32,36 @@ namespace ItemInventory
             dbmgr.OrderSetTableAdapter = new OrderSetTableAdapter();
             dbmgr.ItemOrderTableAdapter = new ItemOrderTableAdapter();
 
-            dbmgr.InventoryChangesTableAdapter = new InventoryChangesTableAdapter();
-            dbmgr.ReturnsInventoryChangesTableAdapter = new ReturnsInventoryChangesTableAdapter();
-        }        
+            dbmgr.InventoryAdditionTableAdapter = new InventoryAdditionTableAdapter();
+            dbmgr.ServedItemTableAdapter = new ServedItemTableAdapter();
+
+            dbmgr.ReturnedItemTableAdapter = new ReturnedItemTableAdapter();
+            dbmgr.ServedReturnTableAdapter = new ServedReturnTableAdapter();
+        }
 
         public string getItemStatus(string itemId)
         {
             return qadp.GetItemStatus(itemId);
-        }        
+        }
 
         public DateTime? getOrderDate(string invoiceNo)
         {
             return qadp.GetOrderDate(invoiceNo);
+        }
+
+        public int? getInventoryQuantity(string warehouseId, string itemId)
+        {
+            return qadp.GetInventoryQuantity(warehouseId, itemId);
+        }
+
+        public int? getItemQuantity(string invoiceNo, string itemId)
+        {
+            return qadp.GetItemQuantity(invoiceNo, itemId);
+        }
+
+        public int? getRetInventoryQty(string itemId, string warehouseId)
+        {
+            return qadp.GetRetInventoryQty(itemId, warehouseId);
         }
     }
 }

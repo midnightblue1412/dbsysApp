@@ -50,6 +50,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -175,7 +176,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="db\AppRecords.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -184,6 +187,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>AppRecords.mdf</DependentUpon>
     </Content>
+    <Content Include="sql\CREATE FUNCTION - GetRetInventoryQty.sql" />
+    <Content Include="sql\CREATE FUNCTION - GetInventoryQty.sql" />
+    <Content Include="sql\CREATE FUNCTION - GetItemQuantity.sql" />
     <Content Include="sql\CREATE FUNCTION - GetItemStatus.sql" />
     <Content Include="sql\CREATE FUNCTION - GetOrderDate.sql" />
     <Content Include="sql\CREATE_REFERENCE_TABLES.sql" />
