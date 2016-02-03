@@ -49,14 +49,19 @@ namespace ItemInventory
             return qadp.GetOrderDate(invoiceNo);
         }
 
-        public int? getInventoryQuantity(string warehouseId, string itemId)
+        public string getOrderStatus(string invoiceNo, string itemId)
         {
-            return qadp.GetInventoryQuantity(warehouseId, itemId);
+            return qadp.GetOrderStatus(invoiceNo, itemId);
         }
 
-        public int? getItemQuantity(string invoiceNo, string itemId)
+        public int? getItemQuantity(string warehouseId, string itemId)
         {
-            return qadp.GetItemQuantity(invoiceNo, itemId);
+            return qadp.GetItemQuantity(warehouseId, itemId);
+        }
+
+        public int? getOrderedQuantity(string invoiceNo, string itemId)
+        {
+            return qadp.GetOrderedQuantity(invoiceNo, itemId);
         }
 
         public int? getRetInventoryQty(string itemId, string warehouseId)

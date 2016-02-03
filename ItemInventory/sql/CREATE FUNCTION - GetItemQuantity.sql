@@ -1,11 +1,11 @@
-﻿CREATE FUNCTION GetItemQuantity(@invoiceNo VARCHAR(8), @itemId VARCHAR(32))
+﻿CREATE FUNCTION GetItemQuantity(@warehouseId VARCHAR(16), @itemId VARCHAR(32))
 RETURNS INT
 AS
 BEGIN
 	DECLARE @quantity INT
 
-	SELECT @quantity = quantity FROM ItemOrder
-	WHERE id = @itemId AND invoiceNo = @invoiceNo
+	SELECT @quantity = quantity FROM Inventory
+	WHERE itemId = @itemId AND warehouseId = @warehouseId
 
 	RETURN @quantity
 END;
