@@ -187,9 +187,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>AppRecords.mdf</DependentUpon>
     </Content>
-    <Content Include="sql\CREATE FUNCTION - GetRetInventoryQty.sql" />
-    <Content Include="sql\CREATE FUNCTION - GetInventoryQty.sql" />
+    <Content Include="sql\CREATE FUNCTION - GetOrderStatus.sql" />
+    <Content Include="sql\CREATE FUNCTION - GetRetItemQty.sql" />
     <Content Include="sql\CREATE FUNCTION - GetItemQuantity.sql" />
+    <Content Include="sql\CREATE FUNCTION - GetOrderedQuantity.sql" />
     <Content Include="sql\CREATE FUNCTION - GetItemStatus.sql" />
     <Content Include="sql\CREATE FUNCTION - GetOrderDate.sql" />
     <Content Include="sql\CREATE_REFERENCE_TABLES.sql" />
