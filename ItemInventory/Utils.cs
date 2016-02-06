@@ -10,6 +10,9 @@ namespace ItemInventory
 {
     class Utils
     {
+        public delegate void RowProcessor(DataGridViewCellCollection c);
+        public delegate void ErrorCallBack(string msg);
+
         public static string[] getColumnNames(DataGridView dataGrid)
         {
             if (dataGrid.Columns.Count == 0)
@@ -47,5 +50,28 @@ namespace ItemInventory
             colname = "--None--";
             return true;
         }        
+
+        public static bool processDataGridRows(
+            DataGridView dataGrid, 
+            RowProcessor rowProc, ErrorCallBack callback)
+        {
+            DataGridViewRow lastRow = dataGrid.Rows[dataGrid.Rows.Count - 1];
+            string missingCol;
+
+            foreach (DataGridViewRow r in dataGrid.Rows)
+            {
+                if (Utils.rowInputComplete(r, out missingCol))
+                {
+                    rowProc(r.Cells);
+                }
+                else if (r != lastRow)
+                {
+                    callback(missingCol);
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
