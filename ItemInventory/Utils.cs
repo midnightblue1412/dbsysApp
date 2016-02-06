@@ -12,7 +12,8 @@ namespace ItemInventory
     {
         public delegate void RowProcessor(DataGridViewCellCollection c);
         public delegate void ErrorCallBack(string msg);
-
+        public delegate bool DataGridRowValidator(DataGridViewRow r, out string col);
+        
         public static string[] getColumnNames(DataGridView dataGrid)
         {
             if (dataGrid.Columns.Count == 0)
@@ -51,16 +52,16 @@ namespace ItemInventory
             return true;
         }        
 
-        public static bool processDataGridRows(
+        public static bool addRowsWithDataGrid(
             DataGridView dataGrid, 
-            RowProcessor rowProc, ErrorCallBack callback)
+            DataGridRowValidator validate, RowProcessor rowProc, ErrorCallBack callback)
         {
             DataGridViewRow lastRow = dataGrid.Rows[dataGrid.Rows.Count - 1];
             string missingCol;
 
             foreach (DataGridViewRow r in dataGrid.Rows)
             {
-                if (Utils.rowInputComplete(r, out missingCol))
+                if (validate(r, out missingCol))
                 {
                     rowProc(r.Cells);
                 }
