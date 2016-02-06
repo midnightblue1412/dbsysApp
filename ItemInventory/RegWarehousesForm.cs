@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,42 +27,58 @@ namespace ItemInventory
         {
             try
             {
-                DataGridViewRow lastRow = input_grid.Rows[input_grid.Rows.Count - 1];
-                string missingCol;
-
-                foreach (DataGridViewRow r in input_grid.Rows)
+                Utils.RowProcessor proc = (c) =>
                 {
-                    if (Utils.rowInputComplete(r, out missingCol))
-                    {
-                        DataGridViewCellCollection c = r.Cells;
-                        dbm.db.Warehouse.AddWarehouseRow(
-                            c["id"].Value.ToString(),
-                            c["warehouseName"].Value.ToString(),
-                            c["description"].Value.ToString(),
-                            "OP");
-                    }
-                    else if(r != lastRow)
-                    {
-                        MainForm.showErrorMessage("Missing Input in column '" + missingCol + "'");
-                        dbm.db.RejectChanges();
-                        return;
-                    }                                              
+                    dbm.db.Warehouse.AddWarehouseRow(
+                        c["id"].Value.ToString(),
+                        c["warehouseName"].Value.ToString(),
+                        c["description"].Value.ToString(),
+                        "OP");
+                };
+
+                Utils.ErrorCallBack callback = (col) =>
+                {
+                    MainForm.showErrorMessage("Missing Input in column '" + col + "'");
+                    dbm.db.RejectChanges();
+                };
+
+                bool rowsAdded = 
+                    Utils.addRowsWithDataGrid(input_grid, Utils.rowInputComplete, proc, callback);
+
+                if (rowsAdded)
+                {
+                    dbm.dbmgr.WarehouseTableAdapter.Update(dbm.db.Warehouse);
+                    MainForm.showSuccessMessage("Successfuly registered warehouse(s)");
                 }
-
-                dbm.dbmgr.WarehouseTableAdapter.Update(dbm.db.Warehouse);
-
-                MainForm.showSuccessMessage("Successfuly registered warehouse(s)");
-            }
-            catch (ConstraintException ex)
-            {
-                MainForm.showErrorMessage("[Constriant Violation] " + ex.Message);
-                dbm.db.RejectChanges();
             }
             catch (Exception ex)
+            when (ex is ConstraintException ||
+                    ex is DBConcurrencyException ||
+                    ex is SqlException)
             {
-                MainForm.showErrorMessage("[Error] " + ex.Message);
                 dbm.db.RejectChanges();
+
+                if (ex is ConstraintException)
+                {
+                    MainForm.showErrorMessage(
+                    "A constraint was violated while trying to " +
+                    "register warehouse(s).\n\nDetails:\n" + ex.Message);
+                }
+                else if (ex is DBConcurrencyException ||
+                            ex is SqlException)
+                {
+                    MainForm.showErrorMessage(
+                    "An error occured while trying to sync with database.\n" +
+                    "Please try again.\n\nDetails:\n" + ex.Message);
+
+                    initTable();
+                }
             }
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            input_grid.Rows.Clear();
         }
     }
 }
