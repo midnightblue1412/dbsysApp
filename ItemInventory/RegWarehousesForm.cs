@@ -22,38 +22,16 @@ namespace ItemInventory
             dbm.dbmgr.WarehouseTableAdapter.Fill(dbm.db.Warehouse);
         }
 
-        private bool isInputComplete(DataGridViewRow r)
-        {
-            DataGridViewCellCollection c = r.Cells;
-            if (c["id"].Value == null)
-            {
-                r.DataGridView.CurrentCell = c["id"];
-            }
-            else if (c["warehouseName"].Value == null)
-            {
-                r.DataGridView.CurrentCell = c["warehouseName"];
-            }
-            else if (c["description"].Value == null)
-            {
-                r.DataGridView.CurrentCell = c["description"];
-            }
-            else
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         private void btn_register_Click(object sender, EventArgs e)
         {
             try
             {
                 DataGridViewRow lastRow = input_grid.Rows[input_grid.Rows.Count - 1];
+                string missingCol;
 
                 foreach (DataGridViewRow r in input_grid.Rows)
                 {
-                    if (isInputComplete(r))
+                    if (Utils.rowInputComplete(r, out missingCol))
                     {
                         DataGridViewCellCollection c = r.Cells;
                         dbm.db.Warehouse.AddWarehouseRow(
@@ -64,7 +42,7 @@ namespace ItemInventory
                     }
                     else if(r != lastRow)
                     {
-                        MainForm.showErrorMessage("Missing Input!");
+                        MainForm.showErrorMessage("Missing Input in column '" + missingCol + "'");
                         dbm.db.RejectChanges();
                         return;
                     }                                              
