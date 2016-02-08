@@ -12,39 +12,71 @@ namespace ItemInventory
 {
     public partial class SelectWarehouseForm : ChildForm
     {
-        public SelectWarehouseForm(AddItemsForm parent)
+        private AppRecordsDataSet.WarehouseRow selectedWarehouse;
+
+        public AppRecordsDataSet.WarehouseRow Warehouse
         {
-            InitializeComponent();
-            this.parent = parent;
+            get
+            {
+                return selectedWarehouse;
+            }
         }
 
-        private void SelectWarehouseForm_FormClosing(object sender, FormClosingEventArgs e)
+        public SelectWarehouseForm()
         {
-            parent.Close();            
+            InitializeComponent();
+        }
+        
+        internal void initTable()
+        {
+            dbm.dbmgr.WarehouseTableAdapter.Fill(dbm.db.Warehouse);
+        }
+
+        private void SelectWarehouseForm_Load(object sender, EventArgs e)
+        {
+            initTable();
+
+            AppRecordsDataSet.WarehouseRow[] warehouses =
+                (from warehouse in dbm.db.Warehouse
+                where warehouse.warehouseStatus.ToUpper().Equals("OP")
+                select warehouse).ToArray();
+
+            MainForm.showSuccessMessage("retrieved data: " + warehouses.Count());
+
+            input_warehouseId.Items.AddRange(warehouses);
+        }
+        
+        private void btn_proceed_Click(object sender, EventArgs e)
+        {
+            selectedWarehouse = (AppRecordsDataSet.WarehouseRow)input_warehouseId.SelectedItem;
+
+            if (selectedWarehouse == null)
+            {
+                MainForm.showErrorMessage("Select a warehouse first!");
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
-            parent.Close();
         }
 
-        private void btn_proceed_Click(object sender, EventArgs e)
+        private void autoSelect(object sender, EventArgs e)
         {
-            object warehouseId = input_warehouseId.SelectedItem;
-            if (warehouseId != null)
+            int index = input_warehouseId.FindStringExact(input_warehouseId.Text.Trim());
+            input_warehouseId.SelectedIndex = index;
+        }
+
+        private void inputHelper(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Tab)
             {
-                ((AddItemsForm)parent).warehouseId = warehouseId.ToString();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Please Select a Warehouse",
-                    "Error!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                    );
+                int index = input_warehouseId.FindString(input_warehouseId.Text.Trim());
+                input_warehouseId.SelectedIndex = index;
             }
         }
     }

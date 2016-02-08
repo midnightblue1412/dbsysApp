@@ -164,6 +164,7 @@
             this.Name = "AddItemsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register Clients";
+            this.Load += new System.EventHandler(this.AddItemsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.disp_dataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

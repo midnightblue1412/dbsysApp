@@ -52,6 +52,9 @@
             this.input_warehouseId.Name = "input_warehouseId";
             this.input_warehouseId.Size = new System.Drawing.Size(121, 25);
             this.input_warehouseId.TabIndex = 1;
+            this.input_warehouseId.TabStop = false;
+            this.input_warehouseId.TextChanged += new System.EventHandler(this.autoSelect);
+            this.input_warehouseId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inputHelper);
             // 
             // btn_cancel
             // 
@@ -61,6 +64,7 @@
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(95, 32);
             this.btn_cancel.TabIndex = 2;
+            this.btn_cancel.TabStop = false;
             this.btn_cancel.Text = "&Cancel";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -73,6 +77,7 @@
             this.btn_proceed.Name = "btn_proceed";
             this.btn_proceed.Size = new System.Drawing.Size(95, 32);
             this.btn_proceed.TabIndex = 3;
+            this.btn_proceed.TabStop = false;
             this.btn_proceed.Text = "&Proceed";
             this.btn_proceed.UseVisualStyleBackColor = true;
             this.btn_proceed.Click += new System.EventHandler(this.btn_proceed_Click);
@@ -94,7 +99,7 @@
             this.Name = "SelectWarehouseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Warehouse";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SelectWarehouseForm_FormClosing);
+            this.Load += new System.EventHandler(this.SelectWarehouseForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

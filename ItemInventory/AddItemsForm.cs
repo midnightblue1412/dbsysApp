@@ -12,15 +12,22 @@ namespace ItemInventory
 {
     public partial class AddItemsForm : ChildForm
     {
-        SelectWarehouseForm sel;
-        internal string warehouseId;
+        AppRecordsDataSet.WarehouseRow warehouse;
 
         public AddItemsForm()
         {
-            InitializeComponent();
-            sel = new SelectWarehouseForm(this);
+            InitializeComponent();  
+        }
 
-            sel.ShowDialog();            
+        private void initTable()
+        {
+            dbm.dbmgr.InventoryTableAdapter.Fill(dbm.db.Inventory);
+            dbm.dbmgr.InventoryAdditionTableAdapter.Fill(dbm.db.InventoryAddition);
+        }
+
+        public void setWarehouse(AppRecordsDataSet.WarehouseRow warehouse)
+        {
+            this.warehouse = warehouse;
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
@@ -30,7 +37,12 @@ namespace ItemInventory
 
         private void btn_add_Click(object sender, EventArgs e)
         {
+             
+        }
 
+        private void AddItemsForm_Load(object sender, EventArgs e)
+        {
+            initTable();
         }
     }
 }

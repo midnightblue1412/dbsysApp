@@ -41,11 +41,18 @@ namespace ItemInventory
 
         private void addItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddItemsForm addItemsForm = new AddItemsForm();
-            if(!addItemsForm.IsDisposed)
+            SelectWarehouseForm sel = new SelectWarehouseForm();
+            AddItemsForm addwh = new AddItemsForm();
+
+            sel.setParent(this);
+            addwh.setParent(this);
+
+            sel.ShowDialog();
+
+            if (sel.Warehouse != null)
             {
-                addItemsForm.setParent(this);
-                addItemsForm.ShowDialog();
+                addwh.setWarehouse(sel.Warehouse);
+                addwh.ShowDialog();
             }
         }
 
