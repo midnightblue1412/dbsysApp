@@ -34,6 +34,7 @@
             this.disp_grid = new System.Windows.Forms.DataGridView();
             this.itemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.input_clientId = new System.Windows.Forms.ComboBox();
             this.input_date = new System.Windows.Forms.DateTimePicker();
@@ -43,6 +44,8 @@
             this.input_qty = new System.Windows.Forms.NumericUpDown();
             this.btn_add = new System.Windows.Forms.Button();
             this.input_invoiceNo = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_qty)).BeginInit();
             this.SuspendLayout();
@@ -87,11 +90,12 @@
             this.disp_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.itemId,
             this.itemName,
+            this.unitPrice,
             this.quantity});
             this.disp_grid.Enabled = false;
             this.disp_grid.Location = new System.Drawing.Point(10, 186);
             this.disp_grid.Name = "disp_grid";
-            this.disp_grid.Size = new System.Drawing.Size(398, 262);
+            this.disp_grid.Size = new System.Drawing.Size(498, 262);
             this.disp_grid.TabIndex = 13;
             // 
             // itemId
@@ -106,6 +110,11 @@
             this.itemName.HeaderText = "Name";
             this.itemName.Name = "itemName";
             this.itemName.Width = 180;
+            // 
+            // unitPrice
+            // 
+            this.unitPrice.HeaderText = "Unit Price";
+            this.unitPrice.Name = "unitPrice";
             // 
             // quantity
             // 
@@ -192,12 +201,35 @@
             this.input_invoiceNo.Size = new System.Drawing.Size(124, 25);
             this.input_invoiceNo.TabIndex = 26;
             // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(384, 454);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(124, 25);
+            this.textBox1.TabIndex = 28;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(339, 456);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 17);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Total:";
+            // 
             // NewInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;
-            this.ClientSize = new System.Drawing.Size(419, 457);
+            this.ClientSize = new System.Drawing.Size(520, 490);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.input_invoiceNo);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.input_qty);
@@ -228,14 +260,17 @@
         private System.Windows.Forms.DataGridView disp_grid;
         private System.Windows.Forms.ComboBox input_clientId;
         private System.Windows.Forms.DateTimePicker input_date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemId;
         private System.Windows.Forms.ComboBox input_itemId;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown input_qty;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.TextBox input_invoiceNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemId;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label6;
     }
 }
