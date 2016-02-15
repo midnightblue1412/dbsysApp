@@ -41,19 +41,7 @@ namespace ItemInventory
 
         private void addItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SelectWarehouseForm sel = new SelectWarehouseForm();
-            AddItemsForm addwh = new AddItemsForm();
-
-            sel.setParent(this);
-            addwh.setParent(this);
-
-            sel.ShowDialog();
-
-            if (sel.Warehouse != null)
-            {
-                addwh.setWarehouse(sel.Warehouse);
-                addwh.ShowDialog();
-            }
+            MainForm.showErrorMessage("This functionality is under construction.");
         }
 
         public static void showSuccessMessage(string msg)

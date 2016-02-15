@@ -4,7 +4,7 @@ AS
 BEGIN
 	DECLARE @stat VARCHAR(2)
 
-	SELECT @stat = orderStatus FROM ItemOrder
+	SELECT @stat = orderStatus FROM InvoiceItem
 	WHERE itemId = @itemId AND invoiceNo = @invoiceNo
 
 	RETURN @stat

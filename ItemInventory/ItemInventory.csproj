@@ -80,11 +80,23 @@
     <Compile Include="DbForm.Designer.cs">
       <DependentUpon>DbForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvoiceForm.Designer.cs">
+      <DependentUpon>InvoiceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewInvoiceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewInvoiceForm.Designer.cs">
+      <DependentUpon>NewInvoiceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,16 +124,16 @@
     <Compile Include="RegItemsForm.Designer.cs">
       <DependentUpon>RegItemsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SelectWarehouseForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SelectWarehouseForm.Designer.cs">
-      <DependentUpon>SelectWarehouseForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utils.cs" />
     <Compile Include="WarehouseRow.cs" />
+    <EmbeddedResource Include="InvoiceForm.resx">
+      <DependentUpon>InvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewInvoiceForm.resx">
+      <DependentUpon>NewInvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -143,9 +155,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegItemsForm.resx">
       <DependentUpon>RegItemsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SelectWarehouseForm.resx">
-      <DependentUpon>SelectWarehouseForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="AppRecordsDataSet.xsc">
       <DependentUpon>AppRecordsDataSet.xsd</DependentUpon>
@@ -182,12 +191,8 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="db\AppRecords.mdf">
+    <Content Include="db\records.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="db\AppRecords_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>AppRecords.mdf</DependentUpon>
     </Content>
     <Content Include="sql\CREATE FUNCTION - GetOrderStatus.sql" />
     <Content Include="sql\CREATE FUNCTION - GetRetItemQty.sql" />
@@ -195,9 +200,15 @@
     <Content Include="sql\CREATE FUNCTION - GetOrderedQuantity.sql" />
     <Content Include="sql\CREATE FUNCTION - GetItemStatus.sql" />
     <Content Include="sql\CREATE FUNCTION - GetOrderDate.sql" />
+    <Content Include="sql\CREATE TRIGGER - INVENTORY_UPDATED.sql" />
+    <Content Include="sql\CREATE TRIGGER - ITEM_SERVED.sql" />
+    <Content Include="sql\CREATE TRIGGER - RETURN_SERVED.sql" />
+    <Content Include="sql\CREATE VIEW -  InventoryUI.sql" />
+    <Content Include="sql\CREATE VIEW -  RetInventoryUI.sql" />
     <Content Include="sql\CREATE_REFERENCE_TABLES.sql" />
     <Content Include="sql\CREATE_TRANSACTION_TABLES.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

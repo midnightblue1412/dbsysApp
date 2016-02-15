@@ -4,7 +4,7 @@ AS
 BEGIN
 	DECLARE @quantity INT
 
-	SELECT @quantity = quantity FROM ItemOrder
+	SELECT @quantity = quantity FROM InvoiceItem
 	WHERE itemId = @itemId AND invoiceNo = @invoiceNo
 
 	RETURN @quantity

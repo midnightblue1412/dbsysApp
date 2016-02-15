@@ -116,11 +116,11 @@ namespace ItemInventory {
                 if ((ds.Tables["Item"] != null)) {
                     base.Tables.Add(new ItemDataTable(ds.Tables["Item"]));
                 }
-                if ((ds.Tables["ItemOrder"] != null)) {
-                    base.Tables.Add(new ItemOrderDataTable(ds.Tables["ItemOrder"]));
+                if ((ds.Tables["InvoiceItem"] != null)) {
+                    base.Tables.Add(new ItemOrderDataTable(ds.Tables["InvoiceItem"]));
                 }
-                if ((ds.Tables["OrderSet"] != null)) {
-                    base.Tables.Add(new OrderSetDataTable(ds.Tables["OrderSet"]));
+                if ((ds.Tables["Invoice"] != null)) {
+                    base.Tables.Add(new OrderSetDataTable(ds.Tables["Invoice"]));
                 }
                 if ((ds.Tables["ReturnedItem"] != null)) {
                     base.Tables.Add(new ReturnedItemDataTable(ds.Tables["ReturnedItem"]));
@@ -199,7 +199,7 @@ namespace ItemInventory {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ItemOrderDataTable ItemOrder {
+        public ItemOrderDataTable InvoiceItem {
             get {
                 return this.tableItemOrder;
             }
@@ -209,7 +209,7 @@ namespace ItemInventory {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public OrderSetDataTable OrderSet {
+        public OrderSetDataTable Invoice {
             get {
                 return this.tableOrderSet;
             }
@@ -344,11 +344,11 @@ namespace ItemInventory {
                 if ((ds.Tables["Item"] != null)) {
                     base.Tables.Add(new ItemDataTable(ds.Tables["Item"]));
                 }
-                if ((ds.Tables["ItemOrder"] != null)) {
-                    base.Tables.Add(new ItemOrderDataTable(ds.Tables["ItemOrder"]));
+                if ((ds.Tables["InvoiceItem"] != null)) {
+                    base.Tables.Add(new ItemOrderDataTable(ds.Tables["InvoiceItem"]));
                 }
-                if ((ds.Tables["OrderSet"] != null)) {
-                    base.Tables.Add(new OrderSetDataTable(ds.Tables["OrderSet"]));
+                if ((ds.Tables["Invoice"] != null)) {
+                    base.Tables.Add(new OrderSetDataTable(ds.Tables["Invoice"]));
                 }
                 if ((ds.Tables["ReturnedItem"] != null)) {
                     base.Tables.Add(new ReturnedItemDataTable(ds.Tables["ReturnedItem"]));
@@ -422,13 +422,13 @@ namespace ItemInventory {
                     this.tableItem.InitVars();
                 }
             }
-            this.tableItemOrder = ((ItemOrderDataTable)(base.Tables["ItemOrder"]));
+            this.tableItemOrder = ((ItemOrderDataTable)(base.Tables["InvoiceItem"]));
             if ((initTable == true)) {
                 if ((this.tableItemOrder != null)) {
                     this.tableItemOrder.InitVars();
                 }
             }
-            this.tableOrderSet = ((OrderSetDataTable)(base.Tables["OrderSet"]));
+            this.tableOrderSet = ((OrderSetDataTable)(base.Tables["Invoice"]));
             if ((initTable == true)) {
                 if ((this.tableOrderSet != null)) {
                     this.tableOrderSet.InitVars();
@@ -1974,7 +1974,7 @@ namespace ItemInventory {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemOrderDataTable() {
-                this.TableName = "ItemOrder";
+                this.TableName = "InvoiceItem";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2285,7 +2285,7 @@ namespace ItemInventory {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public OrderSetDataTable() {
-                this.TableName = "OrderSet";
+                this.TableName = "Invoice";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -7072,7 +7072,7 @@ SELECT id, itemName, itemDesc, itemStatus FROM Item WHERE (id = @id)";
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "ItemOrder";
+            tableMapping.DataSetTable = "InvoiceItem";
             tableMapping.ColumnMappings.Add("invoiceNo", "invoiceNo");
             tableMapping.ColumnMappings.Add("itemId", "itemId");
             tableMapping.ColumnMappings.Add("quantity", "quantity");
@@ -7080,7 +7080,7 @@ SELECT id, itemName, itemDesc, itemStatus FROM Item WHERE (id = @id)";
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[ItemOrder] WHERE (([invoiceNo] = @Original_invoiceNo) AND ([it" +
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[InvoiceItem] WHERE (([invoiceNo] = @Original_invoiceNo) AND ([it" +
                 "emId] = @Original_itemId) AND ([quantity] = @Original_quantity) AND ([orderStatu" +
                 "s] = @Original_orderStatus))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
@@ -7090,9 +7090,9 @@ SELECT id, itemName, itemDesc, itemStatus FROM Item WHERE (id = @id)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_orderStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "orderStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ItemOrder] ([invoiceNo], [itemId], [quantity], [orderStatus]) " +
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[InvoiceItem] ([invoiceNo], [itemId], [quantity], [orderStatus]) " +
                 "VALUES (@invoiceNo, @itemId, @quantity, @orderStatus);\r\nSELECT invoiceNo, itemId" +
-                ", quantity, orderStatus FROM ItemOrder WHERE (invoiceNo = @invoiceNo) AND (itemI" +
+                ", quantity, orderStatus FROM InvoiceItem WHERE (invoiceNo = @invoiceNo) AND (itemI" +
                 "d = @itemId)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invoiceNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invoiceNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7101,8 +7101,8 @@ SELECT id, itemName, itemDesc, itemStatus FROM Item WHERE (id = @id)";
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@orderStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "orderStatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[ItemOrder] SET [invoiceNo] = @invoiceNo, [itemId] = @itemId, [quantity] = @quantity, [orderStatus] = @orderStatus WHERE (([invoiceNo] = @Original_invoiceNo) AND ([itemId] = @Original_itemId) AND ([quantity] = @Original_quantity) AND ([orderStatus] = @Original_orderStatus));
-SELECT invoiceNo, itemId, quantity, orderStatus FROM ItemOrder WHERE (invoiceNo = @invoiceNo) AND (itemId = @itemId)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[InvoiceItem] SET [invoiceNo] = @invoiceNo, [itemId] = @itemId, [quantity] = @quantity, [orderStatus] = @orderStatus WHERE (([invoiceNo] = @Original_invoiceNo) AND ([itemId] = @Original_itemId) AND ([quantity] = @Original_quantity) AND ([orderStatus] = @Original_orderStatus));
+SELECT invoiceNo, itemId, quantity, orderStatus FROM InvoiceItem WHERE (invoiceNo = @invoiceNo) AND (itemId = @itemId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invoiceNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invoiceNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7127,7 +7127,7 @@ SELECT invoiceNo, itemId, quantity, orderStatus FROM ItemOrder WHERE (invoiceNo 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT invoiceNo, itemId, quantity, orderStatus FROM dbo.ItemOrder";
+            this._commandCollection[0].CommandText = "SELECT invoiceNo, itemId, quantity, orderStatus FROM dbo.InvoiceItem";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7166,7 +7166,7 @@ SELECT invoiceNo, itemId, quantity, orderStatus FROM ItemOrder WHERE (invoiceNo 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(AppRecordsDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "ItemOrder");
+            return this.Adapter.Update(dataSet, "InvoiceItem");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7452,14 +7452,14 @@ SELECT invoiceNo, itemId, quantity, orderStatus FROM ItemOrder WHERE (invoiceNo 
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "OrderSet";
+            tableMapping.DataSetTable = "Invoice";
             tableMapping.ColumnMappings.Add("invoiceNo", "invoiceNo");
             tableMapping.ColumnMappings.Add("orderDate", "orderDate");
             tableMapping.ColumnMappings.Add("clientId", "clientId");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[OrderSet] WHERE (([invoiceNo] = @Original_invoiceNo) AND ([ord" +
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Invoice] WHERE (([invoiceNo] = @Original_invoiceNo) AND ([ord" +
                 "erDate] = @Original_orderDate) AND ([clientId] = @Original_clientId))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invoiceNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invoiceNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -7467,7 +7467,7 @@ SELECT invoiceNo, itemId, quantity, orderStatus FROM ItemOrder WHERE (invoiceNo 
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_clientId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "clientId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[OrderSet] ([invoiceNo], [orderDate], [clientId]) VALUES (@invo" +
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Invoice] ([invoiceNo], [orderDate], [clientId]) VALUES (@invo" +
                 "iceNo, @orderDate, @clientId);\r\nSELECT invoiceNo, orderDate, clientId FROM Order" +
                 "Set WHERE (invoiceNo = @invoiceNo)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
@@ -7476,8 +7476,8 @@ SELECT invoiceNo, itemId, quantity, orderStatus FROM ItemOrder WHERE (invoiceNo 
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@clientId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "clientId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[OrderSet] SET [invoiceNo] = @invoiceNo, [orderDate] = @orderDate, [clientId] = @clientId WHERE (([invoiceNo] = @Original_invoiceNo) AND ([orderDate] = @Original_orderDate) AND ([clientId] = @Original_clientId));
-SELECT invoiceNo, orderDate, clientId FROM OrderSet WHERE (invoiceNo = @invoiceNo)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Invoice] SET [invoiceNo] = @invoiceNo, [orderDate] = @orderDate, [clientId] = @clientId WHERE (([invoiceNo] = @Original_invoiceNo) AND ([orderDate] = @Original_orderDate) AND ([clientId] = @Original_clientId));
+SELECT invoiceNo, orderDate, clientId FROM Invoice WHERE (invoiceNo = @invoiceNo)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invoiceNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invoiceNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@orderDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "orderDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7500,7 +7500,7 @@ SELECT invoiceNo, orderDate, clientId FROM OrderSet WHERE (invoiceNo = @invoiceN
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT invoiceNo, orderDate, clientId FROM dbo.OrderSet";
+            this._commandCollection[0].CommandText = "SELECT invoiceNo, orderDate, clientId FROM dbo.Invoice";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7539,7 +7539,7 @@ SELECT invoiceNo, orderDate, clientId FROM OrderSet WHERE (invoiceNo = @invoiceN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(AppRecordsDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "OrderSet");
+            return this.Adapter.Update(dataSet, "Invoice");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10227,7 +10227,7 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                 }
             }
             if ((this._orderSetTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.OrderSet.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                global::System.Data.DataRow[] updatedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
@@ -10254,7 +10254,7 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                 }
             }
             if ((this._itemOrderTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ItemOrder.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                global::System.Data.DataRow[] updatedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
@@ -10334,7 +10334,7 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                 }
             }
             if ((this._orderSetTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.OrderSet.Select(null, null, global::System.Data.DataViewRowState.Added);
+                global::System.Data.DataRow[] addedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._orderSetTableAdapter.Update(addedRows));
@@ -10358,7 +10358,7 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                 }
             }
             if ((this._itemOrderTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ItemOrder.Select(null, null, global::System.Data.DataViewRowState.Added);
+                global::System.Data.DataRow[] addedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._itemOrderTableAdapter.Update(addedRows));
@@ -10456,7 +10456,7 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                 }
             }
             if ((this._itemOrderTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ItemOrder.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                global::System.Data.DataRow[] deletedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._itemOrderTableAdapter.Update(deletedRows));
@@ -10480,7 +10480,7 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                 }
             }
             if ((this._orderSetTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.OrderSet.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                global::System.Data.DataRow[] deletedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._orderSetTableAdapter.Update(deletedRows));
