@@ -10,5 +10,5 @@ DECLARE @quantity		INT
 SELECT @invoiceNo = invoiceNo, @itemId = itemId, @warehouseId = warehouseId
 FROM inserted
 
-UPDATE Inventory SET quantity = quantity - @quantity
+UPDATE ItemInventory SET quantity = quantity - @quantity
 WHERE warehouseId = @warehouseId AND itemId = @itemId

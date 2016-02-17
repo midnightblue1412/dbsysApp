@@ -43,13 +43,13 @@
             this.registerWarehouseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inventoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.recordReturnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -60,7 +60,7 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(97, 47);
+            this.comboBox1.Location = new System.Drawing.Point(92, 102);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(184, 25);
             this.comboBox1.TabIndex = 3;
@@ -76,7 +76,7 @@
             this.itemName,
             this.quantity});
             this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 114);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 169);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(368, 273);
@@ -107,7 +107,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(15, 50);
+            this.label2.Location = new System.Drawing.Point(10, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 17);
             this.label2.TabIndex = 6;
@@ -120,7 +120,7 @@
             this.inventoriesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(798, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -172,8 +172,7 @@
             // inventoriesToolStripMenuItem
             // 
             this.inventoriesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addItemToolStripMenuItem,
-            this.recordReturnsToolStripMenuItem});
+            this.addItemToolStripMenuItem});
             this.inventoriesToolStripMenuItem.Name = "inventoriesToolStripMenuItem";
             this.inventoriesToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.inventoriesToolStripMenuItem.Text = "&Actions";
@@ -181,32 +180,26 @@
             // addItemToolStripMenuItem
             // 
             this.addItemToolStripMenuItem.Name = "addItemToolStripMenuItem";
-            this.addItemToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.addItemToolStripMenuItem.Text = "&Add Item To Inventory";
+            this.addItemToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.addItemToolStripMenuItem.Text = "&Add Item To ItemInventory";
             this.addItemToolStripMenuItem.ToolTipText = "Add items to the current warehouse selected";
             this.addItemToolStripMenuItem.Click += new System.EventHandler(this.addItemToolStripMenuItem_Click);
-            // 
-            // recordReturnsToolStripMenuItem
-            // 
-            this.recordReturnsToolStripMenuItem.Name = "recordReturnsToolStripMenuItem";
-            this.recordReturnsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.recordReturnsToolStripMenuItem.Text = "&Record Returns";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(14, 94);
+            this.label3.Location = new System.Drawing.Point(9, 149);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 17);
+            this.label3.Size = new System.Drawing.Size(90, 17);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Inventory";
+            this.label3.Text = "Item Inventory";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(404, 94);
+            this.label4.Location = new System.Drawing.Point(399, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(109, 17);
             this.label4.TabIndex = 11;
@@ -223,7 +216,7 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
             this.dataGridView2.Enabled = false;
-            this.dataGridView2.Location = new System.Drawing.Point(407, 114);
+            this.dataGridView2.Location = new System.Drawing.Point(402, 169);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(368, 273);
             this.dataGridView2.TabIndex = 12;
@@ -246,12 +239,24 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.Width = 50;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(12, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 21);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Inventories";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;
-            this.ClientSize = new System.Drawing.Size(798, 416);
+            this.ClientSize = new System.Drawing.Size(784, 454);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -265,7 +270,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Item Inventory";
+            this.Text = "Item ItemInventory";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -290,7 +295,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem newInvoiceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem recordReturnsToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
@@ -298,6 +302,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label1;
     }
 }
 

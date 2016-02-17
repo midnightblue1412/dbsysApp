@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ItemInventory
 {
-    public partial class DbForm : Form
+    public partial class DbForm : System.Windows.Forms.Form
     {
         internal readonly DatabaseModule dbm;
 

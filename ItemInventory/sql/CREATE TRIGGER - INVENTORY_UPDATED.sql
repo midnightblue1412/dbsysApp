@@ -1,5 +1,5 @@
 ﻿CREATE TRIGGER INVENTORY_UPDATED 
-ON Inventory
+ON ItemInventory
 FOR INSERT
 AS
 DECLARE @warehouseId	VARCHAR(16)

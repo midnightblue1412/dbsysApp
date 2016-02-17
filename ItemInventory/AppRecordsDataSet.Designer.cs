@@ -107,8 +107,8 @@ namespace ItemInventory {
                 if ((ds.Tables["Client"] != null)) {
                     base.Tables.Add(new ClientDataTable(ds.Tables["Client"]));
                 }
-                if ((ds.Tables["Inventory"] != null)) {
-                    base.Tables.Add(new InventoryDataTable(ds.Tables["Inventory"]));
+                if ((ds.Tables["ItemInventory"] != null)) {
+                    base.Tables.Add(new InventoryDataTable(ds.Tables["ItemInventory"]));
                 }
                 if ((ds.Tables["InventoryAddition"] != null)) {
                     base.Tables.Add(new InventoryAdditionDataTable(ds.Tables["InventoryAddition"]));
@@ -169,7 +169,7 @@ namespace ItemInventory {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public InventoryDataTable Inventory {
+        public InventoryDataTable ItemInventory {
             get {
                 return this.tableInventory;
             }
@@ -335,8 +335,8 @@ namespace ItemInventory {
                 if ((ds.Tables["Client"] != null)) {
                     base.Tables.Add(new ClientDataTable(ds.Tables["Client"]));
                 }
-                if ((ds.Tables["Inventory"] != null)) {
-                    base.Tables.Add(new InventoryDataTable(ds.Tables["Inventory"]));
+                if ((ds.Tables["ItemInventory"] != null)) {
+                    base.Tables.Add(new InventoryDataTable(ds.Tables["ItemInventory"]));
                 }
                 if ((ds.Tables["InventoryAddition"] != null)) {
                     base.Tables.Add(new InventoryAdditionDataTable(ds.Tables["InventoryAddition"]));
@@ -404,7 +404,7 @@ namespace ItemInventory {
                     this.tableClient.InitVars();
                 }
             }
-            this.tableInventory = ((InventoryDataTable)(base.Tables["Inventory"]));
+            this.tableInventory = ((InventoryDataTable)(base.Tables["ItemInventory"]));
             if ((initTable == true)) {
                 if ((this.tableInventory != null)) {
                     this.tableInventory.InitVars();
@@ -1046,7 +1046,7 @@ namespace ItemInventory {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InventoryDataTable() {
-                this.TableName = "Inventory";
+                this.TableName = "ItemInventory";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -5967,14 +5967,14 @@ SELECT id, clientName, contactNumber FROM Client WHERE (id = @id)";
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Inventory";
+            tableMapping.DataSetTable = "ItemInventory";
             tableMapping.ColumnMappings.Add("warehouseId", "warehouseId");
             tableMapping.ColumnMappings.Add("itemId", "itemId");
             tableMapping.ColumnMappings.Add("quantity", "quantity");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Inventory] WHERE (([warehouseId] = @Original_warehouseId) AND " +
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[ItemInventory] WHERE (([warehouseId] = @Original_warehouseId) AND " +
                 "([itemId] = @Original_itemId) AND ([quantity] = @Original_quantity))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_warehouseId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -5982,7 +5982,7 @@ SELECT id, clientName, contactNumber FROM Client WHERE (id = @id)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Inventory] ([warehouseId], [itemId], [quantity]) VALUES (@ware" +
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ItemInventory] ([warehouseId], [itemId], [quantity]) VALUES (@ware" +
                 "houseId, @itemId, @quantity);\r\nSELECT warehouseId, itemId, quantity FROM Invento" +
                 "ry WHERE (itemId = @itemId) AND (warehouseId = @warehouseId)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
@@ -5991,8 +5991,8 @@ SELECT id, clientName, contactNumber FROM Client WHERE (id = @id)";
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Inventory] SET [warehouseId] = @warehouseId, [itemId] = @itemId, [quantity] = @quantity WHERE (([warehouseId] = @Original_warehouseId) AND ([itemId] = @Original_itemId) AND ([quantity] = @Original_quantity));
-SELECT warehouseId, itemId, quantity FROM Inventory WHERE (itemId = @itemId) AND (warehouseId = @warehouseId)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[ItemInventory] SET [warehouseId] = @warehouseId, [itemId] = @itemId, [quantity] = @quantity WHERE (([warehouseId] = @Original_warehouseId) AND ([itemId] = @Original_itemId) AND ([quantity] = @Original_quantity));
+SELECT warehouseId, itemId, quantity FROM ItemInventory WHERE (itemId = @itemId) AND (warehouseId = @warehouseId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@warehouseId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6015,7 +6015,7 @@ SELECT warehouseId, itemId, quantity FROM Inventory WHERE (itemId = @itemId) AND
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT warehouseId, itemId, quantity FROM dbo.Inventory";
+            this._commandCollection[0].CommandText = "SELECT warehouseId, itemId, quantity FROM dbo.ItemInventory";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6054,7 +6054,7 @@ SELECT warehouseId, itemId, quantity FROM Inventory WHERE (itemId = @itemId) AND
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(AppRecordsDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Inventory");
+            return this.Adapter.Update(dataSet, "ItemInventory");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10245,7 +10245,7 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                 }
             }
             if ((this._inventoryTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                global::System.Data.DataRow[] updatedRows = dataSet.ItemInventory.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
@@ -10350,7 +10350,7 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                 }
             }
             if ((this._inventoryTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.Added);
+                global::System.Data.DataRow[] addedRows = dataSet.ItemInventory.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._inventoryTableAdapter.Update(addedRows));
@@ -10464,7 +10464,7 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                 }
             }
             if ((this._inventoryTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Inventory.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                global::System.Data.DataRow[] deletedRows = dataSet.ItemInventory.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._inventoryTableAdapter.Update(deletedRows));

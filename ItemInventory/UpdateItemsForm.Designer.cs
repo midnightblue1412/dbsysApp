@@ -1,6 +1,6 @@
 ﻿namespace ItemInventory
 {
-    partial class RegWarehousesForm
+    partial class UpdateItemsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,10 +30,10 @@
         {
             this.input_grid = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.warehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_register = new System.Windows.Forms.Button();
-            this.btn_clear = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.input_grid)).BeginInit();
             this.SuspendLayout();
@@ -43,83 +43,75 @@
             this.input_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.input_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
-            this.warehouseName,
-            this.description});
-            this.input_grid.Location = new System.Drawing.Point(12, 66);
+            this.itemName,
+            this.description,
+            this.itemStatus});
+            this.input_grid.Location = new System.Drawing.Point(17, 58);
             this.input_grid.Name = "input_grid";
-            this.input_grid.Size = new System.Drawing.Size(418, 262);
-            this.input_grid.TabIndex = 5;
+            this.input_grid.Size = new System.Drawing.Size(538, 280);
+            this.input_grid.TabIndex = 6;
             // 
             // id
             // 
-            this.id.HeaderText = "Warehouse ID";
+            this.id.HeaderText = "Item ID";
             this.id.Name = "id";
+            this.id.Width = 75;
             // 
-            // warehouseName
+            // itemName
             // 
-            this.warehouseName.HeaderText = "Name";
-            this.warehouseName.Name = "warehouseName";
-            this.warehouseName.Width = 125;
+            this.itemName.HeaderText = "Name";
+            this.itemName.Name = "itemName";
             // 
             // description
             // 
+            this.description.FillWeight = 200F;
             this.description.HeaderText = "Description";
             this.description.Name = "description";
-            this.description.Width = 150;
+            this.description.Width = 220;
+            // 
+            // itemStatus
+            // 
+            this.itemStatus.HeaderText = "Status";
+            this.itemStatus.Name = "itemStatus";
+            this.itemStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // btn_register
             // 
             this.btn_register.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_register.ForeColor = System.Drawing.Color.White;
-            this.btn_register.Location = new System.Drawing.Point(255, 334);
+            this.btn_register.Location = new System.Drawing.Point(406, 344);
             this.btn_register.Name = "btn_register";
-            this.btn_register.Size = new System.Drawing.Size(84, 28);
-            this.btn_register.TabIndex = 6;
-            this.btn_register.Text = "&Register";
+            this.btn_register.Size = new System.Drawing.Size(149, 28);
+            this.btn_register.TabIndex = 7;
+            this.btn_register.Text = "&Change Status";
             this.btn_register.UseVisualStyleBackColor = true;
-            this.btn_register.Click += new System.EventHandler(this.btn_register_Click);
-            // 
-            // btn_clear
-            // 
-            this.btn_clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_clear.ForeColor = System.Drawing.Color.White;
-            this.btn_clear.Location = new System.Drawing.Point(345, 334);
-            this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(84, 28);
-            this.btn_clear.TabIndex = 7;
-            this.btn_clear.Text = "&Clear";
-            this.btn_clear.UseVisualStyleBackColor = true;
-            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 25);
+            this.label2.Location = new System.Drawing.Point(12, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 21);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Register Warehouses";
+            this.label2.Size = new System.Drawing.Size(151, 21);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Update Item Status";
             // 
-            // RegWarehousesForm
+            // UpdateItemsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;
-            this.ClientSize = new System.Drawing.Size(441, 374);
+            this.ClientSize = new System.Drawing.Size(567, 385);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.btn_register);
             this.Controls.Add(this.input_grid);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "RegWarehousesForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Register Warehouses";
+            this.Name = "UpdateItemsForm";
+            this.Text = "Update Item Status";
             ((System.ComponentModel.ISupportInitialize)(this.input_grid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -129,11 +121,11 @@
         #endregion
 
         private System.Windows.Forms.DataGridView input_grid;
-        private System.Windows.Forms.Button btn_register;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn warehouseName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.Button btn_clear;
+        private System.Windows.Forms.Button btn_register;
         private System.Windows.Forms.Label label2;
     }
 }

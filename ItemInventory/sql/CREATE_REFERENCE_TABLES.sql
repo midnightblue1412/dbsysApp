@@ -13,7 +13,7 @@ CREATE TABLE Client
 (
 	id				VARCHAR(32)		PRIMARY KEY,
 	clientName		VARCHAR(64)		UNIQUE			NOT NULL,
-	contactNumber	VARCHAR(32)		NOT NULL
+	clientAddress	VARCHAR(32)		NOT NULL
 );
 
 CREATE TABLE Warehouse

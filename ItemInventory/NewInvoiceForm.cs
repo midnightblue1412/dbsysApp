@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ItemInventory
 {
-    public partial class NewInvoiceForm : Form
+    public partial class NewInvoiceForm : System.Windows.Forms.Form
     {
         public NewInvoiceForm()
         {

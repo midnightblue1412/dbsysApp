@@ -1,5 +1,5 @@
 ﻿--EXECUTE CREATE FUNCTION SQL BEFORE THIS ONE
-CREATE TABLE Inventory
+CREATE TABLE ItemInventory
 (
 	warehouseId		VARCHAR(16)		NOT NULL	REFERENCES Warehouse(id),
 	itemId			VARCHAR(32)		NOT NULL	REFERENCES Item(id),
@@ -17,17 +17,7 @@ CREATE TABLE ReturnsInventory
 	quantity		INT				NOT NULL,
 	INDEX warehouseId (warehouseId),
 	PRIMARY KEY(warehouseId, itemId),
-	CONSTRAINT RITEM_STAT	CHECK (dbo.GetItemStatus(itemId) = 'AV'),
 	CONSTRAINT LIMIT_RQTY	CHECK (quantity >= 0)
-);
-
-CREATE TABLE InventoryAddition
-(
-	referenceNo	INT IDENTITY(1024, 1)	PRIMARY KEY,
-	itemId		VARCHAR(32)	NOT NULL	REFERENCES Item(id),
-	warehouseNo	VARCHAR(16)	NOT NULL	REFERENCES Warehouse(id),
-	quantity	INT			NOT NULL,
-	CONSTRAINT LIMIT_IA CHECK(quantity > 0)
 );
 
 CREATE TABLE Invoice
@@ -44,30 +34,17 @@ CREATE TABLE InvoiceItem
 	quantity	INT			NOT NULL,
 	orderStatus	VARCHAR(16) NOT NULL,
 	PRIMARY KEY(invoiceNo, itemId),
-	CONSTRAINT	VALUES_IORDERSTAT CHECK (orderStatus IN ('PENDING', 'SERVED', 'CANCELLED')),
+	CONSTRAINT	VALUES_IORDERSTAT CHECK (orderStatus IN ('PENDING', 'SERVED', 'RETURNED', 'CANCELLED')),
 	CONSTRAINT	ITEM_ORDERED_STAT	CHECK (dbo.GetItemStatus(itemId) = 'AV'),
 	CONSTRAINT	LIMIT_OQTY	CHECK (quantity > 0)
 );
 
-CREATE TABLE ItemServed
+CREATE TABLE InventoryAddition
 (
-	invoiceNo	VARCHAR(8)	NOT NULL,
-	itemId		VARCHAR(32)	NOT NULL,
-	warehouseId	VARCHAR(16)	NOT NULL,
+	itemId		VARCHAR(32)	NOT NULL	REFERENCES Item(id),
+	warehouseNo	VARCHAR(16)	NOT NULL	REFERENCES Warehouse(id),
 	quantity	INT			NOT NULL,
-	serveDate	DATE		NOT NULL,
-	PRIMARY KEY(invoiceNo, itemId),
-	FOREIGN KEY(invoiceNo, itemId) REFERENCES InvoiceItem(invoiceNo, itemId),
-	FOREIGN KEY(warehouseId, itemId) REFERENCES Inventory(warehouseId, itemId),
-	CONSTRAINT LIMIT_SI
-		CHECK (quantity > 0 AND
-				 quantity <= dbo.GetOrderedQuantity(itemId, invoiceNo) AND
-				 quantity <= dbo.GetItemQuantity(warehouseId, itemId) AND
-				 quantity <= dbo.GetOrderedQuantity(itemId, invoiceNo)),
-	CONSTRAINT SI_DATE
-		CHECK (serveDate > dbo.GetOrderDate(invoiceNo)),
-	CONSTRAINT SI_ORDERSTAT
-		CHECK (dbo.GetOrderStatus(invoiceNo, itemId) != 'CANCELLED')
+	CONSTRAINT LIMIT_IA CHECK(quantity > 0)
 );
 
 CREATE TABLE ItemReturned
@@ -79,11 +56,32 @@ CREATE TABLE ItemReturned
 	returnDate	DATE		NOT NULL,
 	PRIMARY KEY(invoiceNo, itemId),
 	FOREIGN KEY(invoiceNo, itemId) REFERENCES InvoiceItem(invoiceNo, itemId),
-	FOREIGN KEY(warehouseId, itemId) REFERENCES Inventory(warehouseId, itemId),
+	FOREIGN KEY(warehouseId, itemId) REFERENCES ItemInventory(warehouseId, itemId),
 	CONSTRAINT LIMIT_RI
 		CHECK (quantity > 0 AND quantity <= dbo.GetOrderedQuantity(itemId, invoiceNo)),
 	CONSTRAINT RI_DATE
 		CHECK (returnDate > dbo.GetOrderDate(invoiceNo))
+);
+
+CREATE TABLE ItemServed
+(
+	invoiceNo	VARCHAR(8)	NOT NULL,
+	itemId		VARCHAR(32)	NOT NULL,
+	warehouseId	VARCHAR(16)	NOT NULL,
+	quantity	INT			NOT NULL,
+	serveDate	DATE		NOT NULL,
+	PRIMARY KEY(invoiceNo, itemId),
+	FOREIGN KEY(invoiceNo, itemId) REFERENCES InvoiceItem(invoiceNo, itemId),
+	FOREIGN KEY(warehouseId, itemId) REFERENCES ItemInventory(warehouseId, itemId),
+	CONSTRAINT LIMIT_SI
+		CHECK (quantity > 0 AND
+				 quantity <= dbo.GetOrderedQuantity(itemId, invoiceNo) AND
+				 quantity <= dbo.GetItemQuantity(warehouseId, itemId) AND
+				 quantity <= dbo.GetOrderedQuantity(itemId, invoiceNo)),
+	CONSTRAINT SI_DATE
+		CHECK (serveDate > dbo.GetOrderDate(invoiceNo)),
+	CONSTRAINT SI_ORDERSTAT
+		CHECK (dbo.GetOrderStatus(invoiceNo, itemId) != 'CANCELLED')
 );
 
 CREATE TABLE ReturnServed
@@ -103,5 +101,5 @@ CREATE TABLE ReturnServed
 	CONSTRAINT SR_DATE
 		CHECK (serveDate > dbo.GetOrderDate(invoiceNo)),
 	CONSTRAINT SR_ORDERSTAT
-		CHECK (dbo.GetOrderStatus(invoiceNo, itemId) != 'CANCELLED')
+		CHECK (dbo.GetOrderStatus(invoiceNo, itemId) = 'CANCELLED')
 );

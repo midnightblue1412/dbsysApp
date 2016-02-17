@@ -33,6 +33,7 @@ namespace ItemInventory
                         c["id"].Value.ToString(),
                         c["itemName"].Value.ToString(),
                         c["description"].Value.ToString(),
+                        //c["unitPrice"].Value.ToString(),
                         "AV");
                 };
 

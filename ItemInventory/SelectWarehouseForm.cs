@@ -10,18 +10,9 @@ using System.Windows.Forms;
 
 namespace ItemInventory
 {
-    public partial class ChildForm : System.Windows.Forms.Form
+    public partial class SelectWarehouseForm : ChildForm
     {
-        protected DatabaseModule dbm;
-        protected System.Windows.Forms.Form parent;
-
-        public void setParent(DbForm parent)
-        {
-            this.parent = parent;
-            dbm = parent.dbm;
-        }
-
-        public ChildForm()
+        public SelectWarehouseForm()
         {
             InitializeComponent();
         }
