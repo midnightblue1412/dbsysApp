@@ -41,9 +41,10 @@ CREATE TABLE InvoiceItem
 
 CREATE TABLE InventoryAddition
 (
-	itemId		VARCHAR(32)	NOT NULL	REFERENCES Item(id),
-	warehouseNo	VARCHAR(16)	NOT NULL	REFERENCES Warehouse(id),
+	itemId		VARCHAR(32)	NOT NULL,
+	warehouseId	VARCHAR(16)	NOT NULL,
 	quantity	INT			NOT NULL,
+	FOREIGN KEY(warehouseId, itemId) REFERENCES ItemInventory(warehouseId, itemId),
 	CONSTRAINT LIMIT_IA CHECK(quantity > 0)
 );
 

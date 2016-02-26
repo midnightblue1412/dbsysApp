@@ -62,6 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddItemsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddItemsForm.Designer.cs">
+      <DependentUpon>AddItemsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AppRecordsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,14 +124,29 @@
     <Compile Include="RegItemsForm.Designer.cs">
       <DependentUpon>RegItemsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReturnedItemsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReturnedItemsForm.Designer.cs">
+      <DependentUpon>ReturnedItemsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectWarehouseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SelectWarehouseForm.Designer.cs">
       <DependentUpon>SelectWarehouseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateItemsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateItemsForm.Designer.cs">
+      <DependentUpon>UpdateItemsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils.cs" />
     <Compile Include="WarehouseRow.cs" />
+    <EmbeddedResource Include="AddItemsForm.resx">
+      <DependentUpon>AddItemsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InvoiceForm.resx">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,8 +174,14 @@
     <EmbeddedResource Include="RegItemsForm.resx">
       <DependentUpon>RegItemsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReturnedItemsForm.resx">
+      <DependentUpon>ReturnedItemsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SelectWarehouseForm.resx">
       <DependentUpon>SelectWarehouseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateItemsForm.resx">
+      <DependentUpon>UpdateItemsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="AppRecordsDataSet.xsc">
       <DependentUpon>AppRecordsDataSet.xsd</DependentUpon>
