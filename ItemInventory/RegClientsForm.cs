@@ -51,13 +51,19 @@ namespace ItemInventory
                     dbm.db.RejectChanges();
                 };
 
-                bool rowsAdded =
+                int rowsAdded =
                     Utils.addRowsWithDataGrid(input_grid, Utils.rowInputComplete, proc, callback);
 
-                if (rowsAdded)
+                if (rowsAdded > 0)
                 {
                     dbm.dbmgr.ClientTableAdapter.Update(dbm.db.Client);
-                    MainForm.showSuccessMessage("Successfuly registered client(s)");
+                    input_grid.Rows.Clear();
+                    MainForm.showSuccessMessage(
+                        "Successfuly registered " + rowsAdded + " client(s)");
+                }
+                else if(rowsAdded == 0)
+                {
+                    MainForm.showErrorMessage("No client(s) was/were registered.");                       
                 }
             }
             catch (Exception ex)

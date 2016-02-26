@@ -38,8 +38,8 @@
             this.itemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_ok = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.disp_warehouse = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.input_qty)).BeginInit();
@@ -68,6 +68,7 @@
             this.btn_add.TabIndex = 31;
             this.btn_add.Text = "&Add";
             this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // input_qty
             // 
@@ -97,6 +98,7 @@
             this.input_itemId.Name = "input_itemId";
             this.input_itemId.Size = new System.Drawing.Size(121, 25);
             this.input_itemId.TabIndex = 28;
+            this.input_itemId.TextChanged += new System.EventHandler(this.input_itemId_TextChanged);
             // 
             // label3
             // 
@@ -142,29 +144,31 @@
             this.quantity.Name = "quantity";
             this.quantity.Width = 50;
             // 
-            // button1
+            // btn_ok
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(206, 347);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 28);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "&Ok";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_ok.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ok.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ok.ForeColor = System.Drawing.Color.White;
+            this.btn_ok.Location = new System.Drawing.Point(206, 347);
+            this.btn_ok.Name = "btn_ok";
+            this.btn_ok.Size = new System.Drawing.Size(84, 28);
+            this.btn_ok.TabIndex = 32;
+            this.btn_ok.Text = "&Ok";
+            this.btn_ok.UseVisualStyleBackColor = true;
+            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
             // 
-            // button2
+            // btn_cancel
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(296, 347);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 28);
-            this.button2.TabIndex = 33;
-            this.button2.Text = "&Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cancel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancel.ForeColor = System.Drawing.Color.White;
+            this.btn_cancel.Location = new System.Drawing.Point(296, 347);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(84, 28);
+            this.btn_cancel.TabIndex = 33;
+            this.btn_cancel.Text = "&Cancel";
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // label2
             // 
@@ -180,7 +184,7 @@
             // disp_warehouse
             // 
             this.disp_warehouse.AutoSize = true;
-            this.disp_warehouse.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.disp_warehouse.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.disp_warehouse.ForeColor = System.Drawing.Color.White;
             this.disp_warehouse.Location = new System.Drawing.Point(94, 51);
             this.disp_warehouse.Name = "disp_warehouse";
@@ -196,8 +200,8 @@
             this.ClientSize = new System.Drawing.Size(412, 385);
             this.Controls.Add(this.disp_warehouse);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_cancel);
+            this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.input_qty);
             this.Controls.Add(this.label5);
@@ -211,6 +215,7 @@
             this.MinimizeBox = false;
             this.Name = "AddItemsForm";
             this.Text = "Add Items";
+            this.Load += new System.EventHandler(this.AddItemsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.input_qty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid)).EndInit();
             this.ResumeLayout(false);
@@ -227,8 +232,8 @@
         private System.Windows.Forms.ComboBox input_itemId;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView disp_grid;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_ok;
+        private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemId;
