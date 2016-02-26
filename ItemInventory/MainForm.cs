@@ -16,7 +16,44 @@ namespace ItemInventory
         {
             InitializeComponent();            
         }
+        
+        /*
+         * METHODS
+         */
+        public static void showSuccessMessage(string msg)
+        {
+            MessageBox.Show(
+                msg,
+                "Success!",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
 
+        public static void showErrorMessage(string msg)
+        {
+            MessageBox.Show(
+                msg,
+                "Error!",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+        }
+
+        public void fillWarehouseComboBox()
+        {
+            input_warehouse.Items.Clear();
+
+            foreach (RecordsDataSet.WarehouseRow r in dbm.db.Warehouse)
+            {
+                if (r.warehouseStatus.Equals("OP"))
+                {
+                    input_warehouse.Items.Add(r);
+                }
+            }   
+        }
+
+        /*
+         * EVENT HANDLERS
+         */
         private void registerItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RegItemsForm regItemsForm = new RegItemsForm();
@@ -41,25 +78,40 @@ namespace ItemInventory
 
         private void addItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MainForm.showErrorMessage("This functionality is under construction.");
+            AddItemsForm af = new AddItemsForm();
+            af.setParent(this);
+
+            RecordsDataSet.WarehouseRow warehouse =
+                input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow;
+
+            if (warehouse != null)
+            {
+                af.setWarehouse(warehouse);
+                af.ShowDialog();
+            }
+            else
+            {
+                showErrorMessage("No Warehouse Selected.");
+            }
         }
 
-        public static void showSuccessMessage(string msg)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(
-                msg,
-                "Success!",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            fillWarehouseComboBox();
         }
 
-        public static void showErrorMessage(string msg)
+        private void input_warehouse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(
-                msg,
-                "Error!",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
+            RecordsDataSet.InventoryUIRow[] inventory =
+                (from itemInventory in dbm.db.InventoryUI
+                where itemInventory.warehouseId == 
+                    (input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow).id
+                select itemInventory).ToArray();
+
+            foreach (RecordsDataSet.InventoryUIRow r in inventory)
+            {
+                disp_ItemInventory.Rows.Add(r.id, r.itemName, r.quantity);
+            }
         }
     }
 }

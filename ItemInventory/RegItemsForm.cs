@@ -29,12 +29,21 @@ namespace ItemInventory
             {
                 Utils.RowProcessor proc = (c) =>
                 {
-                    dbm.db.Item.AddItemRow(
+                    decimal uPrice;
+
+                    if (decimal.TryParse(c["unitPrice"].Value.ToString(), out uPrice)) {
+                        dbm.db.Item.AddItemRow(
                         c["id"].Value.ToString(),
                         c["itemName"].Value.ToString(),
                         c["description"].Value.ToString(),
-                        //c["unitPrice"].Value.ToString(),
+                        uPrice,
                         "AV");
+                    }
+                    else
+                    {
+                        input_grid.CurrentCell = c["unitPrice"];
+                        throw new Exception("Invalid Unit Price.");
+                    }        
                 };
 
                 Utils.ErrorCallBack callback = (col) =>
@@ -43,19 +52,26 @@ namespace ItemInventory
                     dbm.db.RejectChanges();
                 };
 
-                bool rowsAdded =
+                int rowsAdded =
                     Utils.addRowsWithDataGrid(input_grid, Utils.rowInputComplete, proc, callback);
 
-                if (rowsAdded)
+                if (rowsAdded > 0)
                 {
                     dbm.dbmgr.ItemTableAdapter.Update(dbm.db.Item);
-                    MainForm.showSuccessMessage("Successfuly registered item(s)");
+                    input_grid.Rows.Clear();
+                    MainForm.showSuccessMessage(
+                        "Successfuly registered " + rowsAdded + " item(s)");
+                }
+                else if(rowsAdded == 0)
+                {
+                    MainForm.showErrorMessage("No item(s) were/was registered.");
                 }
             }
             catch (Exception ex)
             when (ex is ConstraintException ||
                     ex is DBConcurrencyException ||
-                    ex is SqlException)
+                    ex is SqlException ||
+                    ex is Exception)
             {
                 dbm.db.RejectChanges();
 
@@ -73,6 +89,10 @@ namespace ItemInventory
                     "Please try again.\n\nDetails:\n" + ex.Message);
 
                     initTable();
+                }
+                else
+                {
+                    MainForm.showErrorMessage(ex.Message);
                 }
             }
         }

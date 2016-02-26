@@ -68,11 +68,6 @@
     <Compile Include="AddItemsForm.Designer.cs">
       <DependentUpon>AddItemsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppRecordsDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppRecordsDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="ChildForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +101,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecordsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecordsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="RegWarehousesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,7 +143,7 @@
       <DependentUpon>UpdateItemsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
-    <Compile Include="WarehouseRow.cs" />
+    <Compile Include="RecordsDataSet_ext.cs" />
     <EmbeddedResource Include="AddItemsForm.resx">
       <DependentUpon>AddItemsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -183,17 +183,6 @@
     <EmbeddedResource Include="UpdateItemsForm.resx">
       <DependentUpon>UpdateItemsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="AppRecordsDataSet.xsc">
-      <DependentUpon>AppRecordsDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="AppRecordsDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>AppRecordsDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="AppRecordsDataSet.xss">
-      <DependentUpon>AppRecordsDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -203,6 +192,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="RecordsDataSet.xsc">
+      <DependentUpon>RecordsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="RecordsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RecordsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RecordsDataSet.xss">
+      <DependentUpon>RecordsDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -218,7 +218,11 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="db\records.mdf">
+    <Content Include="db\Records.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="db\Records_log.ldf">
+      <DependentUpon>Records.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="sql\CREATE FUNCTION - GetOrderStatus.sql" />

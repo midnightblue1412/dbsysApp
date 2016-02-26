@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using ItemInventory.AppRecordsDataSetTableAdapters;
+using ItemInventory.RecordsDataSetTableAdapters;
 
 namespace ItemInventory
 {
     public class DatabaseModule
     {
-        internal readonly AppRecordsDataSet db;
+        internal readonly RecordsDataSet db;
         internal readonly TableAdapterManager dbmgr;
         internal readonly QueriesTableAdapter qadp;
 
         public DatabaseModule()
         {
-            db = new AppRecordsDataSet();
+            db = new RecordsDataSet();
             dbmgr = new TableAdapterManager();
             qadp = new QueriesTableAdapter();
 
@@ -26,17 +26,17 @@ namespace ItemInventory
             dbmgr.WarehouseTableAdapter = new WarehouseTableAdapter();
 
             //Initialize Adapters for Transaction Tables
-            dbmgr.InventoryTableAdapter = new InventoryTableAdapter();
-            dbmgr.ReturnsInventoryTableAdapter = new ReturnsInventoryTableAdapter();
+            dbmgr.ItemInventoryTableAdapter = new ItemInventoryTableAdapter();
+            dbmgr.ItemReturnedTableAdapter = new ItemReturnedTableAdapter();
 
-            dbmgr.OrderSetTableAdapter = new OrderSetTableAdapter();
-            dbmgr.ItemOrderTableAdapter = new ItemOrderTableAdapter();
+            dbmgr.InvoiceTableAdapter = new InvoiceTableAdapter();
+            dbmgr.InvoiceItemTableAdapter = new InvoiceItemTableAdapter();
 
             dbmgr.InventoryAdditionTableAdapter = new InventoryAdditionTableAdapter();
-            dbmgr.ServedItemTableAdapter = new ServedItemTableAdapter();
+            dbmgr.ItemServedTableAdapter = new ItemServedTableAdapter();
 
-            dbmgr.ReturnedItemTableAdapter = new ReturnedItemTableAdapter();
-            dbmgr.ServedReturnTableAdapter = new ServedReturnTableAdapter();
+            dbmgr.ItemReturnedTableAdapter = new ItemReturnedTableAdapter();
+            dbmgr.ReturnServedTableAdapter = new ReturnServedTableAdapter();
         }
 
         public string getItemStatus(string itemId)

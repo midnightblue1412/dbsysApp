@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.input_warehouse = new System.Windows.Forms.ComboBox();
+            this.disp_ItemInventory = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,42 +45,43 @@
             this.addItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.disp_ReturnsInventory = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.disp_ItemInventory)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.disp_ReturnsInventory)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // input_warehouse
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(92, 102);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(184, 25);
-            this.comboBox1.TabIndex = 3;
+            this.input_warehouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.input_warehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.input_warehouse.FormattingEnabled = true;
+            this.input_warehouse.Location = new System.Drawing.Point(92, 102);
+            this.input_warehouse.Name = "input_warehouse";
+            this.input_warehouse.Size = new System.Drawing.Size(184, 25);
+            this.input_warehouse.TabIndex = 3;
+            this.input_warehouse.SelectedIndexChanged += new System.EventHandler(this.input_warehouse_SelectedIndexChanged);
             // 
-            // dataGridView1
+            // disp_ItemInventory
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.disp_ItemInventory.AllowUserToAddRows = false;
+            this.disp_ItemInventory.AllowUserToDeleteRows = false;
+            this.disp_ItemInventory.AllowUserToResizeColumns = false;
+            this.disp_ItemInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.disp_ItemInventory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.itemName,
             this.quantity});
-            this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 169);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(368, 273);
-            this.dataGridView1.TabIndex = 4;
+            this.disp_ItemInventory.Enabled = false;
+            this.disp_ItemInventory.Location = new System.Drawing.Point(12, 169);
+            this.disp_ItemInventory.Name = "disp_ItemInventory";
+            this.disp_ItemInventory.ReadOnly = true;
+            this.disp_ItemInventory.Size = new System.Drawing.Size(368, 273);
+            this.disp_ItemInventory.TabIndex = 4;
             // 
             // id
             // 
@@ -205,21 +206,21 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Returns Inventory";
             // 
-            // dataGridView2
+            // disp_ReturnsInventory
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.disp_ReturnsInventory.AllowUserToAddRows = false;
+            this.disp_ReturnsInventory.AllowUserToDeleteRows = false;
+            this.disp_ReturnsInventory.AllowUserToResizeColumns = false;
+            this.disp_ReturnsInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.disp_ReturnsInventory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3});
-            this.dataGridView2.Enabled = false;
-            this.dataGridView2.Location = new System.Drawing.Point(402, 169);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(368, 273);
-            this.dataGridView2.TabIndex = 12;
+            this.disp_ReturnsInventory.Enabled = false;
+            this.disp_ReturnsInventory.Location = new System.Drawing.Point(402, 169);
+            this.disp_ReturnsInventory.Name = "disp_ReturnsInventory";
+            this.disp_ReturnsInventory.Size = new System.Drawing.Size(368, 273);
+            this.disp_ReturnsInventory.TabIndex = 12;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -257,12 +258,12 @@
             this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(784, 454);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.disp_ReturnsInventory);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.disp_ItemInventory);
+            this.Controls.Add(this.input_warehouse);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
@@ -271,18 +272,19 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item ItemInventory";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.disp_ItemInventory)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.disp_ReturnsInventory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox input_warehouse;
+        private System.Windows.Forms.DataGridView disp_ItemInventory;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -301,7 +303,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView disp_ReturnsInventory;
         private System.Windows.Forms.Label label1;
     }
 }

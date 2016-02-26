@@ -42,13 +42,21 @@ namespace ItemInventory
                     dbm.db.RejectChanges();
                 };
 
-                bool rowsAdded = 
+                int rowsAdded = 
                     Utils.addRowsWithDataGrid(input_grid, Utils.rowInputComplete, proc, callback);
 
-                if (rowsAdded)
+                if (rowsAdded > 0)
                 {
                     dbm.dbmgr.WarehouseTableAdapter.Update(dbm.db.Warehouse);
-                    MainForm.showSuccessMessage("Successfuly registered warehouse(s)");
+                    input_grid.Rows.Clear();
+                    MainForm.showSuccessMessage(
+                        "Successfuly registered " + rowsAdded + " warehouse(s)");
+                    MainForm p = parent as MainForm;
+                    p.fillWarehouseComboBox();
+                }
+                else if(rowsAdded == 0)
+                {
+                    MainForm.showErrorMessage("No warehouse(s) was/were registered.");                    
                 }
             }
             catch (Exception ex)

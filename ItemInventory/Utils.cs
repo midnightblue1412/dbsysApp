@@ -52,7 +52,7 @@ namespace ItemInventory
             return true;
         }        
 
-        public static bool addRowsWithDataGrid(
+        public static int addRowsWithDataGrid(
             DataGridView dataGrid, 
             DataGridRowValidator validate, RowProcessor rowProc, ErrorCallBack callback)
         {
@@ -68,11 +68,11 @@ namespace ItemInventory
                 else if (r != lastRow)
                 {
                     callback(missingCol);
-                    return false;
+                    return -1;
                 }
             }
 
-            return true;
+            return dataGrid.Rows.Count - 1;
         }
     }
 }
