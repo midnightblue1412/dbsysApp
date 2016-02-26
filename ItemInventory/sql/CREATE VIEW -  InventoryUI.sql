@@ -2,4 +2,4 @@
 AS
 SELECT I.id, I.itemName, quantity
 FROM ItemInventory Inv JOIN Item I
-ON Inv.itemId = I.itemId;
+ON Inv.itemId = I.id;
