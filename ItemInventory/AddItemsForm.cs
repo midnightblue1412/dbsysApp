@@ -68,7 +68,11 @@ namespace ItemInventory
 
             Utils.ErrorCallBack callback = (col) =>
             {
+<<<<<<< HEAD
                 //TODO: fully implement add items form
+=======
+                //TODO
+>>>>>>> origin/master
             };            
         }
 
