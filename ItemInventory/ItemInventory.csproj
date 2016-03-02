@@ -47,6 +47,33 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_X64|AnyCPU'">
+    <OutputPath>bin\Debug_X64\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug_X64|x64'">
+    <OutputPath>bin\x64\Debug_X64\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -98,6 +125,12 @@
     </Compile>
     <Compile Include="NewInvoiceForm.Designer.cs">
       <DependentUpon>NewInvoiceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingPrompt.Designer.cs">
+      <DependentUpon>LoadingPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewInvoiceForm.resx">
       <DependentUpon>NewInvoiceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingPrompt.resx">
+      <DependentUpon>LoadingPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -222,8 +258,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="db\Records_log.ldf">
-      <DependentUpon>Records.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Records.mdf</DependentUpon>
     </Content>
     <Content Include="sql\CREATE FUNCTION - GetOrderStatus.sql" />
     <Content Include="sql\CREATE FUNCTION - GetRetItemQty.sql" />
@@ -231,12 +267,9 @@
     <Content Include="sql\CREATE FUNCTION - GetOrderedQuantity.sql" />
     <Content Include="sql\CREATE FUNCTION - GetItemStatus.sql" />
     <Content Include="sql\CREATE FUNCTION - GetOrderDate.sql" />
-    <Content Include="sql\CREATE TRIGGER - INVENTORY_UPDATED.sql" />
-    <Content Include="sql\CREATE TRIGGER - ITEM_SERVED.sql" />
-    <Content Include="sql\CREATE TRIGGER - RETURN_SERVED.sql" />
-    <Content Include="sql\CREATE VIEW -  InventoryUI.sql" />
-    <Content Include="sql\CREATE VIEW -  RetInventoryUI.sql" />
-    <Content Include="sql\CREATE VIEW - InvoiceItemsUI.sql" />
+    <Content Include="sql\CREATE TRIGGER - INVENTORY_UPDATE.sql" />
+    <Content Include="sql\CREATE TRIGGER - ITEM_RETURNED.sql" />
+    <Content Include="sql\CREATE TRIGGER - INVENTORY_ADD.sql" />
     <Content Include="sql\CREATE_REFERENCE_TABLES.sql" />
     <Content Include="sql\CREATE_TRANSACTION_TABLES.sql" />
   </ItemGroup>

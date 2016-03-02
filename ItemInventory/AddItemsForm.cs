@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -56,20 +57,36 @@ namespace ItemInventory
             return -1;
         }
 
-        private void addToDataSet()
+        private int updateDataSet()
         {
-            Utils.RowProcessor proc = (c) =>
+            foreach (DataGridViewRow r in disp_grid.Rows)
             {
-                dbm.db.ItemInventory.AddItemInventoryRow(
-                    warehouse,
-                    c["itemId"].Value as RecordsDataSet.ItemRow,
-                    int.Parse(c["quantity"].Value.ToString()));            
-            };
+                DataGridViewCellCollection c = r.Cells;
+                string itemIdStr = c["itemId"].Value.ToString();
+                int quantity = int.Parse(c["quantity"].Value.ToString());
 
-            Utils.ErrorCallBack callback = (col) =>
-            {
-                //TODO: fully implement add items form
-            };            
+                RecordsDataSet.ItemInventoryRow inventoryRow =
+                    dbm.db.ItemInventory.FindBywarehouseIditemId(warehouse.id, itemIdStr);
+
+                if (inventoryRow != null)
+                {
+                    inventoryRow.quantity += quantity;
+                }
+                else
+                {
+                    dbm.db.ItemInventory.AddItemInventoryRow(
+                        warehouse,
+                        dbm.db.Item.FindByid(itemIdStr),
+                        quantity);
+                }
+            }
+
+            return disp_grid.Rows.Count;
+        }
+
+        private void initTable()
+        {
+            dbm.dbmgr.ItemInventoryTableAdapter.Fill(dbm.db.ItemInventory);           
         }
 
         /*
@@ -119,13 +136,57 @@ namespace ItemInventory
             }
         }
 
-        private void btn_cancel_Click(object sender, EventArgs e)
+        private void btn_clear_Click(object sender, EventArgs e)
         {
             disp_grid.Rows.Clear();
         }
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
+            try
+            {
+                LoadingPrompt l = new LoadingPrompt("Processing Request...");
+                int rowsAdded = updateDataSet();       
+
+                if (rowsAdded > 0)
+                {
+                    dbm.dbmgr.ItemInventoryTableAdapter.Update(dbm.db);
+                    dbm.dbmgr.ReturnsInventoryTableAdapter.Fill(dbm.db.ReturnsInventory);
+                    ((MainForm)parent).fillDataGrid();
+                    MainForm.showSuccessMessage("Successfuly updated " + rowsAdded + " item(s) in inventory.");
+                }
+                else
+                {
+                    dbm.db.RejectChanges();
+                    MainForm.showErrorMessage("No item(s) were updated in inventory.");
+                }
+            }
+            catch (Exception ex)
+            when (ex is ConstraintException ||
+                    ex is DBConcurrencyException ||
+                    ex is SqlException ||
+                    ex is Exception)
+            {
+                dbm.db.RejectChanges();
+
+                if (ex is ConstraintException)
+                {
+                    MainForm.showErrorMessage(
+                    "A constraint was violated while trying to " +
+                    "add item(s).\n\nDetails:\n" + ex.Message);
+                }
+                else if (ex is DBConcurrencyException ||
+                            ex is SqlException)
+                {
+                    initTable();
+                    btn_ok_Click(sender, e);
+                }
+                else
+                {
+                    MainForm.showErrorMessage(ex.Message);
+                }
+            }
+
             this.Dispose();
         }
     }

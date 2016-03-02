@@ -53,6 +53,8 @@ namespace ItemInventory
                         "Successfuly registered " + rowsAdded + " warehouse(s)");
                     MainForm p = parent as MainForm;
                     p.fillWarehouseComboBox();
+                    p.fillDataGrid();
+                    Close();
                 }
                 else if(rowsAdded == 0)
                 {

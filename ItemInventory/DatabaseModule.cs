@@ -27,17 +27,19 @@ namespace ItemInventory
 
             //Initialize Adapters for Transaction Tables
             dbmgr.ItemInventoryTableAdapter = new ItemInventoryTableAdapter();
+            dbmgr.ReturnsInventoryTableAdapter = new ReturnsInventoryTableAdapter();
+            
             dbmgr.ItemReturnedTableAdapter = new ItemReturnedTableAdapter();
 
             dbmgr.InvoiceTableAdapter = new InvoiceTableAdapter();
             dbmgr.InvoiceItemTableAdapter = new InvoiceItemTableAdapter();
 
-            dbmgr.InventoryAdditionTableAdapter = new InventoryAdditionTableAdapter();
+            dbmgr.InventoryMovementTableAdapter = new InventoryMovementTableAdapter();
             dbmgr.ItemServedTableAdapter = new ItemServedTableAdapter();
 
             dbmgr.ItemReturnedTableAdapter = new ItemReturnedTableAdapter();
             dbmgr.ReturnServedTableAdapter = new ReturnServedTableAdapter();
-        }
+        }        
 
         public string getItemStatus(string itemId)
         {

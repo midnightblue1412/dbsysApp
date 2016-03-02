@@ -58,6 +58,7 @@ namespace ItemInventory
                 {
                     dbm.dbmgr.ClientTableAdapter.Update(dbm.db.Client);
                     input_grid.Rows.Clear();
+                    Close();
                     MainForm.showSuccessMessage(
                         "Successfuly registered " + rowsAdded + " client(s)");
                 }

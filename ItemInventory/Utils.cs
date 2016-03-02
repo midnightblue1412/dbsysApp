@@ -65,14 +65,14 @@ namespace ItemInventory
                 {
                     rowProc(r.Cells);
                 }
-                else if (r != lastRow)
+                else if (r != lastRow && dataGrid.AllowUserToAddRows)
                 {
                     callback(missingCol);
                     return -1;
                 }
             }
 
-            return dataGrid.Rows.Count - 1;
+            return dataGrid.Rows.Count - (dataGrid.AllowUserToAddRows ? 1 : 0);
         }
     }
 }

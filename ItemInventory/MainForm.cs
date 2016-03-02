@@ -14,7 +14,7 @@ namespace ItemInventory
     {
         public MainForm()
         {
-            InitializeComponent();            
+            InitializeComponent();                        
         }
         
         /*
@@ -51,6 +51,29 @@ namespace ItemInventory
             }   
         }
 
+        public void fillDataGrid()
+        {
+            disp_ItemInventory.Rows.Clear();
+
+            var a =
+                from inv in dbm.db.ItemInventory
+                join ret in dbm.db.ReturnsInventory on inv equals ret.ItemInventoryRowParent
+                join item in dbm.db.Item on inv.itemId equals item.id
+                where inv.WarehouseRow == (RecordsDataSet.WarehouseRow)input_warehouse.SelectedItem
+                orderby inv.itemId
+                select new
+                {
+                    inv.itemId,
+                    item.itemName,
+                    qty = inv.quantity,
+                    qty_ret = ret.quantity
+                };
+
+            foreach (var r in a)
+            {
+                disp_ItemInventory.Rows.Add(r.itemId, r.itemName, r.qty, r.qty_ret);
+            }
+        }
         /*
          * EVENT HANDLERS
          */
@@ -97,21 +120,45 @@ namespace ItemInventory
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            dbm.dbmgr.ItemTableAdapter.Fill(dbm.db.Item);
+            dbm.dbmgr.WarehouseTableAdapter.Fill(dbm.db.Warehouse);
+            dbm.dbmgr.ItemInventoryTableAdapter.Fill(dbm.db.ItemInventory);
+            dbm.dbmgr.ReturnsInventoryTableAdapter.Fill(dbm.db.ReturnsInventory);
+            
             fillWarehouseComboBox();
+            input_warehouse.SelectedIndex = input_warehouse.Items.Count > 0 ? 0 : -1;
+
+            WindowState = FormWindowState.Maximized;
         }
 
         private void input_warehouse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RecordsDataSet.InventoryUIRow[] inventory =
-                (from itemInventory in dbm.db.InventoryUI
-                where itemInventory.warehouseId == 
-                    (input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow).id
-                select itemInventory).ToArray();
+            fillDataGrid();
+        }
 
-            foreach (RecordsDataSet.InventoryUIRow r in inventory)
-            {
-                disp_ItemInventory.Rows.Add(r.id, r.itemName, r.quantity);
-            }
+        private void newInvoiceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void itemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void warehousesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clientsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

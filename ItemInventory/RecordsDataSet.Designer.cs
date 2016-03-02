@@ -26,7 +26,7 @@ namespace ItemInventory {
         
         private ClientDataTable tableClient;
         
-        private InventoryAdditionDataTable tableInventoryAddition;
+        private InventoryMovementDataTable tableInventoryMovement;
         
         private InvoiceDataTable tableInvoice;
         
@@ -46,39 +46,33 @@ namespace ItemInventory {
         
         private WarehouseDataTable tableWarehouse;
         
-        private InventoryUIDataTable tableInventoryUI;
+        private global::System.Data.DataRelation relationFK__InventoryMovemen__5FB337D6;
         
-        private InvoiceItemsUIDataTable tableInvoiceItemsUI;
+        private global::System.Data.DataRelation relationFK__InventoryMovemen__60A75C0F;
         
-        private RetInventoryUIDataTable tableRetInventoryUI;
+        private global::System.Data.DataRelation relationFK__Invoice__clientI__2B3F6F97;
         
-        private global::System.Data.DataRelation relationFK__InventoryAdditio__34C8D9D1;
+        private global::System.Data.DataRelation relationFK__InvoiceIt__invoi__2E1BDC42;
         
-        private global::System.Data.DataRelation relationFK__Invoice__clientI__2C3393D0;
-        
-        private global::System.Data.DataRelation relationFK__InvoiceIt__invoi__2F10007B;
-        
-        private global::System.Data.DataRelation relationFK__InvoiceIt__itemI__300424B4;
+        private global::System.Data.DataRelation relationFK__InvoiceIt__itemI__2F10007B;
         
         private global::System.Data.DataRelation relationFK__ItemInven__itemI__22AA2996;
         
         private global::System.Data.DataRelation relationFK__ItemInven__wareh__21B6055D;
         
-        private global::System.Data.DataRelation relationFK__ItemReturned__38996AB5;
+        private global::System.Data.DataRelation relationFK__ItemReturned__45F365D3;
         
-        private global::System.Data.DataRelation relationFK__ItemReturned__398D8EEE;
+        private global::System.Data.DataRelation relationFK__ItemReturned__46E78A0C;
         
-        private global::System.Data.DataRelation relationFK__ItemServed__3E52440B;
+        private global::System.Data.DataRelation relationFK__ItemServed__4BAC3F29;
         
-        private global::System.Data.DataRelation relationFK__ItemServed__3F466844;
+        private global::System.Data.DataRelation relationFK__ItemServed__4CA06362;
         
-        private global::System.Data.DataRelation relationFK__ReturnServed__44FF419A;
+        private global::System.Data.DataRelation relationFK__ReturnServed__52593CB8;
         
-        private global::System.Data.DataRelation relationFK__ReturnServed__45F365D3;
+        private global::System.Data.DataRelation relationFK__ReturnServed__534D60F1;
         
-        private global::System.Data.DataRelation relationFK__ReturnsIn__itemI__286302EC;
-        
-        private global::System.Data.DataRelation relationFK__ReturnsIn__wareh__276EDEB3;
+        private global::System.Data.DataRelation relationFK__ReturnsInventory__276EDEB3;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -111,8 +105,8 @@ namespace ItemInventory {
                 if ((ds.Tables["Client"] != null)) {
                     base.Tables.Add(new ClientDataTable(ds.Tables["Client"]));
                 }
-                if ((ds.Tables["InventoryAddition"] != null)) {
-                    base.Tables.Add(new InventoryAdditionDataTable(ds.Tables["InventoryAddition"]));
+                if ((ds.Tables["InventoryMovement"] != null)) {
+                    base.Tables.Add(new InventoryMovementDataTable(ds.Tables["InventoryMovement"]));
                 }
                 if ((ds.Tables["Invoice"] != null)) {
                     base.Tables.Add(new InvoiceDataTable(ds.Tables["Invoice"]));
@@ -140,15 +134,6 @@ namespace ItemInventory {
                 }
                 if ((ds.Tables["Warehouse"] != null)) {
                     base.Tables.Add(new WarehouseDataTable(ds.Tables["Warehouse"]));
-                }
-                if ((ds.Tables["InventoryUI"] != null)) {
-                    base.Tables.Add(new InventoryUIDataTable(ds.Tables["InventoryUI"]));
-                }
-                if ((ds.Tables["InvoiceItemsUI"] != null)) {
-                    base.Tables.Add(new InvoiceItemsUIDataTable(ds.Tables["InvoiceItemsUI"]));
-                }
-                if ((ds.Tables["RetInventoryUI"] != null)) {
-                    base.Tables.Add(new RetInventoryUIDataTable(ds.Tables["RetInventoryUI"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -182,9 +167,9 @@ namespace ItemInventory {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public InventoryAdditionDataTable InventoryAddition {
+        public InventoryMovementDataTable InventoryMovement {
             get {
-                return this.tableInventoryAddition;
+                return this.tableInventoryMovement;
             }
         }
         
@@ -280,36 +265,6 @@ namespace ItemInventory {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public InventoryUIDataTable InventoryUI {
-            get {
-                return this.tableInventoryUI;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public InvoiceItemsUIDataTable InvoiceItemsUI {
-            get {
-                return this.tableInvoiceItemsUI;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public RetInventoryUIDataTable RetInventoryUI {
-            get {
-                return this.tableRetInventoryUI;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -378,8 +333,8 @@ namespace ItemInventory {
                 if ((ds.Tables["Client"] != null)) {
                     base.Tables.Add(new ClientDataTable(ds.Tables["Client"]));
                 }
-                if ((ds.Tables["InventoryAddition"] != null)) {
-                    base.Tables.Add(new InventoryAdditionDataTable(ds.Tables["InventoryAddition"]));
+                if ((ds.Tables["InventoryMovement"] != null)) {
+                    base.Tables.Add(new InventoryMovementDataTable(ds.Tables["InventoryMovement"]));
                 }
                 if ((ds.Tables["Invoice"] != null)) {
                     base.Tables.Add(new InvoiceDataTable(ds.Tables["Invoice"]));
@@ -407,15 +362,6 @@ namespace ItemInventory {
                 }
                 if ((ds.Tables["Warehouse"] != null)) {
                     base.Tables.Add(new WarehouseDataTable(ds.Tables["Warehouse"]));
-                }
-                if ((ds.Tables["InventoryUI"] != null)) {
-                    base.Tables.Add(new InventoryUIDataTable(ds.Tables["InventoryUI"]));
-                }
-                if ((ds.Tables["InvoiceItemsUI"] != null)) {
-                    base.Tables.Add(new InvoiceItemsUIDataTable(ds.Tables["InvoiceItemsUI"]));
-                }
-                if ((ds.Tables["RetInventoryUI"] != null)) {
-                    base.Tables.Add(new RetInventoryUIDataTable(ds.Tables["RetInventoryUI"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -456,10 +402,10 @@ namespace ItemInventory {
                     this.tableClient.InitVars();
                 }
             }
-            this.tableInventoryAddition = ((InventoryAdditionDataTable)(base.Tables["InventoryAddition"]));
+            this.tableInventoryMovement = ((InventoryMovementDataTable)(base.Tables["InventoryMovement"]));
             if ((initTable == true)) {
-                if ((this.tableInventoryAddition != null)) {
-                    this.tableInventoryAddition.InitVars();
+                if ((this.tableInventoryMovement != null)) {
+                    this.tableInventoryMovement.InitVars();
                 }
             }
             this.tableInvoice = ((InvoiceDataTable)(base.Tables["Invoice"]));
@@ -516,38 +462,20 @@ namespace ItemInventory {
                     this.tableWarehouse.InitVars();
                 }
             }
-            this.tableInventoryUI = ((InventoryUIDataTable)(base.Tables["InventoryUI"]));
-            if ((initTable == true)) {
-                if ((this.tableInventoryUI != null)) {
-                    this.tableInventoryUI.InitVars();
-                }
-            }
-            this.tableInvoiceItemsUI = ((InvoiceItemsUIDataTable)(base.Tables["InvoiceItemsUI"]));
-            if ((initTable == true)) {
-                if ((this.tableInvoiceItemsUI != null)) {
-                    this.tableInvoiceItemsUI.InitVars();
-                }
-            }
-            this.tableRetInventoryUI = ((RetInventoryUIDataTable)(base.Tables["RetInventoryUI"]));
-            if ((initTable == true)) {
-                if ((this.tableRetInventoryUI != null)) {
-                    this.tableRetInventoryUI.InitVars();
-                }
-            }
-            this.relationFK__InventoryAdditio__34C8D9D1 = this.Relations["FK__InventoryAdditio__34C8D9D1"];
-            this.relationFK__Invoice__clientI__2C3393D0 = this.Relations["FK__Invoice__clientI__2C3393D0"];
-            this.relationFK__InvoiceIt__invoi__2F10007B = this.Relations["FK__InvoiceIt__invoi__2F10007B"];
-            this.relationFK__InvoiceIt__itemI__300424B4 = this.Relations["FK__InvoiceIt__itemI__300424B4"];
+            this.relationFK__InventoryMovemen__5FB337D6 = this.Relations["FK__InventoryMovemen__5FB337D6"];
+            this.relationFK__InventoryMovemen__60A75C0F = this.Relations["FK__InventoryMovemen__60A75C0F"];
+            this.relationFK__Invoice__clientI__2B3F6F97 = this.Relations["FK__Invoice__clientI__2B3F6F97"];
+            this.relationFK__InvoiceIt__invoi__2E1BDC42 = this.Relations["FK__InvoiceIt__invoi__2E1BDC42"];
+            this.relationFK__InvoiceIt__itemI__2F10007B = this.Relations["FK__InvoiceIt__itemI__2F10007B"];
             this.relationFK__ItemInven__itemI__22AA2996 = this.Relations["FK__ItemInven__itemI__22AA2996"];
             this.relationFK__ItemInven__wareh__21B6055D = this.Relations["FK__ItemInven__wareh__21B6055D"];
-            this.relationFK__ItemReturned__38996AB5 = this.Relations["FK__ItemReturned__38996AB5"];
-            this.relationFK__ItemReturned__398D8EEE = this.Relations["FK__ItemReturned__398D8EEE"];
-            this.relationFK__ItemServed__3E52440B = this.Relations["FK__ItemServed__3E52440B"];
-            this.relationFK__ItemServed__3F466844 = this.Relations["FK__ItemServed__3F466844"];
-            this.relationFK__ReturnServed__44FF419A = this.Relations["FK__ReturnServed__44FF419A"];
-            this.relationFK__ReturnServed__45F365D3 = this.Relations["FK__ReturnServed__45F365D3"];
-            this.relationFK__ReturnsIn__itemI__286302EC = this.Relations["FK__ReturnsIn__itemI__286302EC"];
-            this.relationFK__ReturnsIn__wareh__276EDEB3 = this.Relations["FK__ReturnsIn__wareh__276EDEB3"];
+            this.relationFK__ItemReturned__45F365D3 = this.Relations["FK__ItemReturned__45F365D3"];
+            this.relationFK__ItemReturned__46E78A0C = this.Relations["FK__ItemReturned__46E78A0C"];
+            this.relationFK__ItemServed__4BAC3F29 = this.Relations["FK__ItemServed__4BAC3F29"];
+            this.relationFK__ItemServed__4CA06362 = this.Relations["FK__ItemServed__4CA06362"];
+            this.relationFK__ReturnServed__52593CB8 = this.Relations["FK__ReturnServed__52593CB8"];
+            this.relationFK__ReturnServed__534D60F1 = this.Relations["FK__ReturnServed__534D60F1"];
+            this.relationFK__ReturnsInventory__276EDEB3 = this.Relations["FK__ReturnsInventory__276EDEB3"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -560,8 +488,8 @@ namespace ItemInventory {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableClient = new ClientDataTable();
             base.Tables.Add(this.tableClient);
-            this.tableInventoryAddition = new InventoryAdditionDataTable();
-            base.Tables.Add(this.tableInventoryAddition);
+            this.tableInventoryMovement = new InventoryMovementDataTable();
+            base.Tables.Add(this.tableInventoryMovement);
             this.tableInvoice = new InvoiceDataTable();
             base.Tables.Add(this.tableInvoice);
             this.tableInvoiceItem = new InvoiceItemDataTable();
@@ -580,30 +508,30 @@ namespace ItemInventory {
             base.Tables.Add(this.tableReturnsInventory);
             this.tableWarehouse = new WarehouseDataTable();
             base.Tables.Add(this.tableWarehouse);
-            this.tableInventoryUI = new InventoryUIDataTable();
-            base.Tables.Add(this.tableInventoryUI);
-            this.tableInvoiceItemsUI = new InvoiceItemsUIDataTable();
-            base.Tables.Add(this.tableInvoiceItemsUI);
-            this.tableRetInventoryUI = new RetInventoryUIDataTable();
-            base.Tables.Add(this.tableRetInventoryUI);
-            this.relationFK__InventoryAdditio__34C8D9D1 = new global::System.Data.DataRelation("FK__InventoryAdditio__34C8D9D1", new global::System.Data.DataColumn[] {
+            this.relationFK__InventoryMovemen__5FB337D6 = new global::System.Data.DataRelation("FK__InventoryMovemen__5FB337D6", new global::System.Data.DataColumn[] {
                         this.tableItemInventory.warehouseIdColumn,
                         this.tableItemInventory.itemIdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableInventoryAddition.warehouseIdColumn,
-                        this.tableInventoryAddition.itemIdColumn}, false);
-            this.Relations.Add(this.relationFK__InventoryAdditio__34C8D9D1);
-            this.relationFK__Invoice__clientI__2C3393D0 = new global::System.Data.DataRelation("FK__Invoice__clientI__2C3393D0", new global::System.Data.DataColumn[] {
+                        this.tableInventoryMovement.warehouseIdColumn,
+                        this.tableInventoryMovement.itemIdColumn}, false);
+            this.Relations.Add(this.relationFK__InventoryMovemen__5FB337D6);
+            this.relationFK__InventoryMovemen__60A75C0F = new global::System.Data.DataRelation("FK__InventoryMovemen__60A75C0F", new global::System.Data.DataColumn[] {
+                        this.tableReturnsInventory.warehouseIdColumn,
+                        this.tableReturnsInventory.itemIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableInventoryMovement.warehouseIdColumn,
+                        this.tableInventoryMovement.itemIdColumn}, false);
+            this.Relations.Add(this.relationFK__InventoryMovemen__60A75C0F);
+            this.relationFK__Invoice__clientI__2B3F6F97 = new global::System.Data.DataRelation("FK__Invoice__clientI__2B3F6F97", new global::System.Data.DataColumn[] {
                         this.tableClient.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableInvoice.clientIdColumn}, false);
-            this.Relations.Add(this.relationFK__Invoice__clientI__2C3393D0);
-            this.relationFK__InvoiceIt__invoi__2F10007B = new global::System.Data.DataRelation("FK__InvoiceIt__invoi__2F10007B", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__Invoice__clientI__2B3F6F97);
+            this.relationFK__InvoiceIt__invoi__2E1BDC42 = new global::System.Data.DataRelation("FK__InvoiceIt__invoi__2E1BDC42", new global::System.Data.DataColumn[] {
                         this.tableInvoice.invoiceNoColumn}, new global::System.Data.DataColumn[] {
                         this.tableInvoiceItem.invoiceNoColumn}, false);
-            this.Relations.Add(this.relationFK__InvoiceIt__invoi__2F10007B);
-            this.relationFK__InvoiceIt__itemI__300424B4 = new global::System.Data.DataRelation("FK__InvoiceIt__itemI__300424B4", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__InvoiceIt__invoi__2E1BDC42);
+            this.relationFK__InvoiceIt__itemI__2F10007B = new global::System.Data.DataRelation("FK__InvoiceIt__itemI__2F10007B", new global::System.Data.DataColumn[] {
                         this.tableItem.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableInvoiceItem.itemIdColumn}, false);
-            this.Relations.Add(this.relationFK__InvoiceIt__itemI__300424B4);
+            this.Relations.Add(this.relationFK__InvoiceIt__itemI__2F10007B);
             this.relationFK__ItemInven__itemI__22AA2996 = new global::System.Data.DataRelation("FK__ItemInven__itemI__22AA2996", new global::System.Data.DataColumn[] {
                         this.tableItem.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableItemInventory.itemIdColumn}, false);
@@ -612,50 +540,48 @@ namespace ItemInventory {
                         this.tableWarehouse.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableItemInventory.warehouseIdColumn}, false);
             this.Relations.Add(this.relationFK__ItemInven__wareh__21B6055D);
-            this.relationFK__ItemReturned__38996AB5 = new global::System.Data.DataRelation("FK__ItemReturned__38996AB5", new global::System.Data.DataColumn[] {
+            this.relationFK__ItemReturned__45F365D3 = new global::System.Data.DataRelation("FK__ItemReturned__45F365D3", new global::System.Data.DataColumn[] {
                         this.tableInvoiceItem.invoiceNoColumn,
                         this.tableInvoiceItem.itemIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableItemReturned.invoiceNoColumn,
                         this.tableItemReturned.itemIdColumn}, false);
-            this.Relations.Add(this.relationFK__ItemReturned__38996AB5);
-            this.relationFK__ItemReturned__398D8EEE = new global::System.Data.DataRelation("FK__ItemReturned__398D8EEE", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__ItemReturned__45F365D3);
+            this.relationFK__ItemReturned__46E78A0C = new global::System.Data.DataRelation("FK__ItemReturned__46E78A0C", new global::System.Data.DataColumn[] {
                         this.tableItemInventory.warehouseIdColumn,
                         this.tableItemInventory.itemIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableItemReturned.warehouseIdColumn,
                         this.tableItemReturned.itemIdColumn}, false);
-            this.Relations.Add(this.relationFK__ItemReturned__398D8EEE);
-            this.relationFK__ItemServed__3E52440B = new global::System.Data.DataRelation("FK__ItemServed__3E52440B", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__ItemReturned__46E78A0C);
+            this.relationFK__ItemServed__4BAC3F29 = new global::System.Data.DataRelation("FK__ItemServed__4BAC3F29", new global::System.Data.DataColumn[] {
                         this.tableInvoiceItem.invoiceNoColumn,
                         this.tableInvoiceItem.itemIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableItemServed.invoiceNoColumn,
                         this.tableItemServed.itemIdColumn}, false);
-            this.Relations.Add(this.relationFK__ItemServed__3E52440B);
-            this.relationFK__ItemServed__3F466844 = new global::System.Data.DataRelation("FK__ItemServed__3F466844", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__ItemServed__4BAC3F29);
+            this.relationFK__ItemServed__4CA06362 = new global::System.Data.DataRelation("FK__ItemServed__4CA06362", new global::System.Data.DataColumn[] {
                         this.tableItemInventory.warehouseIdColumn,
                         this.tableItemInventory.itemIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableItemServed.warehouseIdColumn,
                         this.tableItemServed.itemIdColumn}, false);
-            this.Relations.Add(this.relationFK__ItemServed__3F466844);
-            this.relationFK__ReturnServed__44FF419A = new global::System.Data.DataRelation("FK__ReturnServed__44FF419A", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__ItemServed__4CA06362);
+            this.relationFK__ReturnServed__52593CB8 = new global::System.Data.DataRelation("FK__ReturnServed__52593CB8", new global::System.Data.DataColumn[] {
                         this.tableInvoiceItem.invoiceNoColumn,
                         this.tableInvoiceItem.itemIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableReturnServed.invoiceNoColumn,
                         this.tableReturnServed.itemIdColumn}, false);
-            this.Relations.Add(this.relationFK__ReturnServed__44FF419A);
-            this.relationFK__ReturnServed__45F365D3 = new global::System.Data.DataRelation("FK__ReturnServed__45F365D3", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__ReturnServed__52593CB8);
+            this.relationFK__ReturnServed__534D60F1 = new global::System.Data.DataRelation("FK__ReturnServed__534D60F1", new global::System.Data.DataColumn[] {
                         this.tableReturnsInventory.warehouseIdColumn,
                         this.tableReturnsInventory.itemIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableReturnServed.warehouseIdColumn,
                         this.tableReturnServed.itemIdColumn}, false);
-            this.Relations.Add(this.relationFK__ReturnServed__45F365D3);
-            this.relationFK__ReturnsIn__itemI__286302EC = new global::System.Data.DataRelation("FK__ReturnsIn__itemI__286302EC", new global::System.Data.DataColumn[] {
-                        this.tableItem.idColumn}, new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__ReturnServed__534D60F1);
+            this.relationFK__ReturnsInventory__276EDEB3 = new global::System.Data.DataRelation("FK__ReturnsInventory__276EDEB3", new global::System.Data.DataColumn[] {
+                        this.tableItemInventory.warehouseIdColumn,
+                        this.tableItemInventory.itemIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableReturnsInventory.warehouseIdColumn,
                         this.tableReturnsInventory.itemIdColumn}, false);
-            this.Relations.Add(this.relationFK__ReturnsIn__itemI__286302EC);
-            this.relationFK__ReturnsIn__wareh__276EDEB3 = new global::System.Data.DataRelation("FK__ReturnsIn__wareh__276EDEB3", new global::System.Data.DataColumn[] {
-                        this.tableWarehouse.idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableReturnsInventory.warehouseIdColumn}, false);
-            this.Relations.Add(this.relationFK__ReturnsIn__wareh__276EDEB3);
+            this.Relations.Add(this.relationFK__ReturnsInventory__276EDEB3);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -666,7 +592,7 @@ namespace ItemInventory {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeInventoryAddition() {
+        private bool ShouldSerializeInventoryMovement() {
             return false;
         }
         
@@ -721,24 +647,6 @@ namespace ItemInventory {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeWarehouse() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeInventoryUI() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeInvoiceItemsUI() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeRetInventoryUI() {
             return false;
         }
         
@@ -801,7 +709,7 @@ namespace ItemInventory {
         public delegate void ClientRowChangeEventHandler(object sender, ClientRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void InventoryAdditionRowChangeEventHandler(object sender, InventoryAdditionRowChangeEvent e);
+        public delegate void InventoryMovementRowChangeEventHandler(object sender, InventoryMovementRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void InvoiceRowChangeEventHandler(object sender, InvoiceRowChangeEvent e);
@@ -829,15 +737,6 @@ namespace ItemInventory {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void WarehouseRowChangeEventHandler(object sender, WarehouseRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void InventoryUIRowChangeEventHandler(object sender, InventoryUIRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void InvoiceItemsUIRowChangeEventHandler(object sender, InvoiceItemsUIRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void RetInventoryUIRowChangeEventHandler(object sender, RetInventoryUIRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1135,18 +1034,20 @@ namespace ItemInventory {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class InventoryAdditionDataTable : global::System.Data.TypedTableBase<InventoryAdditionRow> {
+        public partial class InventoryMovementDataTable : global::System.Data.TypedTableBase<InventoryMovementRow> {
             
-            private global::System.Data.DataColumn columnitemId;
+            private global::System.Data.DataColumn columnrefno;
             
             private global::System.Data.DataColumn columnwarehouseId;
+            
+            private global::System.Data.DataColumn columnitemId;
             
             private global::System.Data.DataColumn columnquantity;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryAdditionDataTable() {
-                this.TableName = "InventoryAddition";
+            public InventoryMovementDataTable() {
+                this.TableName = "InventoryMovement";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1154,7 +1055,7 @@ namespace ItemInventory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal InventoryAdditionDataTable(global::System.Data.DataTable table) {
+            internal InventoryMovementDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1171,16 +1072,16 @@ namespace ItemInventory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected InventoryAdditionDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected InventoryMovementDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn itemIdColumn {
+            public global::System.Data.DataColumn refnoColumn {
                 get {
-                    return this.columnitemId;
+                    return this.columnrefno;
                 }
             }
             
@@ -1189,6 +1090,14 @@ namespace ItemInventory {
             public global::System.Data.DataColumn warehouseIdColumn {
                 get {
                     return this.columnwarehouseId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn itemIdColumn {
+                get {
+                    return this.columnitemId;
                 }
             }
             
@@ -1211,47 +1120,55 @@ namespace ItemInventory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryAdditionRow this[int index] {
+            public InventoryMovementRow this[int index] {
                 get {
-                    return ((InventoryAdditionRow)(this.Rows[index]));
+                    return ((InventoryMovementRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event InventoryAdditionRowChangeEventHandler InventoryAdditionRowChanging;
+            public event InventoryMovementRowChangeEventHandler InventoryMovementRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event InventoryAdditionRowChangeEventHandler InventoryAdditionRowChanged;
+            public event InventoryMovementRowChangeEventHandler InventoryMovementRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event InventoryAdditionRowChangeEventHandler InventoryAdditionRowDeleting;
+            public event InventoryMovementRowChangeEventHandler InventoryMovementRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event InventoryAdditionRowChangeEventHandler InventoryAdditionRowDeleted;
+            public event InventoryMovementRowChangeEventHandler InventoryMovementRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddInventoryAdditionRow(InventoryAdditionRow row) {
+            public void AddInventoryMovementRow(InventoryMovementRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryAdditionRow AddInventoryAdditionRow(string itemId, string warehouseId, int quantity) {
-                InventoryAdditionRow rowInventoryAdditionRow = ((InventoryAdditionRow)(this.NewRow()));
+            public InventoryMovementRow AddInventoryMovementRow(string warehouseId, string itemId, int quantity) {
+                InventoryMovementRow rowInventoryMovementRow = ((InventoryMovementRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        itemId,
+                        null,
                         warehouseId,
+                        itemId,
                         quantity};
-                rowInventoryAdditionRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowInventoryAdditionRow);
-                return rowInventoryAdditionRow;
+                rowInventoryMovementRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowInventoryMovementRow);
+                return rowInventoryMovementRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public InventoryMovementRow FindByrefno(int refno) {
+                return ((InventoryMovementRow)(this.Rows.Find(new object[] {
+                            refno})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                InventoryAdditionDataTable cln = ((InventoryAdditionDataTable)(base.Clone()));
+                InventoryMovementDataTable cln = ((InventoryMovementDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1259,57 +1176,68 @@ namespace ItemInventory {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new InventoryAdditionDataTable();
+                return new InventoryMovementDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnitemId = base.Columns["itemId"];
+                this.columnrefno = base.Columns["refno"];
                 this.columnwarehouseId = base.Columns["warehouseId"];
+                this.columnitemId = base.Columns["itemId"];
                 this.columnquantity = base.Columns["quantity"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnitemId = new global::System.Data.DataColumn("itemId", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnitemId);
+                this.columnrefno = new global::System.Data.DataColumn("refno", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrefno);
                 this.columnwarehouseId = new global::System.Data.DataColumn("warehouseId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnwarehouseId);
+                this.columnitemId = new global::System.Data.DataColumn("itemId", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnitemId);
                 this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnquantity);
-                this.columnitemId.AllowDBNull = false;
-                this.columnitemId.MaxLength = 32;
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnrefno}, true));
+                this.columnrefno.AutoIncrement = true;
+                this.columnrefno.AutoIncrementSeed = -1;
+                this.columnrefno.AutoIncrementStep = -1;
+                this.columnrefno.AllowDBNull = false;
+                this.columnrefno.ReadOnly = true;
+                this.columnrefno.Unique = true;
                 this.columnwarehouseId.AllowDBNull = false;
                 this.columnwarehouseId.MaxLength = 16;
+                this.columnitemId.AllowDBNull = false;
+                this.columnitemId.MaxLength = 32;
                 this.columnquantity.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryAdditionRow NewInventoryAdditionRow() {
-                return ((InventoryAdditionRow)(this.NewRow()));
+            public InventoryMovementRow NewInventoryMovementRow() {
+                return ((InventoryMovementRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new InventoryAdditionRow(builder);
+                return new InventoryMovementRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(InventoryAdditionRow);
+                return typeof(InventoryMovementRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.InventoryAdditionRowChanged != null)) {
-                    this.InventoryAdditionRowChanged(this, new InventoryAdditionRowChangeEvent(((InventoryAdditionRow)(e.Row)), e.Action));
+                if ((this.InventoryMovementRowChanged != null)) {
+                    this.InventoryMovementRowChanged(this, new InventoryMovementRowChangeEvent(((InventoryMovementRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1317,8 +1245,8 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.InventoryAdditionRowChanging != null)) {
-                    this.InventoryAdditionRowChanging(this, new InventoryAdditionRowChangeEvent(((InventoryAdditionRow)(e.Row)), e.Action));
+                if ((this.InventoryMovementRowChanging != null)) {
+                    this.InventoryMovementRowChanging(this, new InventoryMovementRowChangeEvent(((InventoryMovementRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1326,8 +1254,8 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.InventoryAdditionRowDeleted != null)) {
-                    this.InventoryAdditionRowDeleted(this, new InventoryAdditionRowChangeEvent(((InventoryAdditionRow)(e.Row)), e.Action));
+                if ((this.InventoryMovementRowDeleted != null)) {
+                    this.InventoryMovementRowDeleted(this, new InventoryMovementRowChangeEvent(((InventoryMovementRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1335,14 +1263,14 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.InventoryAdditionRowDeleting != null)) {
-                    this.InventoryAdditionRowDeleting(this, new InventoryAdditionRowChangeEvent(((InventoryAdditionRow)(e.Row)), e.Action));
+                if ((this.InventoryMovementRowDeleting != null)) {
+                    this.InventoryMovementRowDeleting(this, new InventoryMovementRowChangeEvent(((InventoryMovementRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveInventoryAdditionRow(InventoryAdditionRow row) {
+            public void RemoveInventoryMovementRow(InventoryMovementRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1369,7 +1297,7 @@ namespace ItemInventory {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "InventoryAdditionDataTable";
+                attribute2.FixedValue = "InventoryMovementDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1517,14 +1445,14 @@ namespace ItemInventory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InvoiceRow AddInvoiceRow(string invoiceNo, System.DateTime orderDate, ClientRow parentClientRowByFK__Invoice__clientI__2C3393D0) {
+            public InvoiceRow AddInvoiceRow(string invoiceNo, System.DateTime orderDate, ClientRow parentClientRowByFK__Invoice__clientI__2B3F6F97) {
                 InvoiceRow rowInvoiceRow = ((InvoiceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         invoiceNo,
                         orderDate,
                         null};
-                if ((parentClientRowByFK__Invoice__clientI__2C3393D0 != null)) {
-                    columnValuesArray[2] = parentClientRowByFK__Invoice__clientI__2C3393D0[0];
+                if ((parentClientRowByFK__Invoice__clientI__2B3F6F97 != null)) {
+                    columnValuesArray[2] = parentClientRowByFK__Invoice__clientI__2B3F6F97[0];
                 }
                 rowInvoiceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInvoiceRow);
@@ -1820,18 +1748,18 @@ namespace ItemInventory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InvoiceItemRow AddInvoiceItemRow(InvoiceRow parentInvoiceRowByFK__InvoiceIt__invoi__2F10007B, ItemRow parentItemRowByFK__InvoiceIt__itemI__300424B4, int quantity, string orderStatus) {
+            public InvoiceItemRow AddInvoiceItemRow(InvoiceRow parentInvoiceRowByFK__InvoiceIt__invoi__2E1BDC42, ItemRow parentItemRowByFK__InvoiceIt__itemI__2F10007B, int quantity, string orderStatus) {
                 InvoiceItemRow rowInvoiceItemRow = ((InvoiceItemRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         quantity,
                         orderStatus};
-                if ((parentInvoiceRowByFK__InvoiceIt__invoi__2F10007B != null)) {
-                    columnValuesArray[0] = parentInvoiceRowByFK__InvoiceIt__invoi__2F10007B[0];
+                if ((parentInvoiceRowByFK__InvoiceIt__invoi__2E1BDC42 != null)) {
+                    columnValuesArray[0] = parentInvoiceRowByFK__InvoiceIt__invoi__2E1BDC42[0];
                 }
-                if ((parentItemRowByFK__InvoiceIt__itemI__300424B4 != null)) {
-                    columnValuesArray[1] = parentItemRowByFK__InvoiceIt__itemI__300424B4[0];
+                if ((parentItemRowByFK__InvoiceIt__itemI__2F10007B != null)) {
+                    columnValuesArray[1] = parentItemRowByFK__InvoiceIt__itemI__2F10007B[0];
                 }
                 rowInvoiceItemRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowInvoiceItemRow);
@@ -3715,18 +3643,12 @@ namespace ItemInventory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ReturnsInventoryRow AddReturnsInventoryRow(WarehouseRow parentWarehouseRowByFK__ReturnsIn__wareh__276EDEB3, ItemRow parentItemRowByFK__ReturnsIn__itemI__286302EC, int quantity) {
+            public ReturnsInventoryRow AddReturnsInventoryRow(string warehouseId, string itemId, int quantity) {
                 ReturnsInventoryRow rowReturnsInventoryRow = ((ReturnsInventoryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
-                        null,
+                        warehouseId,
+                        itemId,
                         quantity};
-                if ((parentWarehouseRowByFK__ReturnsIn__wareh__276EDEB3 != null)) {
-                    columnValuesArray[0] = parentWarehouseRowByFK__ReturnsIn__wareh__276EDEB3[0];
-                }
-                if ((parentItemRowByFK__ReturnsIn__itemI__286302EC != null)) {
-                    columnValuesArray[1] = parentItemRowByFK__ReturnsIn__itemI__286302EC[0];
-                }
                 rowReturnsInventoryRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowReturnsInventoryRow);
                 return rowReturnsInventoryRow;
@@ -4213,898 +4135,6 @@ namespace ItemInventory {
         }
         
         /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class InventoryUIDataTable : global::System.Data.TypedTableBase<InventoryUIRow> {
-            
-            private global::System.Data.DataColumn columnwarehouseId;
-            
-            private global::System.Data.DataColumn columnid;
-            
-            private global::System.Data.DataColumn columnitemName;
-            
-            private global::System.Data.DataColumn columnquantity;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryUIDataTable() {
-                this.TableName = "InventoryUI";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal InventoryUIDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected InventoryUIDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn warehouseIdColumn {
-                get {
-                    return this.columnwarehouseId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn idColumn {
-                get {
-                    return this.columnid;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn itemNameColumn {
-                get {
-                    return this.columnitemName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn quantityColumn {
-                get {
-                    return this.columnquantity;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryUIRow this[int index] {
-                get {
-                    return ((InventoryUIRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event InventoryUIRowChangeEventHandler InventoryUIRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event InventoryUIRowChangeEventHandler InventoryUIRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event InventoryUIRowChangeEventHandler InventoryUIRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event InventoryUIRowChangeEventHandler InventoryUIRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddInventoryUIRow(InventoryUIRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryUIRow AddInventoryUIRow(string warehouseId, string id, string itemName, int quantity) {
-                InventoryUIRow rowInventoryUIRow = ((InventoryUIRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        warehouseId,
-                        id,
-                        itemName,
-                        quantity};
-                rowInventoryUIRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowInventoryUIRow);
-                return rowInventoryUIRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                InventoryUIDataTable cln = ((InventoryUIDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new InventoryUIDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnwarehouseId = base.Columns["warehouseId"];
-                this.columnid = base.Columns["id"];
-                this.columnitemName = base.Columns["itemName"];
-                this.columnquantity = base.Columns["quantity"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnwarehouseId = new global::System.Data.DataColumn("warehouseId", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnwarehouseId);
-                this.columnid = new global::System.Data.DataColumn("id", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid);
-                this.columnitemName = new global::System.Data.DataColumn("itemName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnitemName);
-                this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnquantity);
-                this.columnwarehouseId.AllowDBNull = false;
-                this.columnwarehouseId.MaxLength = 16;
-                this.columnid.AllowDBNull = false;
-                this.columnid.MaxLength = 32;
-                this.columnitemName.AllowDBNull = false;
-                this.columnitemName.MaxLength = 64;
-                this.columnquantity.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryUIRow NewInventoryUIRow() {
-                return ((InventoryUIRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new InventoryUIRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(InventoryUIRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.InventoryUIRowChanged != null)) {
-                    this.InventoryUIRowChanged(this, new InventoryUIRowChangeEvent(((InventoryUIRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.InventoryUIRowChanging != null)) {
-                    this.InventoryUIRowChanging(this, new InventoryUIRowChangeEvent(((InventoryUIRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.InventoryUIRowDeleted != null)) {
-                    this.InventoryUIRowDeleted(this, new InventoryUIRowChangeEvent(((InventoryUIRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.InventoryUIRowDeleting != null)) {
-                    this.InventoryUIRowDeleting(this, new InventoryUIRowChangeEvent(((InventoryUIRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveInventoryUIRow(InventoryUIRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                RecordsDataSet ds = new RecordsDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "InventoryUIDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class InvoiceItemsUIDataTable : global::System.Data.TypedTableBase<InvoiceItemsUIRow> {
-            
-            private global::System.Data.DataColumn columnid;
-            
-            private global::System.Data.DataColumn columnitemName;
-            
-            private global::System.Data.DataColumn columnquantity;
-            
-            private global::System.Data.DataColumn columnorderStatus;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InvoiceItemsUIDataTable() {
-                this.TableName = "InvoiceItemsUI";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal InvoiceItemsUIDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected InvoiceItemsUIDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn idColumn {
-                get {
-                    return this.columnid;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn itemNameColumn {
-                get {
-                    return this.columnitemName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn quantityColumn {
-                get {
-                    return this.columnquantity;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn orderStatusColumn {
-                get {
-                    return this.columnorderStatus;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InvoiceItemsUIRow this[int index] {
-                get {
-                    return ((InvoiceItemsUIRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event InvoiceItemsUIRowChangeEventHandler InvoiceItemsUIRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event InvoiceItemsUIRowChangeEventHandler InvoiceItemsUIRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event InvoiceItemsUIRowChangeEventHandler InvoiceItemsUIRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event InvoiceItemsUIRowChangeEventHandler InvoiceItemsUIRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddInvoiceItemsUIRow(InvoiceItemsUIRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InvoiceItemsUIRow AddInvoiceItemsUIRow(string id, string itemName, int quantity, string orderStatus) {
-                InvoiceItemsUIRow rowInvoiceItemsUIRow = ((InvoiceItemsUIRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        id,
-                        itemName,
-                        quantity,
-                        orderStatus};
-                rowInvoiceItemsUIRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowInvoiceItemsUIRow);
-                return rowInvoiceItemsUIRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InvoiceItemsUIRow FindByid(string id) {
-                return ((InvoiceItemsUIRow)(this.Rows.Find(new object[] {
-                            id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                InvoiceItemsUIDataTable cln = ((InvoiceItemsUIDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new InvoiceItemsUIDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnid = base.Columns["id"];
-                this.columnitemName = base.Columns["itemName"];
-                this.columnquantity = base.Columns["quantity"];
-                this.columnorderStatus = base.Columns["orderStatus"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnid = new global::System.Data.DataColumn("id", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid);
-                this.columnitemName = new global::System.Data.DataColumn("itemName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnitemName);
-                this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnquantity);
-                this.columnorderStatus = new global::System.Data.DataColumn("orderStatus", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnorderStatus);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid}, true));
-                this.columnid.AllowDBNull = false;
-                this.columnid.Unique = true;
-                this.columnid.MaxLength = 32;
-                this.columnitemName.AllowDBNull = false;
-                this.columnitemName.MaxLength = 64;
-                this.columnquantity.AllowDBNull = false;
-                this.columnorderStatus.AllowDBNull = false;
-                this.columnorderStatus.MaxLength = 16;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InvoiceItemsUIRow NewInvoiceItemsUIRow() {
-                return ((InvoiceItemsUIRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new InvoiceItemsUIRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(InvoiceItemsUIRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.InvoiceItemsUIRowChanged != null)) {
-                    this.InvoiceItemsUIRowChanged(this, new InvoiceItemsUIRowChangeEvent(((InvoiceItemsUIRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.InvoiceItemsUIRowChanging != null)) {
-                    this.InvoiceItemsUIRowChanging(this, new InvoiceItemsUIRowChangeEvent(((InvoiceItemsUIRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.InvoiceItemsUIRowDeleted != null)) {
-                    this.InvoiceItemsUIRowDeleted(this, new InvoiceItemsUIRowChangeEvent(((InvoiceItemsUIRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.InvoiceItemsUIRowDeleting != null)) {
-                    this.InvoiceItemsUIRowDeleting(this, new InvoiceItemsUIRowChangeEvent(((InvoiceItemsUIRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveInvoiceItemsUIRow(InvoiceItemsUIRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                RecordsDataSet ds = new RecordsDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "InvoiceItemsUIDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class RetInventoryUIDataTable : global::System.Data.TypedTableBase<RetInventoryUIRow> {
-            
-            private global::System.Data.DataColumn columnid;
-            
-            private global::System.Data.DataColumn columnitemName;
-            
-            private global::System.Data.DataColumn columnquantity;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RetInventoryUIDataTable() {
-                this.TableName = "RetInventoryUI";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RetInventoryUIDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected RetInventoryUIDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn idColumn {
-                get {
-                    return this.columnid;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn itemNameColumn {
-                get {
-                    return this.columnitemName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn quantityColumn {
-                get {
-                    return this.columnquantity;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RetInventoryUIRow this[int index] {
-                get {
-                    return ((RetInventoryUIRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RetInventoryUIRowChangeEventHandler RetInventoryUIRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RetInventoryUIRowChangeEventHandler RetInventoryUIRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RetInventoryUIRowChangeEventHandler RetInventoryUIRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event RetInventoryUIRowChangeEventHandler RetInventoryUIRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddRetInventoryUIRow(RetInventoryUIRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RetInventoryUIRow AddRetInventoryUIRow(string id, string itemName, int quantity) {
-                RetInventoryUIRow rowRetInventoryUIRow = ((RetInventoryUIRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        id,
-                        itemName,
-                        quantity};
-                rowRetInventoryUIRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowRetInventoryUIRow);
-                return rowRetInventoryUIRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RetInventoryUIRow FindByid(string id) {
-                return ((RetInventoryUIRow)(this.Rows.Find(new object[] {
-                            id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                RetInventoryUIDataTable cln = ((RetInventoryUIDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new RetInventoryUIDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnid = base.Columns["id"];
-                this.columnitemName = base.Columns["itemName"];
-                this.columnquantity = base.Columns["quantity"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnid = new global::System.Data.DataColumn("id", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid);
-                this.columnitemName = new global::System.Data.DataColumn("itemName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnitemName);
-                this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnquantity);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnid}, true));
-                this.columnid.AllowDBNull = false;
-                this.columnid.Unique = true;
-                this.columnid.MaxLength = 32;
-                this.columnitemName.AllowDBNull = false;
-                this.columnitemName.MaxLength = 64;
-                this.columnquantity.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RetInventoryUIRow NewRetInventoryUIRow() {
-                return ((RetInventoryUIRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new RetInventoryUIRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(RetInventoryUIRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.RetInventoryUIRowChanged != null)) {
-                    this.RetInventoryUIRowChanged(this, new RetInventoryUIRowChangeEvent(((RetInventoryUIRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.RetInventoryUIRowChanging != null)) {
-                    this.RetInventoryUIRowChanging(this, new RetInventoryUIRowChangeEvent(((RetInventoryUIRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.RetInventoryUIRowDeleted != null)) {
-                    this.RetInventoryUIRowDeleted(this, new RetInventoryUIRowChangeEvent(((RetInventoryUIRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.RetInventoryUIRowDeleting != null)) {
-                    this.RetInventoryUIRowDeleting(this, new RetInventoryUIRowChangeEvent(((RetInventoryUIRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveRetInventoryUIRow(RetInventoryUIRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                RecordsDataSet ds = new RecordsDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "RetInventoryUIDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ClientRow : global::System.Data.DataRow {
@@ -5154,11 +4184,11 @@ namespace ItemInventory {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InvoiceRow[] GetInvoiceRows() {
-                if ((this.Table.ChildRelations["FK__Invoice__clientI__2C3393D0"] == null)) {
+                if ((this.Table.ChildRelations["FK__Invoice__clientI__2B3F6F97"] == null)) {
                     return new InvoiceRow[0];
                 }
                 else {
-                    return ((InvoiceRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Invoice__clientI__2C3393D0"])));
+                    return ((InvoiceRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Invoice__clientI__2B3F6F97"])));
                 }
             }
         }
@@ -5166,25 +4196,25 @@ namespace ItemInventory {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class InventoryAdditionRow : global::System.Data.DataRow {
+        public partial class InventoryMovementRow : global::System.Data.DataRow {
             
-            private InventoryAdditionDataTable tableInventoryAddition;
+            private InventoryMovementDataTable tableInventoryMovement;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal InventoryAdditionRow(global::System.Data.DataRowBuilder rb) : 
+            internal InventoryMovementRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableInventoryAddition = ((InventoryAdditionDataTable)(this.Table));
+                this.tableInventoryMovement = ((InventoryMovementDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string itemId {
+            public int refno {
                 get {
-                    return ((string)(this[this.tableInventoryAddition.itemIdColumn]));
+                    return ((int)(this[this.tableInventoryMovement.refnoColumn]));
                 }
                 set {
-                    this[this.tableInventoryAddition.itemIdColumn] = value;
+                    this[this.tableInventoryMovement.refnoColumn] = value;
                 }
             }
             
@@ -5192,10 +4222,21 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string warehouseId {
                 get {
-                    return ((string)(this[this.tableInventoryAddition.warehouseIdColumn]));
+                    return ((string)(this[this.tableInventoryMovement.warehouseIdColumn]));
                 }
                 set {
-                    this[this.tableInventoryAddition.warehouseIdColumn] = value;
+                    this[this.tableInventoryMovement.warehouseIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string itemId {
+                get {
+                    return ((string)(this[this.tableInventoryMovement.itemIdColumn]));
+                }
+                set {
+                    this[this.tableInventoryMovement.itemIdColumn] = value;
                 }
             }
             
@@ -5203,10 +4244,10 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int quantity {
                 get {
-                    return ((int)(this[this.tableInventoryAddition.quantityColumn]));
+                    return ((int)(this[this.tableInventoryMovement.quantityColumn]));
                 }
                 set {
-                    this[this.tableInventoryAddition.quantityColumn] = value;
+                    this[this.tableInventoryMovement.quantityColumn] = value;
                 }
             }
             
@@ -5214,10 +4255,21 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemInventoryRow ItemInventoryRowParent {
                 get {
-                    return ((ItemInventoryRow)(this.GetParentRow(this.Table.ParentRelations["FK__InventoryAdditio__34C8D9D1"])));
+                    return ((ItemInventoryRow)(this.GetParentRow(this.Table.ParentRelations["FK__InventoryMovemen__5FB337D6"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__InventoryAdditio__34C8D9D1"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__InventoryMovemen__5FB337D6"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReturnsInventoryRow ReturnsInventoryRowParent {
+                get {
+                    return ((ReturnsInventoryRow)(this.GetParentRow(this.Table.ParentRelations["FK__InventoryMovemen__60A75C0F"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__InventoryMovemen__60A75C0F"]);
                 }
             }
         }
@@ -5273,21 +4325,21 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ClientRow ClientRow {
                 get {
-                    return ((ClientRow)(this.GetParentRow(this.Table.ParentRelations["FK__Invoice__clientI__2C3393D0"])));
+                    return ((ClientRow)(this.GetParentRow(this.Table.ParentRelations["FK__Invoice__clientI__2B3F6F97"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__Invoice__clientI__2C3393D0"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Invoice__clientI__2B3F6F97"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InvoiceItemRow[] GetInvoiceItemRows() {
-                if ((this.Table.ChildRelations["FK__InvoiceIt__invoi__2F10007B"] == null)) {
+                if ((this.Table.ChildRelations["FK__InvoiceIt__invoi__2E1BDC42"] == null)) {
                     return new InvoiceItemRow[0];
                 }
                 else {
-                    return ((InvoiceItemRow[])(base.GetChildRows(this.Table.ChildRelations["FK__InvoiceIt__invoi__2F10007B"])));
+                    return ((InvoiceItemRow[])(base.GetChildRows(this.Table.ChildRelations["FK__InvoiceIt__invoi__2E1BDC42"])));
                 }
             }
         }
@@ -5354,10 +4406,10 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InvoiceRow InvoiceRow {
                 get {
-                    return ((InvoiceRow)(this.GetParentRow(this.Table.ParentRelations["FK__InvoiceIt__invoi__2F10007B"])));
+                    return ((InvoiceRow)(this.GetParentRow(this.Table.ParentRelations["FK__InvoiceIt__invoi__2E1BDC42"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__InvoiceIt__invoi__2F10007B"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__InvoiceIt__invoi__2E1BDC42"]);
                 }
             }
             
@@ -5365,43 +4417,43 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemRow ItemRow {
                 get {
-                    return ((ItemRow)(this.GetParentRow(this.Table.ParentRelations["FK__InvoiceIt__itemI__300424B4"])));
+                    return ((ItemRow)(this.GetParentRow(this.Table.ParentRelations["FK__InvoiceIt__itemI__2F10007B"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__InvoiceIt__itemI__300424B4"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__InvoiceIt__itemI__2F10007B"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemReturnedRow[] GetItemReturnedRows() {
-                if ((this.Table.ChildRelations["FK__ItemReturned__38996AB5"] == null)) {
+                if ((this.Table.ChildRelations["FK__ItemReturned__45F365D3"] == null)) {
                     return new ItemReturnedRow[0];
                 }
                 else {
-                    return ((ItemReturnedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ItemReturned__38996AB5"])));
+                    return ((ItemReturnedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ItemReturned__45F365D3"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemServedRow[] GetItemServedRows() {
-                if ((this.Table.ChildRelations["FK__ItemServed__3E52440B"] == null)) {
+                if ((this.Table.ChildRelations["FK__ItemServed__4BAC3F29"] == null)) {
                     return new ItemServedRow[0];
                 }
                 else {
-                    return ((ItemServedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ItemServed__3E52440B"])));
+                    return ((ItemServedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ItemServed__4BAC3F29"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ReturnServedRow[] GetReturnServedRows() {
-                if ((this.Table.ChildRelations["FK__ReturnServed__44FF419A"] == null)) {
+                if ((this.Table.ChildRelations["FK__ReturnServed__52593CB8"] == null)) {
                     return new ReturnServedRow[0];
                 }
                 else {
-                    return ((ReturnServedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ReturnServed__44FF419A"])));
+                    return ((ReturnServedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ReturnServed__52593CB8"])));
                 }
             }
         }
@@ -5478,11 +4530,11 @@ namespace ItemInventory {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InvoiceItemRow[] GetInvoiceItemRows() {
-                if ((this.Table.ChildRelations["FK__InvoiceIt__itemI__300424B4"] == null)) {
+                if ((this.Table.ChildRelations["FK__InvoiceIt__itemI__2F10007B"] == null)) {
                     return new InvoiceItemRow[0];
                 }
                 else {
-                    return ((InvoiceItemRow[])(base.GetChildRows(this.Table.ChildRelations["FK__InvoiceIt__itemI__300424B4"])));
+                    return ((InvoiceItemRow[])(base.GetChildRows(this.Table.ChildRelations["FK__InvoiceIt__itemI__2F10007B"])));
                 }
             }
             
@@ -5494,17 +4546,6 @@ namespace ItemInventory {
                 }
                 else {
                     return ((ItemInventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ItemInven__itemI__22AA2996"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ReturnsInventoryRow[] GetReturnsInventoryRows() {
-                if ((this.Table.ChildRelations["FK__ReturnsIn__itemI__286302EC"] == null)) {
-                    return new ReturnsInventoryRow[0];
-                }
-                else {
-                    return ((ReturnsInventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ReturnsIn__itemI__286302EC"])));
                 }
             }
         }
@@ -5580,34 +4621,45 @@ namespace ItemInventory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryAdditionRow[] GetInventoryAdditionRows() {
-                if ((this.Table.ChildRelations["FK__InventoryAdditio__34C8D9D1"] == null)) {
-                    return new InventoryAdditionRow[0];
+            public InventoryMovementRow[] GetInventoryMovementRows() {
+                if ((this.Table.ChildRelations["FK__InventoryMovemen__5FB337D6"] == null)) {
+                    return new InventoryMovementRow[0];
                 }
                 else {
-                    return ((InventoryAdditionRow[])(base.GetChildRows(this.Table.ChildRelations["FK__InventoryAdditio__34C8D9D1"])));
+                    return ((InventoryMovementRow[])(base.GetChildRows(this.Table.ChildRelations["FK__InventoryMovemen__5FB337D6"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemReturnedRow[] GetItemReturnedRows() {
-                if ((this.Table.ChildRelations["FK__ItemReturned__398D8EEE"] == null)) {
+                if ((this.Table.ChildRelations["FK__ItemReturned__46E78A0C"] == null)) {
                     return new ItemReturnedRow[0];
                 }
                 else {
-                    return ((ItemReturnedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ItemReturned__398D8EEE"])));
+                    return ((ItemReturnedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ItemReturned__46E78A0C"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemServedRow[] GetItemServedRows() {
-                if ((this.Table.ChildRelations["FK__ItemServed__3F466844"] == null)) {
+                if ((this.Table.ChildRelations["FK__ItemServed__4CA06362"] == null)) {
                     return new ItemServedRow[0];
                 }
                 else {
-                    return ((ItemServedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ItemServed__3F466844"])));
+                    return ((ItemServedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ItemServed__4CA06362"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ReturnsInventoryRow[] GetReturnsInventoryRows() {
+                if ((this.Table.ChildRelations["FK__ReturnsInventory__276EDEB3"] == null)) {
+                    return new ReturnsInventoryRow[0];
+                }
+                else {
+                    return ((ReturnsInventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ReturnsInventory__276EDEB3"])));
                 }
             }
         }
@@ -5685,10 +4737,10 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InvoiceItemRow InvoiceItemRowParent {
                 get {
-                    return ((InvoiceItemRow)(this.GetParentRow(this.Table.ParentRelations["FK__ItemReturned__38996AB5"])));
+                    return ((InvoiceItemRow)(this.GetParentRow(this.Table.ParentRelations["FK__ItemReturned__45F365D3"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ItemReturned__38996AB5"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ItemReturned__45F365D3"]);
                 }
             }
             
@@ -5696,10 +4748,10 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemInventoryRow ItemInventoryRowParent {
                 get {
-                    return ((ItemInventoryRow)(this.GetParentRow(this.Table.ParentRelations["FK__ItemReturned__398D8EEE"])));
+                    return ((ItemInventoryRow)(this.GetParentRow(this.Table.ParentRelations["FK__ItemReturned__46E78A0C"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ItemReturned__398D8EEE"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ItemReturned__46E78A0C"]);
                 }
             }
         }
@@ -5777,10 +4829,10 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InvoiceItemRow InvoiceItemRowParent {
                 get {
-                    return ((InvoiceItemRow)(this.GetParentRow(this.Table.ParentRelations["FK__ItemServed__3E52440B"])));
+                    return ((InvoiceItemRow)(this.GetParentRow(this.Table.ParentRelations["FK__ItemServed__4BAC3F29"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ItemServed__3E52440B"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ItemServed__4BAC3F29"]);
                 }
             }
             
@@ -5788,10 +4840,10 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemInventoryRow ItemInventoryRowParent {
                 get {
-                    return ((ItemInventoryRow)(this.GetParentRow(this.Table.ParentRelations["FK__ItemServed__3F466844"])));
+                    return ((ItemInventoryRow)(this.GetParentRow(this.Table.ParentRelations["FK__ItemServed__4CA06362"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ItemServed__3F466844"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ItemServed__4CA06362"]);
                 }
             }
         }
@@ -5869,10 +4921,10 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InvoiceItemRow InvoiceItemRowParent {
                 get {
-                    return ((InvoiceItemRow)(this.GetParentRow(this.Table.ParentRelations["FK__ReturnServed__44FF419A"])));
+                    return ((InvoiceItemRow)(this.GetParentRow(this.Table.ParentRelations["FK__ReturnServed__52593CB8"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ReturnServed__44FF419A"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ReturnServed__52593CB8"]);
                 }
             }
             
@@ -5880,10 +4932,10 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ReturnsInventoryRow ReturnsInventoryRowParent {
                 get {
-                    return ((ReturnsInventoryRow)(this.GetParentRow(this.Table.ParentRelations["FK__ReturnServed__45F365D3"])));
+                    return ((ReturnsInventoryRow)(this.GetParentRow(this.Table.ParentRelations["FK__ReturnServed__534D60F1"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ReturnServed__45F365D3"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ReturnServed__534D60F1"]);
                 }
             }
         }
@@ -5937,34 +4989,34 @@ namespace ItemInventory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemRow ItemRow {
+            public ItemInventoryRow ItemInventoryRowParent {
                 get {
-                    return ((ItemRow)(this.GetParentRow(this.Table.ParentRelations["FK__ReturnsIn__itemI__286302EC"])));
+                    return ((ItemInventoryRow)(this.GetParentRow(this.Table.ParentRelations["FK__ReturnsInventory__276EDEB3"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ReturnsIn__itemI__286302EC"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ReturnsInventory__276EDEB3"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public WarehouseRow WarehouseRow {
-                get {
-                    return ((WarehouseRow)(this.GetParentRow(this.Table.ParentRelations["FK__ReturnsIn__wareh__276EDEB3"])));
+            public InventoryMovementRow[] GetInventoryMovementRows() {
+                if ((this.Table.ChildRelations["FK__InventoryMovemen__60A75C0F"] == null)) {
+                    return new InventoryMovementRow[0];
                 }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ReturnsIn__wareh__276EDEB3"]);
+                else {
+                    return ((InventoryMovementRow[])(base.GetChildRows(this.Table.ChildRelations["FK__InventoryMovemen__60A75C0F"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ReturnServedRow[] GetReturnServedRows() {
-                if ((this.Table.ChildRelations["FK__ReturnServed__45F365D3"] == null)) {
+                if ((this.Table.ChildRelations["FK__ReturnServed__534D60F1"] == null)) {
                     return new ReturnServedRow[0];
                 }
                 else {
-                    return ((ReturnServedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ReturnServed__45F365D3"])));
+                    return ((ReturnServedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ReturnServed__534D60F1"])));
                 }
             }
         }
@@ -6037,183 +5089,6 @@ namespace ItemInventory {
                     return ((ItemInventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ItemInven__wareh__21B6055D"])));
                 }
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ReturnsInventoryRow[] GetReturnsInventoryRows() {
-                if ((this.Table.ChildRelations["FK__ReturnsIn__wareh__276EDEB3"] == null)) {
-                    return new ReturnsInventoryRow[0];
-                }
-                else {
-                    return ((ReturnsInventoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ReturnsIn__wareh__276EDEB3"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class InventoryUIRow : global::System.Data.DataRow {
-            
-            private InventoryUIDataTable tableInventoryUI;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal InventoryUIRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableInventoryUI = ((InventoryUIDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string warehouseId {
-                get {
-                    return ((string)(this[this.tableInventoryUI.warehouseIdColumn]));
-                }
-                set {
-                    this[this.tableInventoryUI.warehouseIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string id {
-                get {
-                    return ((string)(this[this.tableInventoryUI.idColumn]));
-                }
-                set {
-                    this[this.tableInventoryUI.idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string itemName {
-                get {
-                    return ((string)(this[this.tableInventoryUI.itemNameColumn]));
-                }
-                set {
-                    this[this.tableInventoryUI.itemNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int quantity {
-                get {
-                    return ((int)(this[this.tableInventoryUI.quantityColumn]));
-                }
-                set {
-                    this[this.tableInventoryUI.quantityColumn] = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class InvoiceItemsUIRow : global::System.Data.DataRow {
-            
-            private InvoiceItemsUIDataTable tableInvoiceItemsUI;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal InvoiceItemsUIRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableInvoiceItemsUI = ((InvoiceItemsUIDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string id {
-                get {
-                    return ((string)(this[this.tableInvoiceItemsUI.idColumn]));
-                }
-                set {
-                    this[this.tableInvoiceItemsUI.idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string itemName {
-                get {
-                    return ((string)(this[this.tableInvoiceItemsUI.itemNameColumn]));
-                }
-                set {
-                    this[this.tableInvoiceItemsUI.itemNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int quantity {
-                get {
-                    return ((int)(this[this.tableInvoiceItemsUI.quantityColumn]));
-                }
-                set {
-                    this[this.tableInvoiceItemsUI.quantityColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string orderStatus {
-                get {
-                    return ((string)(this[this.tableInvoiceItemsUI.orderStatusColumn]));
-                }
-                set {
-                    this[this.tableInvoiceItemsUI.orderStatusColumn] = value;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class RetInventoryUIRow : global::System.Data.DataRow {
-            
-            private RetInventoryUIDataTable tableRetInventoryUI;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal RetInventoryUIRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableRetInventoryUI = ((RetInventoryUIDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string id {
-                get {
-                    return ((string)(this[this.tableRetInventoryUI.idColumn]));
-                }
-                set {
-                    this[this.tableRetInventoryUI.idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string itemName {
-                get {
-                    return ((string)(this[this.tableRetInventoryUI.itemNameColumn]));
-                }
-                set {
-                    this[this.tableRetInventoryUI.itemNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int quantity {
-                get {
-                    return ((int)(this[this.tableRetInventoryUI.quantityColumn]));
-                }
-                set {
-                    this[this.tableRetInventoryUI.quantityColumn] = value;
-                }
-            }
         }
         
         /// <summary>
@@ -6254,22 +5129,22 @@ namespace ItemInventory {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class InventoryAdditionRowChangeEvent : global::System.EventArgs {
+        public class InventoryMovementRowChangeEvent : global::System.EventArgs {
             
-            private InventoryAdditionRow eventRow;
+            private InventoryMovementRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryAdditionRowChangeEvent(InventoryAdditionRow row, global::System.Data.DataRowAction action) {
+            public InventoryMovementRowChangeEvent(InventoryMovementRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryAdditionRow Row {
+            public InventoryMovementRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -6576,108 +5451,6 @@ namespace ItemInventory {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public WarehouseRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class InventoryUIRowChangeEvent : global::System.EventArgs {
-            
-            private InventoryUIRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryUIRowChangeEvent(InventoryUIRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InventoryUIRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class InvoiceItemsUIRowChangeEvent : global::System.EventArgs {
-            
-            private InvoiceItemsUIRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InvoiceItemsUIRowChangeEvent(InvoiceItemsUIRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InvoiceItemsUIRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class RetInventoryUIRowChangeEvent : global::System.EventArgs {
-            
-            private RetInventoryUIRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RetInventoryUIRowChangeEvent(RetInventoryUIRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RetInventoryUIRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -7074,7 +5847,7 @@ SELECT id, clientName, clientAddress FROM Client WHERE (id = @id)";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class InventoryAdditionTableAdapter : global::System.ComponentModel.Component {
+    public partial class InventoryMovementTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -7088,7 +5861,7 @@ SELECT id, clientName, clientAddress FROM Client WHERE (id = @id)";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public InventoryAdditionTableAdapter() {
+        public InventoryMovementTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -7185,19 +5958,44 @@ SELECT id, clientName, clientAddress FROM Client WHERE (id = @id)";
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "InventoryAddition";
-            tableMapping.ColumnMappings.Add("itemId", "itemId");
+            tableMapping.DataSetTable = "InventoryMovement";
+            tableMapping.ColumnMappings.Add("refno", "refno");
             tableMapping.ColumnMappings.Add("warehouseId", "warehouseId");
+            tableMapping.ColumnMappings.Add("itemId", "itemId");
             tableMapping.ColumnMappings.Add("quantity", "quantity");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[InventoryMovement] WHERE (([refno] = @Original_refno) AND ([wa" +
+                "rehouseId] = @Original_warehouseId) AND ([itemId] = @Original_itemId) AND ([quan" +
+                "tity] = @Original_quantity))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_refno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "refno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_warehouseId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_itemId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[InventoryAddition] ([itemId], [warehouseId], [quantity]) VALUE" +
-                "S (@itemId, @warehouseId, @quantity)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[InventoryMovement] ([warehouseId], [itemId], [quantity]) VALUE" +
+                "S (@warehouseId, @itemId, @quantity);\r\nSELECT refno, warehouseId, itemId, quanti" +
+                "ty FROM InventoryMovement WHERE (refno = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@warehouseId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[InventoryMovement] SET [warehouseId] = @warehouseId, [itemId] = @itemId, [quantity] = @quantity WHERE (([refno] = @Original_refno) AND ([warehouseId] = @Original_warehouseId) AND ([itemId] = @Original_itemId) AND ([quantity] = @Original_quantity));
+SELECT refno, warehouseId, itemId, quantity FROM InventoryMovement WHERE (refno = @refno)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@warehouseId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_refno", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "refno", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_warehouseId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_itemId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@refno", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "refno", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7213,7 +6011,7 @@ SELECT id, clientName, clientAddress FROM Client WHERE (id = @id)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT itemId, warehouseId, quantity FROM dbo.InventoryAddition";
+            this._commandCollection[0].CommandText = "SELECT refno, warehouseId, itemId, quantity FROM dbo.InventoryMovement";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7221,7 +6019,7 @@ SELECT id, clientName, clientAddress FROM Client WHERE (id = @id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(RecordsDataSet.InventoryAdditionDataTable dataTable) {
+        public virtual int Fill(RecordsDataSet.InventoryMovementDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7234,9 +6032,9 @@ SELECT id, clientName, clientAddress FROM Client WHERE (id = @id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual RecordsDataSet.InventoryAdditionDataTable GetData() {
+        public virtual RecordsDataSet.InventoryMovementDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            RecordsDataSet.InventoryAdditionDataTable dataTable = new RecordsDataSet.InventoryAdditionDataTable();
+            RecordsDataSet.InventoryMovementDataTable dataTable = new RecordsDataSet.InventoryMovementDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7244,7 +6042,7 @@ SELECT id, clientName, clientAddress FROM Client WHERE (id = @id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(RecordsDataSet.InventoryAdditionDataTable dataTable) {
+        public virtual int Update(RecordsDataSet.InventoryMovementDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -7252,7 +6050,7 @@ SELECT id, clientName, clientAddress FROM Client WHERE (id = @id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(RecordsDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "InventoryAddition");
+            return this.Adapter.Update(dataSet, "InventoryMovement");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7273,19 +6071,54 @@ SELECT id, clientName, clientAddress FROM Client WHERE (id = @id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string itemId, string warehouseId, int quantity) {
-            if ((itemId == null)) {
-                throw new global::System.ArgumentNullException("itemId");
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_refno, string Original_warehouseId, string Original_itemId, int Original_quantity) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_refno));
+            if ((Original_warehouseId == null)) {
+                throw new global::System.ArgumentNullException("Original_warehouseId");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(itemId));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_warehouseId));
             }
+            if ((Original_itemId == null)) {
+                throw new global::System.ArgumentNullException("Original_itemId");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_itemId));
+            }
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_quantity));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string warehouseId, string itemId, int quantity) {
             if ((warehouseId == null)) {
                 throw new global::System.ArgumentNullException("warehouseId");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(warehouseId));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(warehouseId));
+            }
+            if ((itemId == null)) {
+                throw new global::System.ArgumentNullException("itemId");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(itemId));
             }
             this.Adapter.InsertCommand.Parameters[2].Value = ((int)(quantity));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
@@ -7302,6 +6135,63 @@ SELECT id, clientName, clientAddress FROM Client WHERE (id = @id)";
                     this.Adapter.InsertCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string warehouseId, string itemId, int quantity, int Original_refno, string Original_warehouseId, string Original_itemId, int Original_quantity, int refno) {
+            if ((warehouseId == null)) {
+                throw new global::System.ArgumentNullException("warehouseId");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(warehouseId));
+            }
+            if ((itemId == null)) {
+                throw new global::System.ArgumentNullException("itemId");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(itemId));
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(quantity));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_refno));
+            if ((Original_warehouseId == null)) {
+                throw new global::System.ArgumentNullException("Original_warehouseId");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_warehouseId));
+            }
+            if ((Original_itemId == null)) {
+                throw new global::System.ArgumentNullException("Original_itemId");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_itemId));
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_quantity));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(refno));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string warehouseId, string itemId, int quantity, int Original_refno, string Original_warehouseId, string Original_itemId, int Original_quantity) {
+            return this.Update(warehouseId, itemId, quantity, Original_refno, Original_warehouseId, Original_itemId, Original_quantity, Original_refno);
         }
     }
     
@@ -10709,515 +9599,6 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class InventoryUITableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public InventoryUITableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "InventoryUI";
-            tableMapping.ColumnMappings.Add("warehouseId", "warehouseId");
-            tableMapping.ColumnMappings.Add("id", "id");
-            tableMapping.ColumnMappings.Add("itemName", "itemName");
-            tableMapping.ColumnMappings.Add("quantity", "quantity");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ItemInventory.Properties.Settings.Default.RecordsConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT warehouseId, id, itemName, quantity FROM dbo.InventoryUI";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(RecordsDataSet.InventoryUIDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual RecordsDataSet.InventoryUIDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            RecordsDataSet.InventoryUIDataTable dataTable = new RecordsDataSet.InventoryUIDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class InvoiceItemsUITableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public InvoiceItemsUITableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "InvoiceItemsUI";
-            tableMapping.ColumnMappings.Add("id", "id");
-            tableMapping.ColumnMappings.Add("itemName", "itemName");
-            tableMapping.ColumnMappings.Add("quantity", "quantity");
-            tableMapping.ColumnMappings.Add("orderStatus", "orderStatus");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ItemInventory.Properties.Settings.Default.RecordsConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, itemName, quantity, orderStatus FROM dbo.InvoiceItemsUI";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(RecordsDataSet.InvoiceItemsUIDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual RecordsDataSet.InvoiceItemsUIDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            RecordsDataSet.InvoiceItemsUIDataTable dataTable = new RecordsDataSet.InvoiceItemsUIDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class RetInventoryUITableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public RetInventoryUITableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "RetInventoryUI";
-            tableMapping.ColumnMappings.Add("id", "id");
-            tableMapping.ColumnMappings.Add("itemName", "itemName");
-            tableMapping.ColumnMappings.Add("quantity", "quantity");
-            this._adapter.TableMappings.Add(tableMapping);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::ItemInventory.Properties.Settings.Default.RecordsConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id, itemName, quantity FROM dbo.RetInventoryUI";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(RecordsDataSet.RetInventoryUIDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual RecordsDataSet.RetInventoryUIDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            RecordsDataSet.RetInventoryUIDataTable dataTable = new RecordsDataSet.RetInventoryUIDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class QueriesTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.IDbCommand[] _commandCollection;
@@ -11516,7 +9897,7 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
         
         private ClientTableAdapter _clientTableAdapter;
         
-        private InventoryAdditionTableAdapter _inventoryAdditionTableAdapter;
+        private InventoryMovementTableAdapter _inventoryMovementTableAdapter;
         
         private InvoiceTableAdapter _invoiceTableAdapter;
         
@@ -11570,12 +9951,12 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public InventoryAdditionTableAdapter InventoryAdditionTableAdapter {
+        public InventoryMovementTableAdapter InventoryMovementTableAdapter {
             get {
-                return this._inventoryAdditionTableAdapter;
+                return this._inventoryMovementTableAdapter;
             }
             set {
-                this._inventoryAdditionTableAdapter = value;
+                this._inventoryMovementTableAdapter = value;
             }
         }
         
@@ -11728,9 +10109,9 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                             && (this._clientTableAdapter.Connection != null))) {
                     return this._clientTableAdapter.Connection;
                 }
-                if (((this._inventoryAdditionTableAdapter != null) 
-                            && (this._inventoryAdditionTableAdapter.Connection != null))) {
-                    return this._inventoryAdditionTableAdapter.Connection;
+                if (((this._inventoryMovementTableAdapter != null) 
+                            && (this._inventoryMovementTableAdapter.Connection != null))) {
+                    return this._inventoryMovementTableAdapter.Connection;
                 }
                 if (((this._invoiceTableAdapter != null) 
                             && (this._invoiceTableAdapter.Connection != null))) {
@@ -11784,7 +10165,7 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                 if ((this._clientTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._inventoryAdditionTableAdapter != null)) {
+                if ((this._inventoryMovementTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._invoiceTableAdapter != null)) {
@@ -11834,15 +10215,6 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._invoiceTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._invoiceTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._itemTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -11861,12 +10233,12 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._invoiceItemTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._invoiceTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._invoiceItemTableAdapter.Update(updatedRows));
+                    result = (result + this._invoiceTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -11879,6 +10251,15 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._invoiceItemTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._invoiceItemTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._returnsInventoryTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ReturnsInventory.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -11888,12 +10269,12 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._inventoryAdditionTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.InventoryAddition.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._inventoryMovementTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.InventoryMovement.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._inventoryAdditionTableAdapter.Update(updatedRows));
+                    result = (result + this._inventoryMovementTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -11942,14 +10323,6 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._invoiceTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._invoiceTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._itemTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -11966,11 +10339,11 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._invoiceItemTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._invoiceTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._invoiceItemTableAdapter.Update(addedRows));
+                    result = (result + this._invoiceTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -11982,6 +10355,14 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._invoiceItemTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._invoiceItemTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._returnsInventoryTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ReturnsInventory.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -11990,11 +10371,11 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._inventoryAdditionTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.InventoryAddition.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._inventoryMovementTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.InventoryMovement.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._inventoryAdditionTableAdapter.Update(addedRows));
+                    result = (result + this._inventoryMovementTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -12056,11 +10437,11 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._inventoryAdditionTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.InventoryAddition.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._inventoryMovementTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.InventoryMovement.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._inventoryAdditionTableAdapter.Update(deletedRows));
+                    result = (result + this._inventoryMovementTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -12072,6 +10453,14 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._invoiceItemTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._invoiceItemTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._itemInventoryTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ItemInventory.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -12080,11 +10469,11 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._invoiceItemTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._invoiceTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._invoiceItemTableAdapter.Update(deletedRows));
+                    result = (result + this._invoiceTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -12101,14 +10490,6 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._itemTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._invoiceTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._invoiceTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -12164,8 +10545,8 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._inventoryAdditionTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._inventoryAdditionTableAdapter.Connection) == false))) {
+            if (((this._inventoryMovementTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._inventoryMovementTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -12255,13 +10636,13 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                         adaptersWithAcceptChangesDuringUpdate.Add(this._clientTableAdapter.Adapter);
                     }
                 }
-                if ((this._inventoryAdditionTableAdapter != null)) {
-                    revertConnections.Add(this._inventoryAdditionTableAdapter, this._inventoryAdditionTableAdapter.Connection);
-                    this._inventoryAdditionTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._inventoryAdditionTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._inventoryAdditionTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._inventoryAdditionTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._inventoryAdditionTableAdapter.Adapter);
+                if ((this._inventoryMovementTableAdapter != null)) {
+                    revertConnections.Add(this._inventoryMovementTableAdapter, this._inventoryMovementTableAdapter.Connection);
+                    this._inventoryMovementTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._inventoryMovementTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._inventoryMovementTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._inventoryMovementTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._inventoryMovementTableAdapter.Adapter);
                     }
                 }
                 if ((this._invoiceTableAdapter != null)) {
@@ -12407,9 +10788,9 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     this._clientTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._clientTableAdapter]));
                     this._clientTableAdapter.Transaction = null;
                 }
-                if ((this._inventoryAdditionTableAdapter != null)) {
-                    this._inventoryAdditionTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._inventoryAdditionTableAdapter]));
-                    this._inventoryAdditionTableAdapter.Transaction = null;
+                if ((this._inventoryMovementTableAdapter != null)) {
+                    this._inventoryMovementTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._inventoryMovementTableAdapter]));
+                    this._inventoryMovementTableAdapter.Transaction = null;
                 }
                 if ((this._invoiceTableAdapter != null)) {
                     this._invoiceTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._invoiceTableAdapter]));

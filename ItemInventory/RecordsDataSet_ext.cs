@@ -16,14 +16,6 @@ namespace ItemInventory
             }
         }
 
-        partial class InventoryUIRow
-        {
-            public override string ToString()
-            {
-                return this.id;
-            }
-        }
-
         partial class ItemRow
         {
             public override string ToString()

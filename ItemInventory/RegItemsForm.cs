@@ -13,6 +13,11 @@ namespace ItemInventory
 {
     public partial class RegItemsForm : ChildForm
     {
+        public class InvalidPriceException : Exception
+        {
+            public InvalidPriceException(string message) : base(message) { }
+        }
+
         public RegItemsForm()
         {
             InitializeComponent();
@@ -22,56 +27,29 @@ namespace ItemInventory
         {
             dbm.dbmgr.ItemTableAdapter.Fill(dbm.db.Item);
         }
-
+        
         private void btn_register_Click(object sender, EventArgs e)
         {
             try
             {
-                Utils.RowProcessor proc = (c) =>
-                {
-                    decimal uPrice;
-
-                    if (decimal.TryParse(c["unitPrice"].Value.ToString(), out uPrice)) {
-                        dbm.db.Item.AddItemRow(
-                        c["id"].Value.ToString(),
-                        c["itemName"].Value.ToString(),
-                        c["description"].Value.ToString(),
-                        uPrice,
-                        "AV");
-                    }
-                    else
-                    {
-                        input_grid.CurrentCell = c["unitPrice"];
-                        throw new Exception("Invalid Unit Price.");
-                    }        
-                };
-
-                Utils.ErrorCallBack callback = (col) =>
-                {
-                    MainForm.showErrorMessage("Missing Input in column '" + col + "'");
-                    dbm.db.RejectChanges();
-                };
-
-                int rowsAdded =
-                    Utils.addRowsWithDataGrid(input_grid, Utils.rowInputComplete, proc, callback);
+                int rowsAdded = addToDataSet();
 
                 if (rowsAdded > 0)
                 {
-                    dbm.dbmgr.ItemTableAdapter.Update(dbm.db.Item);
-                    input_grid.Rows.Clear();
-                    MainForm.showSuccessMessage(
-                        "Successfuly registered " + rowsAdded + " item(s)");
+                    dbm.dbmgr.ItemTableAdapter.Update(dbm.db);
+                    MainForm.showSuccessMessage("Successfuly registered " + rowsAdded + " item(s).");
+                    Close();
                 }
-                else if(rowsAdded == 0)
-                {
-                    MainForm.showErrorMessage("No item(s) were/was registered.");
-                }
+                else {
+                    dbm.db.Item.RejectChanges();
+                    MainForm.showErrorMessage("Failed to register item(s).");                        
+                }                
             }
             catch (Exception ex)
             when (ex is ConstraintException ||
                     ex is DBConcurrencyException ||
                     ex is SqlException ||
-                    ex is Exception)
+                    ex is InvalidPriceException)
             {
                 dbm.db.RejectChanges();
 
@@ -83,18 +61,49 @@ namespace ItemInventory
                 }
                 else if (ex is DBConcurrencyException ||
                             ex is SqlException)
-                {
-                    MainForm.showErrorMessage(
-                    "An error occured while trying to sync with database.\n" +
-                    "Please try again.\n\nDetails:\n" + ex.Message);
-
+                {       
                     initTable();
+                    btn_register_Click(sender, e);
                 }
                 else
                 {
                     MainForm.showErrorMessage(ex.Message);
                 }
             }
+        }
+
+        private int addToDataSet()
+        {
+            Utils.RowProcessor proc = (c) =>
+            {
+                decimal uPrice;
+
+                if (decimal.TryParse(c["unitPrice"].Value.ToString(), out uPrice))
+                {
+                    dbm.db.Item.AddItemRow(
+                    c["id"].Value.ToString(),
+                    c["itemName"].Value.ToString(),
+                    c["description"].Value.ToString(),
+                    uPrice,
+                    "AV");
+                }
+                else
+                {
+                    input_grid.CurrentCell = c["unitPrice"];
+                    throw new InvalidPriceException("Invalid Unit Price.");
+                }
+            };
+
+            Utils.ErrorCallBack callback = (col) =>
+            {
+                MainForm.showErrorMessage("Missing Input in column '" + col + "'");
+                dbm.db.RejectChanges();
+            };
+
+            int rowsAdded =
+                Utils.addRowsWithDataGrid(input_grid, Utils.rowInputComplete, proc, callback);
+
+            return rowsAdded;
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
