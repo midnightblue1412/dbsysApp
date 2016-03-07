@@ -30,6 +30,10 @@
         {
             this.input_warehouse = new System.Windows.Forms.ComboBox();
             this.disp_ItemInventory = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.returnsQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,10 +50,6 @@
             this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.returnsQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.disp_ItemInventory)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -82,8 +82,36 @@
             this.disp_ItemInventory.Location = new System.Drawing.Point(12, 169);
             this.disp_ItemInventory.Name = "disp_ItemInventory";
             this.disp_ItemInventory.ReadOnly = true;
+            this.disp_ItemInventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.disp_ItemInventory.Size = new System.Drawing.Size(468, 273);
             this.disp_ItemInventory.TabIndex = 4;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 75;
+            // 
+            // itemName
+            // 
+            this.itemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.itemName.HeaderText = "Name";
+            this.itemName.Name = "itemName";
+            this.itemName.ReadOnly = true;
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "Qty";
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            this.quantity.Width = 50;
+            // 
+            // returnsQty
+            // 
+            this.returnsQty.HeaderText = "Returns";
+            this.returnsQty.Name = "returnsQty";
+            this.returnsQty.ReadOnly = true;
             // 
             // label2
             // 
@@ -221,33 +249,6 @@
             this.label1.Size = new System.Drawing.Size(92, 21);
             this.label1.TabIndex = 13;
             this.label1.Text = "Inventories";
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Width = 75;
-            // 
-            // itemName
-            // 
-            this.itemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.itemName.HeaderText = "Name";
-            this.itemName.Name = "itemName";
-            this.itemName.ReadOnly = true;
-            // 
-            // quantity
-            // 
-            this.quantity.HeaderText = "Qty";
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            this.quantity.Width = 50;
-            // 
-            // returnsQty
-            // 
-            this.returnsQty.HeaderText = "Returns";
-            this.returnsQty.Name = "returnsQty";
-            this.returnsQty.ReadOnly = true;
             // 
             // MainForm
             // 

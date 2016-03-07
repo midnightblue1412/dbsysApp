@@ -34,6 +34,9 @@
             this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridCtxMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.serve_items_option = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancel_items_option = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.input_invoiceNo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,10 +47,10 @@
             this.serveSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serveSelectedToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelSelectedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label3 = new System.Windows.Forms.Label();
             this.recordReturnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid)).BeginInit();
+            this.dataGridCtxMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,39 +58,72 @@
             // 
             this.disp_grid.AllowUserToAddRows = false;
             this.disp_grid.AllowUserToDeleteRows = false;
+            this.disp_grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.disp_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.disp_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.itemId,
             this.itemName,
             this.quantity,
             this.orderStatus});
-            this.disp_grid.Enabled = false;
+            this.disp_grid.ContextMenuStrip = this.dataGridCtxMenu;
             this.disp_grid.Location = new System.Drawing.Point(12, 189);
             this.disp_grid.Name = "disp_grid";
+            this.disp_grid.ReadOnly = true;
+            this.disp_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.disp_grid.Size = new System.Drawing.Size(498, 262);
             this.disp_grid.TabIndex = 6;
+            this.disp_grid.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.disp_grid_RowStateChanged);
             // 
             // itemId
             // 
             this.itemId.HeaderText = "Item ID";
             this.itemId.Name = "itemId";
+            this.itemId.ReadOnly = true;
             this.itemId.Width = 75;
             // 
             // itemName
             // 
+            this.itemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.itemName.HeaderText = "Name";
             this.itemName.Name = "itemName";
-            this.itemName.Width = 180;
+            this.itemName.ReadOnly = true;
             // 
             // quantity
             // 
             this.quantity.HeaderText = "Qty";
             this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
             // 
             // orderStatus
             // 
             this.orderStatus.HeaderText = "Status";
             this.orderStatus.Name = "orderStatus";
+            this.orderStatus.ReadOnly = true;
+            // 
+            // dataGridCtxMenu
+            // 
+            this.dataGridCtxMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serve_items_option,
+            this.cancel_items_option});
+            this.dataGridCtxMenu.Name = "contextMenuStrip1";
+            this.dataGridCtxMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.dataGridCtxMenu.Size = new System.Drawing.Size(151, 48);
+            // 
+            // serve_items_option
+            // 
+            this.serve_items_option.Name = "serve_items_option";
+            this.serve_items_option.Size = new System.Drawing.Size(150, 22);
+            this.serve_items_option.Text = "Serve Item(s)";
+            this.serve_items_option.Click += new System.EventHandler(this.serve_items_option_Click);
+            // 
+            // cancel_items_option
+            // 
+            this.cancel_items_option.Name = "cancel_items_option";
+            this.cancel_items_option.Size = new System.Drawing.Size(150, 22);
+            this.cancel_items_option.Text = "Cancel Item(s)";
+            this.cancel_items_option.Click += new System.EventHandler(this.cancel_items_option_Click);
             // 
             // label1
             // 
@@ -109,6 +145,8 @@
             this.input_invoiceNo.Name = "input_invoiceNo";
             this.input_invoiceNo.Size = new System.Drawing.Size(121, 25);
             this.input_invoiceNo.TabIndex = 8;
+            this.input_invoiceNo.SelectedIndexChanged += new System.EventHandler(this.input_invoiceNo_SelectedIndexChanged);
+            this.input_invoiceNo.TextChanged += new System.EventHandler(this.input_invoiceNo_TextChanged);
             // 
             // label2
             // 
@@ -177,19 +215,23 @@
             // serveSelectedToolStripMenuItem1
             // 
             this.serveSelectedToolStripMenuItem1.Name = "serveSelectedToolStripMenuItem1";
-            this.serveSelectedToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
+            this.serveSelectedToolStripMenuItem1.Size = new System.Drawing.Size(189, 22);
             this.serveSelectedToolStripMenuItem1.Text = "&Serve Selected Items";
+            this.serveSelectedToolStripMenuItem1.Click += new System.EventHandler(this.serve_items_option_Click);
             // 
             // cancelSelectedToolStripMenuItem
             // 
             this.cancelSelectedToolStripMenuItem.Name = "cancelSelectedToolStripMenuItem";
-            this.cancelSelectedToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.cancelSelectedToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.cancelSelectedToolStripMenuItem.Text = "&Cancel Selected Items";
+            this.cancelSelectedToolStripMenuItem.Click += new System.EventHandler(this.cancel_items_option_Click);
             // 
-            // contextMenuStrip1
+            // recordReturnsToolStripMenuItem
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.recordReturnsToolStripMenuItem.Name = "recordReturnsToolStripMenuItem";
+            this.recordReturnsToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.recordReturnsToolStripMenuItem.Text = "&Record Returns";
+            this.recordReturnsToolStripMenuItem.Click += new System.EventHandler(this.recordReturnsToolStripMenuItem_Click);
             // 
             // label3
             // 
@@ -201,12 +243,6 @@
             this.label3.Size = new System.Drawing.Size(63, 21);
             this.label3.TabIndex = 20;
             this.label3.Text = "Invoice";
-            // 
-            // recordReturnsToolStripMenuItem
-            // 
-            this.recordReturnsToolStripMenuItem.Name = "recordReturnsToolStripMenuItem";
-            this.recordReturnsToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.recordReturnsToolStripMenuItem.Text = "&Record Returns";
             // 
             // InvoiceForm
             // 
@@ -227,7 +263,9 @@
             this.MaximizeBox = false;
             this.Name = "InvoiceForm";
             this.Text = "Invoice";
+            this.Load += new System.EventHandler(this.InvoiceForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid)).EndInit();
+            this.dataGridCtxMenu.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -246,14 +284,16 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem serveSelectedToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemId;
+        private System.Windows.Forms.ContextMenuStrip dataGridCtxMenu;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem serveSelectedToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem cancelSelectedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recordReturnsToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemId;
+        private System.Windows.Forms.ToolStripMenuItem serve_items_option;
+        private System.Windows.Forms.ToolStripMenuItem cancel_items_option;
     }
 }

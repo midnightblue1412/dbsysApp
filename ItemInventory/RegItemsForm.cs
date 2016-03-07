@@ -81,7 +81,6 @@ namespace ItemInventory
                 if (decimal.TryParse(c["unitPrice"].Value.ToString(), out uPrice))
                 {
                     dbm.db.Item.AddItemRow(
-                    c["id"].Value.ToString(),
                     c["itemName"].Value.ToString(),
                     c["description"].Value.ToString(),
                     uPrice,

@@ -62,11 +62,11 @@ namespace ItemInventory
             foreach (DataGridViewRow r in disp_grid.Rows)
             {
                 DataGridViewCellCollection c = r.Cells;
-                string itemIdStr = c["itemId"].Value.ToString();
+                int i_itemId = int.Parse(c["itemId"].Value.ToString());
                 int quantity = int.Parse(c["quantity"].Value.ToString());
 
                 RecordsDataSet.ItemInventoryRow inventoryRow =
-                    dbm.db.ItemInventory.FindBywarehouseIditemId(warehouse.id, itemIdStr);
+                    dbm.db.ItemInventory.FindBywarehouseIditemId(warehouse.id, i_itemId);
 
                 if (inventoryRow != null)
                 {
@@ -76,7 +76,7 @@ namespace ItemInventory
                 {
                     dbm.db.ItemInventory.AddItemInventoryRow(
                         warehouse,
-                        dbm.db.Item.FindByid(itemIdStr),
+                        dbm.db.Item.FindByid(i_itemId),
                         quantity);
                 }
             }
@@ -115,7 +115,8 @@ namespace ItemInventory
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            int index = findRow(input_itemId.Text);
+            RecordsDataSet.ItemRow item = input_itemId.SelectedItem as RecordsDataSet.ItemRow;
+            int index = findRow(item.id.ToString());
 
             if (input_itemId.SelectedIndex < 0)
             {
@@ -132,7 +133,7 @@ namespace ItemInventory
             else
             {
                 RecordsDataSet.ItemRow r = input_itemId.SelectedItem as RecordsDataSet.ItemRow;
-                disp_grid.Rows.Add(r, r.itemName, input_qty.Value);
+                disp_grid.Rows.Add(r.id, r, input_qty.Value);
             }
         }
 

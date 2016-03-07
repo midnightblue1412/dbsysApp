@@ -32,7 +32,6 @@
             this.btn_register = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.input_grid)).BeginInit();
@@ -42,7 +41,6 @@
             // 
             this.input_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.input_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
             this.clientName,
             this.clientAddress});
             this.input_grid.Location = new System.Drawing.Point(12, 62);
@@ -85,16 +83,11 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Register Clients";
             // 
-            // id
-            // 
-            this.id.HeaderText = "Client ID";
-            this.id.Name = "id";
-            // 
             // clientName
             // 
+            this.clientName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.clientName.HeaderText = "Name";
             this.clientName.Name = "clientName";
-            this.clientName.Width = 175;
             // 
             // clientAddress
             // 
@@ -135,6 +128,5 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn clientAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn clientName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
     }
 }

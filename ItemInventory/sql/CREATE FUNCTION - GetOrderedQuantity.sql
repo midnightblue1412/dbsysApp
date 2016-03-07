@@ -1,4 +1,4 @@
-﻿CREATE FUNCTION GetOrderedQuantity(@invoiceNo VARCHAR(8), @itemId VARCHAR(32))
+﻿CREATE FUNCTION GetOrderedQuantity(@invoiceNo VARCHAR(8), @itemId INT)
 RETURNS INT
 AS
 BEGIN

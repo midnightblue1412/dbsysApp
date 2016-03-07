@@ -1,4 +1,4 @@
-﻿CREATE FUNCTION GetItemQuantity(@warehouseId VARCHAR(16), @itemId VARCHAR(32))
+﻿CREATE FUNCTION GetItemQuantity(@warehouseId INT, @itemId INT)
 RETURNS INT
 AS
 BEGIN

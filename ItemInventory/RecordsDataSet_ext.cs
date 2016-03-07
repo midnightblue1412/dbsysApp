@@ -12,7 +12,7 @@ namespace ItemInventory
         {
             public override string ToString()
             {
-                return id;
+                return warehouseName;
             }
         }
 
@@ -20,7 +20,23 @@ namespace ItemInventory
         {
             public override string ToString()
             {
-                return this.id;
+                return itemName;
+            }
+        }
+        
+        partial class ClientRow
+        {
+            public override string ToString()
+            {
+                return clientName;
+            }
+        }    
+
+        partial class InvoiceRow
+        {
+            public override string ToString()
+            {
+                return invoiceNo;
             }
         }
     }

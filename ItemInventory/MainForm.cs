@@ -14,7 +14,11 @@ namespace ItemInventory
     {
         public MainForm()
         {
-            InitializeComponent();                        
+            //SET CURRENT LOCALE TO PHILIPPINES (TO USE PESO AS CURRENCY)
+            System.Globalization.CultureInfo c = new System.Globalization.CultureInfo("en-PH");
+            System.Threading.Thread.CurrentThread.CurrentCulture = c;
+
+            InitializeComponent();                               
         }
         
         /*
@@ -36,6 +40,11 @@ namespace ItemInventory
                 "Error!",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
+        }
+        
+        internal static DialogResult showErrorPrompt(string v)
+        {
+            return MessageBox.Show(v, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
         }
 
         public void fillWarehouseComboBox()
@@ -138,12 +147,18 @@ namespace ItemInventory
 
         private void newInvoiceToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            NewInvoiceForm invForm = new NewInvoiceForm();
+            invForm.setParent(this);
 
+            invForm.ShowDialog();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            InvoiceForm invForm = new InvoiceForm();
+            invForm.setParent(this);
 
+            invForm.ShowDialog();
         }
 
         private void itemsToolStripMenuItem_Click(object sender, EventArgs e)

@@ -30,7 +30,6 @@ namespace ItemInventory
                 Utils.RowProcessor proc = (c) =>
                 {
                     dbm.db.Warehouse.AddWarehouseRow(
-                        c["id"].Value.ToString(),
                         c["warehouseName"].Value.ToString(),
                         c["description"].Value.ToString(),
                         "OP");

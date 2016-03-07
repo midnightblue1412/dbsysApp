@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.input_grid = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_register = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.input_grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +42,6 @@
             // 
             this.input_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.input_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
             this.itemName,
             this.description,
             this.unitPrice});
@@ -51,29 +49,6 @@
             this.input_grid.Name = "input_grid";
             this.input_grid.Size = new System.Drawing.Size(538, 298);
             this.input_grid.TabIndex = 5;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Item ID";
-            this.id.Name = "id";
-            this.id.Width = 75;
-            // 
-            // itemName
-            // 
-            this.itemName.HeaderText = "Name";
-            this.itemName.Name = "itemName";
-            // 
-            // description
-            // 
-            this.description.FillWeight = 200F;
-            this.description.HeaderText = "Description";
-            this.description.Name = "description";
-            this.description.Width = 220;
-            // 
-            // unitPrice
-            // 
-            this.unitPrice.HeaderText = "Unit Price";
-            this.unitPrice.Name = "unitPrice";
             // 
             // btn_register
             // 
@@ -110,6 +85,24 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Register Items";
             // 
+            // itemName
+            // 
+            this.itemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.itemName.HeaderText = "Name";
+            this.itemName.Name = "itemName";
+            // 
+            // description
+            // 
+            this.description.FillWeight = 200F;
+            this.description.HeaderText = "Description";
+            this.description.Name = "description";
+            this.description.Width = 220;
+            // 
+            // unitPrice
+            // 
+            this.unitPrice.HeaderText = "Unit Price";
+            this.unitPrice.Name = "unitPrice";
+            // 
             // RegItemsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -139,10 +132,9 @@
         private System.Windows.Forms.DataGridView input_grid;
         private System.Windows.Forms.Button btn_register;
         private System.Windows.Forms.Button btn_clear;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.Label label2;
     }
 }

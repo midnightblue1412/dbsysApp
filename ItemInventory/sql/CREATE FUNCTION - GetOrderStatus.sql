@@ -1,4 +1,4 @@
-﻿CREATE FUNCTION GetOrderStatus(@invoiceNo VARCHAR(8), @itemId VARCHAR(32))
+﻿CREATE FUNCTION GetOrderStatus(@invoiceNo VARCHAR(8), @itemId INT)
 RETURNS VARCHAR(2)
 AS
 BEGIN

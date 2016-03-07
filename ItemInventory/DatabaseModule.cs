@@ -41,7 +41,7 @@ namespace ItemInventory
             dbmgr.ReturnServedTableAdapter = new ReturnServedTableAdapter();
         }        
 
-        public string getItemStatus(string itemId)
+        public string getItemStatus(int? itemId)
         {
             return qadp.GetItemStatus(itemId);
         }
@@ -51,22 +51,22 @@ namespace ItemInventory
             return qadp.GetOrderDate(invoiceNo);
         }
 
-        public string getOrderStatus(string invoiceNo, string itemId)
+        public string getOrderStatus(string invoiceNo, int? itemId)
         {
             return qadp.GetOrderStatus(invoiceNo, itemId);
         }
 
-        public int? getItemQuantity(string warehouseId, string itemId)
+        public int? getItemQuantity(int? warehouseId, int? itemId)
         {
             return qadp.GetItemQuantity(warehouseId, itemId);
         }
 
-        public int? getOrderedQuantity(string invoiceNo, string itemId)
+        public int? getOrderedQuantity(string invoiceNo, int? itemId)
         {
             return qadp.GetOrderedQuantity(invoiceNo, itemId);
         }
 
-        public int? getRetInventoryQty(string itemId, string warehouseId)
+        public int? getRetInventoryQty(int? itemId, int? warehouseId)
         {
             return qadp.GetRetItemQuantity(itemId, warehouseId);
         }

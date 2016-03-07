@@ -39,11 +39,11 @@
             this.input_itemId = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.disp_grid = new System.Windows.Forms.DataGridView();
+            this.disp_invoiceNo = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.itemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.disp_invoiceNo = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.input_qty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid)).BeginInit();
             this.SuspendLayout();
@@ -86,7 +86,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(296, 375);
+            this.button2.Location = new System.Drawing.Point(318, 385);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(84, 28);
             this.button2.TabIndex = 43;
@@ -98,7 +98,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(206, 375);
+            this.button1.Location = new System.Drawing.Point(228, 385);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(84, 28);
             this.button1.TabIndex = 42;
@@ -145,6 +145,8 @@
             this.input_itemId.Name = "input_itemId";
             this.input_itemId.Size = new System.Drawing.Size(121, 25);
             this.input_itemId.TabIndex = 38;
+            this.input_itemId.SelectedIndexChanged += new System.EventHandler(this.input_itemId_SelectedIndexChanged);
+            this.input_itemId.TextChanged += new System.EventHandler(this.input_itemId_TextChanged);
             // 
             // label1
             // 
@@ -159,36 +161,23 @@
             // 
             // disp_grid
             // 
+            this.disp_grid.AllowUserToAddRows = false;
             this.disp_grid.AllowUserToResizeColumns = false;
+            this.disp_grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.disp_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.disp_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.itemId,
             this.itemName,
             this.quantity});
             this.disp_grid.Enabled = false;
-            this.disp_grid.Location = new System.Drawing.Point(31, 177);
+            this.disp_grid.Location = new System.Drawing.Point(12, 177);
             this.disp_grid.Name = "disp_grid";
-            this.disp_grid.Size = new System.Drawing.Size(349, 192);
+            this.disp_grid.ReadOnly = true;
+            this.disp_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.disp_grid.Size = new System.Drawing.Size(390, 192);
             this.disp_grid.TabIndex = 36;
-            // 
-            // itemId
-            // 
-            this.itemId.HeaderText = "Item ID";
-            this.itemId.Name = "itemId";
-            this.itemId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemId.Width = 75;
-            // 
-            // itemName
-            // 
-            this.itemName.HeaderText = "Name";
-            this.itemName.Name = "itemName";
-            this.itemName.Width = 180;
-            // 
-            // quantity
-            // 
-            this.quantity.HeaderText = "Qty";
-            this.quantity.Name = "quantity";
-            this.quantity.Width = 50;
             // 
             // disp_invoiceNo
             // 
@@ -211,6 +200,28 @@
             this.label6.Size = new System.Drawing.Size(76, 17);
             this.label6.TabIndex = 46;
             this.label6.Text = "Invoice No.:";
+            // 
+            // itemId
+            // 
+            this.itemId.HeaderText = "Item ID";
+            this.itemId.Name = "itemId";
+            this.itemId.ReadOnly = true;
+            this.itemId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemId.Width = 75;
+            // 
+            // itemName
+            // 
+            this.itemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.itemName.HeaderText = "Name";
+            this.itemName.Name = "itemName";
+            this.itemName.ReadOnly = true;
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "Qty";
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            this.quantity.Width = 50;
             // 
             // ReturnedItemsForm
             // 
@@ -237,6 +248,7 @@
             this.MinimizeBox = false;
             this.Name = "ReturnedItemsForm";
             this.Text = "Returned Items";
+            this.Load += new System.EventHandler(this.ReturnedItemsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.input_qty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid)).EndInit();
             this.ResumeLayout(false);
@@ -257,10 +269,10 @@
         private System.Windows.Forms.ComboBox input_itemId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView disp_grid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.Label disp_invoiceNo;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemId;
     }
 }

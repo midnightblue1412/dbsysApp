@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.input_grid = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.warehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_register = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.warehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.input_grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,30 +41,12 @@
             // 
             this.input_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.input_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
             this.warehouseName,
             this.description});
             this.input_grid.Location = new System.Drawing.Point(12, 66);
             this.input_grid.Name = "input_grid";
             this.input_grid.Size = new System.Drawing.Size(418, 262);
             this.input_grid.TabIndex = 5;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Warehouse ID";
-            this.id.Name = "id";
-            // 
-            // warehouseName
-            // 
-            this.warehouseName.HeaderText = "Name";
-            this.warehouseName.Name = "warehouseName";
-            this.warehouseName.Width = 125;
-            // 
-            // description
-            // 
-            this.description.HeaderText = "Description";
-            this.description.Name = "description";
-            this.description.Width = 150;
             // 
             // btn_register
             // 
@@ -102,6 +83,18 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Register Warehouses";
             // 
+            // warehouseName
+            // 
+            this.warehouseName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.warehouseName.HeaderText = "Name";
+            this.warehouseName.Name = "warehouseName";
+            // 
+            // description
+            // 
+            this.description.HeaderText = "Description";
+            this.description.Name = "description";
+            this.description.Width = 150;
+            // 
             // RegWarehousesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -130,10 +123,9 @@
 
         private System.Windows.Forms.DataGridView input_grid;
         private System.Windows.Forms.Button btn_register;
-        private System.Windows.Forms.DataGridViewTextBoxColumn description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn warehouseName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.Button btn_clear;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn warehouseName;
     }
 }
