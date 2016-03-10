@@ -29,6 +29,7 @@ namespace ItemInventory
 
         private void fillInvoiceNoComboBox()
         {
+            input_invoiceNo.Items.Clear();
             input_invoiceNo.Items.AddRange(
                 (from invoice in dbm.db.Invoice select invoice).ToArray());
         }
@@ -42,6 +43,10 @@ namespace ItemInventory
         private void fillDataGrid(RecordsDataSet.InvoiceRow invoice)
         {
             disp_grid.Rows.Clear();
+            initTables();
+            
+            fillInvoiceNoComboBox();
+            input_invoiceNo.Text = invoice.invoiceNo;
 
             RecordsDataSet.InvoiceItemRow[] rows =
                 (from invoiceItem in dbm.db.InvoiceItem
@@ -54,6 +59,45 @@ namespace ItemInventory
             }                       
         }
 
+        private int serveSelectedItems(ServeItemsForm.InputFields mfields)
+        {
+            string invoiceNoTxt = input_invoiceNo.Text.Trim().ToUpper();
+
+
+            foreach (DataGridViewRow r in disp_grid.SelectedRows)
+            {
+                DataGridViewCellCollection c = r.Cells;
+
+                RecordsDataSet.InvoiceItemRow invoice =
+                    input_invoiceNo.SelectedItem as RecordsDataSet.InvoiceItemRow;
+
+                int itemId = int.Parse(c["itemId"].Value.ToString());
+                int qty = int.Parse(c["quantity"].Value.ToString());
+
+                dbm.db.ItemServed.AddItemServedRow(
+                    invoiceNoTxt, itemId, mfields.warehouse.id, qty, mfields.date);
+            }
+
+            return disp_grid.SelectedRows.Count;
+        }
+
+        private int cancelSelectedItems()
+        {
+            string invoiceNo = input_invoiceNo.SelectedItem.ToString();
+
+            foreach (DataGridViewRow r in disp_grid.SelectedRows)
+            {
+                DataGridViewCellCollection c = r.Cells;
+                int itemId = int.Parse(c["itemId"].Value.ToString());
+
+                RecordsDataSet.InvoiceItemRow invItem =
+                    dbm.db.InvoiceItem.FindByinvoiceNoitemId(invoiceNo, itemId);
+
+                invItem.orderStatus = "CANCELLED";
+            }
+
+            return disp_grid.SelectedRows.Count;
+        }
 
         /*
          *  EVENT HANDLERS
@@ -90,7 +134,17 @@ namespace ItemInventory
 
         private void recordReturnsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO: IMPLEMENT RETURNS RECORDING
+            if (input_invoiceNo.SelectedItem == null)
+            {
+                MainForm.showErrorMessage("Please select an invoice.");
+            }
+            else
+            {                
+                using (ReturnedItemsForm rf = new ReturnedItemsForm())
+                {
+                    rf.ShowDialog();
+                }                    
+            }
         }
         
         private void serve_items_option_Click(object sender, EventArgs e)
@@ -101,7 +155,43 @@ namespace ItemInventory
             }
             else
             {
-                //TODO: IMPLEMENT SERVE ITEMS
+                ServeItemsForm.InputFields inf = new ServeItemsForm.InputFields();
+                DialogResult res;
+
+                using (ServeItemsForm sf = new ServeItemsForm(inf))
+                {
+                    res = sf.ShowDialog();
+                }
+                
+                try
+                {
+                    int rowsAff = serveSelectedItems(inf);
+                                        
+                    dbm.dbmgr.UpdateAll(dbm.db);
+                    fillDataGrid(input_invoiceNo.SelectedItem as RecordsDataSet.InvoiceRow);
+
+                    MainForm.showSuccessMessage("Operation successful. " + rowsAff + " affected.");
+                }
+                catch (DBConcurrencyException ex)
+                {
+                    DialogResult r = MainForm.showErrorPrompt(
+                        "An error occured while trying to sync with database.\n\n" + 
+                        "Details:\n" + ex.Message);
+
+                    if (r.Equals(DialogResult.Retry))
+                    {
+                        serve_items_option_Click(sender, e);
+                    }
+                    else
+                    {
+                        dbm.db.RejectChanges();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    dbm.db.RejectChanges();
+                    MainForm.showErrorMessage("An error occured.\n\nDetails:\n" + ex.Message);
+                }
             }
 
         }
@@ -114,7 +204,21 @@ namespace ItemInventory
             }
             else
             {
-                //TODO: IMLEMENT CANCEL ITEMS
+                try
+                {
+                    int rowsAff = cancelSelectedItems();
+                    dbm.dbmgr.UpdateAll(dbm.db);
+
+                    fillDataGrid(input_invoiceNo.SelectedItem as RecordsDataSet.InvoiceRow);
+
+                    MainForm.showSuccessMessage("Operation successful. " + rowsAff + " affected.");
+                }
+                catch (Exception ex)
+                {
+                    MainForm.showErrorMessage(
+                        "An error occured while trying to perform operation.\n\n" +
+                        "Details:\n" + ex.Message);
+                }
             }
         }
     }

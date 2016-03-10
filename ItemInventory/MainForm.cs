@@ -88,30 +88,39 @@ namespace ItemInventory
          */
         private void registerItemsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RegItemsForm regItemsForm = new RegItemsForm();
-            regItemsForm.setParent(this);
-            regItemsForm.ShowDialog();
+            using (RegItemsForm regItemsForm = new RegItemsForm())
+            {
+                regItemsForm.setParent(this);
+                regItemsForm.ShowDialog();
+            }                
         }
 
         private void registerClientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RegClientsForm regClientsForm = new RegClientsForm();
-            regClientsForm.setParent(this);
-            regClientsForm.ShowDialog();
+            using (RegClientsForm regClientsForm = new RegClientsForm())
+            {
+                regClientsForm.setParent(this);
+                regClientsForm.ShowDialog();
+            }            
         }
 
         private void registerWarehouseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RegWarehousesForm regWarehousesForm = new RegWarehousesForm();
-            regWarehousesForm.setParent(this);
-            regWarehousesForm.initTable();
-            regWarehousesForm.ShowDialog();
+            using (RegWarehousesForm regWarehousesForm = new RegWarehousesForm())
+            {
+                regWarehousesForm.setParent(this);
+                regWarehousesForm.initTable();
+                regWarehousesForm.ShowDialog();
+            }                
         }
 
         private void addItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddItemsForm af = new AddItemsForm();
-            af.setParent(this);
+            AddItemsForm af;
+            using (af = new AddItemsForm())
+            {
+                af.setParent(this);
+            }
 
             RecordsDataSet.WarehouseRow warehouse =
                 input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow;
@@ -147,18 +156,22 @@ namespace ItemInventory
 
         private void newInvoiceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NewInvoiceForm invForm = new NewInvoiceForm();
-            invForm.setParent(this);
+            using (NewInvoiceForm invForm = new NewInvoiceForm())
+            {
+                invForm.setParent(this);
 
-            invForm.ShowDialog();
+                invForm.ShowDialog();
+            }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InvoiceForm invForm = new InvoiceForm();
-            invForm.setParent(this);
+            using (InvoiceForm invForm = new InvoiceForm())
+            {
+                invForm.setParent(this);
 
-            invForm.ShowDialog();
+                invForm.ShowDialog();
+            }
         }
 
         private void itemsToolStripMenuItem_Click(object sender, EventArgs e)

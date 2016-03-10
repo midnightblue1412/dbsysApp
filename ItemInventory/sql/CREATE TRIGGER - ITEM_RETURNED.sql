@@ -2,8 +2,9 @@
 ON ItemReturned
 FOR INSERT
 AS
-UPDATE ReturnsInventory
-SET ReturnsInventory.quantity = ins.quantity
-FROM
-inserted ins
-WHERE ReturnsInventory.warehouseId = ins.warehouseId AND ReturnsInventory.itemId = ins.itemId;
+--ADD ITEMS TO RETURNS INVENTORY
+MERGE INTO ReturnsInventory ret
+USING inserted ins
+ON ret.warehouseId = ins.warehouseId AND ret.itemId = ins.itemId
+WHEN MATCHED THEN
+UPDATE SET ret.quantity = ret.quantity + ins.quantity;

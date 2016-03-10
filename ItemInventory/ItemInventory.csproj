@@ -74,6 +74,9 @@
     <OutputPath>bin\x64\Debug_X64\</OutputPath>
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>dbsys_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -163,11 +166,11 @@
     <Compile Include="ReturnedItemsForm.Designer.cs">
       <DependentUpon>ReturnedItemsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SelectWarehouseForm.cs">
+    <Compile Include="ServeItemsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SelectWarehouseForm.Designer.cs">
-      <DependentUpon>SelectWarehouseForm.cs</DependentUpon>
+    <Compile Include="ServeItemsForm.Designer.cs">
+      <DependentUpon>ServeItemsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateItemsForm.cs">
       <SubType>Form</SubType>
@@ -213,12 +216,13 @@
     <EmbeddedResource Include="ReturnedItemsForm.resx">
       <DependentUpon>ReturnedItemsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SelectWarehouseForm.resx">
-      <DependentUpon>SelectWarehouseForm.cs</DependentUpon>
+    <EmbeddedResource Include="ServeItemsForm.resx">
+      <DependentUpon>ServeItemsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateItemsForm.resx">
       <DependentUpon>UpdateItemsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -254,6 +258,7 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dbsys_icon.ico" />
     <Content Include="db\Records.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -268,12 +273,16 @@
     <Content Include="sql\CREATE FUNCTION - GetItemStatus.sql" />
     <Content Include="sql\CREATE FUNCTION - GetOrderDate.sql" />
     <Content Include="sql\CREATE TRIGGER - INVENTORY_UPDATE.sql" />
+    <Content Include="sql\CREATE TRIGGER - RETURN_SERVED.sql" />
+    <Content Include="sql\CREATE TRIGGER - ITEM_SERVED.sql" />
     <Content Include="sql\CREATE TRIGGER - ITEM_RETURNED.sql" />
     <Content Include="sql\CREATE TRIGGER - INVENTORY_ADD.sql" />
     <Content Include="sql\CREATE_REFERENCE_TABLES.sql" />
     <Content Include="sql\CREATE_TRANSACTION_TABLES.sql" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="icon\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
