@@ -208,6 +208,8 @@ namespace ItemInventory
                 dbm.dbmgr.UpdateAll(dbm.db);
                 MainForm.showSuccessMessage(
                     "Successfuly created invoice record with " + rowsAdded + " item(s).");
+
+                Close();
             }
             catch (DBConcurrencyException ex)
             {
@@ -243,6 +245,14 @@ namespace ItemInventory
                         "Details:\n" + ex.Message);
                 }
             }            
+        }
+
+        private void NewInvoiceForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MainForm p = parent as MainForm;
+            p.invoice_initTables();
+            p.invoice_fillInvoiceNoComboBox();
+            p.invoice_fillDataGrid();
         }
     }
 }

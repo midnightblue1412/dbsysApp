@@ -117,6 +117,21 @@
     <Compile Include="InvoiceForm.Designer.cs">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InvSys_ext_Clients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvSys_ext_InvHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvSys_ext_Invoices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvSys_ext_Items.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InvSys_ext_Warehouses.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

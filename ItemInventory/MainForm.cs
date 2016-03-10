@@ -60,7 +60,7 @@ namespace ItemInventory
             }   
         }
 
-        public void fillDataGrid()
+        public void invoice_fillDataGrid()
         {
             disp_ItemInventory.Rows.Clear();
 
@@ -86,7 +86,7 @@ namespace ItemInventory
         /*
          * EVENT HANDLERS
          */
-        private void registerItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_registerItems_Click(object sender, EventArgs e)
         {
             using (RegItemsForm regItemsForm = new RegItemsForm())
             {
@@ -95,7 +95,7 @@ namespace ItemInventory
             }                
         }
 
-        private void registerClientToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_registerClients_Click(object sender, EventArgs e)
         {
             using (RegClientsForm regClientsForm = new RegClientsForm())
             {
@@ -104,7 +104,7 @@ namespace ItemInventory
             }            
         }
 
-        private void registerWarehouseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_registerWarehouse_Click(object sender, EventArgs e)
         {
             using (RegWarehousesForm regWarehousesForm = new RegWarehousesForm())
             {
@@ -114,25 +114,25 @@ namespace ItemInventory
             }                
         }
 
-        private void addItemToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_addItems_Click(object sender, EventArgs e)
         {
             AddItemsForm af;
             using (af = new AddItemsForm())
             {
-                af.setParent(this);
-            }
+                af.setParent(this);            
 
-            RecordsDataSet.WarehouseRow warehouse =
-                input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow;
+                RecordsDataSet.WarehouseRow warehouse =
+                    input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow;
 
-            if (warehouse != null)
-            {
-                af.setWarehouse(warehouse);
-                af.ShowDialog();
-            }
-            else
-            {
-                showErrorMessage("No Warehouse Selected.");
+                if (warehouse != null)
+                {
+                    af.setWarehouse(warehouse);
+                    af.ShowDialog();
+                }
+                else
+                {
+                    showErrorMessage("No Warehouse Selected.");
+                }
             }
         }
 
@@ -151,10 +151,10 @@ namespace ItemInventory
 
         private void input_warehouse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillDataGrid();
+            invoice_fillDataGrid();
         }
 
-        private void newInvoiceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_newInvoice_Click(object sender, EventArgs e)
         {
             using (NewInvoiceForm invForm = new NewInvoiceForm())
             {
@@ -163,28 +163,29 @@ namespace ItemInventory
                 invForm.ShowDialog();
             }
         }
-
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        
+        private void tab_Invoices_Selected(object sender, EventArgs e)
         {
-            using (InvoiceForm invForm = new InvoiceForm())
-            {
-                invForm.setParent(this);
-
-                invForm.ShowDialog();
-            }
+            invoice_initTables();
+            invoice_fillInvoiceNoComboBox();
         }
 
-        private void itemsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tab_InventoryMov_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void warehousesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tab_Warehouses_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void clientsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tab_Items_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tab_Clients_Click(object sender, EventArgs e)
         {
 
         }

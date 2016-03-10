@@ -162,7 +162,7 @@
             this.input_date.Name = "input_date";
             this.input_date.Size = new System.Drawing.Size(121, 25);
             this.input_date.TabIndex = 20;
-            this.input_date.Value = System.DateTime.Now;
+            this.input_date.Value = new System.DateTime(2016, 3, 10, 19, 53, 13, 573);
             // 
             // input_itemName
             // 
@@ -305,6 +305,7 @@
             this.MinimizeBox = false;
             this.Name = "NewInvoiceForm";
             this.Text = "New Invoice";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewInvoiceForm_FormClosed);
             this.Load += new System.EventHandler(this.NewInvoiceForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_qty)).EndInit();

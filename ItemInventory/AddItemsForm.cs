@@ -153,7 +153,7 @@ namespace ItemInventory
                 {
                     dbm.dbmgr.ItemInventoryTableAdapter.Update(dbm.db);
                     dbm.dbmgr.ReturnsInventoryTableAdapter.Fill(dbm.db.ReturnsInventory);
-                    ((MainForm)parent).fillDataGrid();
+                    ((MainForm)parent).invoice_fillDataGrid();
                     MainForm.showSuccessMessage("Successfuly updated " + rowsAdded + " item(s) in inventory.");
                 }
                 else
