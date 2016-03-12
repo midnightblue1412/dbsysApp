@@ -59,10 +59,11 @@
             // 
             // btn_continue
             // 
+            this.btn_continue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_continue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_continue.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_continue.ForeColor = System.Drawing.Color.White;
-            this.btn_continue.Location = new System.Drawing.Point(109, 137);
+            this.btn_continue.Location = new System.Drawing.Point(140, 158);
             this.btn_continue.Name = "btn_continue";
             this.btn_continue.Size = new System.Drawing.Size(84, 28);
             this.btn_continue.TabIndex = 26;
@@ -72,10 +73,11 @@
             // 
             // btn_cancel
             // 
+            this.btn_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cancel.ForeColor = System.Drawing.Color.White;
-            this.btn_cancel.Location = new System.Drawing.Point(199, 137);
+            this.btn_cancel.Location = new System.Drawing.Point(230, 158);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(84, 28);
             this.btn_cancel.TabIndex = 27;
@@ -120,7 +122,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;
-            this.ClientSize = new System.Drawing.Size(295, 179);
+            this.ClientSize = new System.Drawing.Size(326, 198);
             this.Controls.Add(this.input_date);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);

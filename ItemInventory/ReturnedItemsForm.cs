@@ -36,23 +36,23 @@ namespace ItemInventory
          */
         private void initTables()
         {
-            dbm.dbmgr.ClientTableAdapter.Fill(dbm.db.Client);
-            dbm.dbmgr.ItemTableAdapter.Fill(dbm.db.Item);
-            dbm.dbmgr.WarehouseTableAdapter.Fill(dbm.db.Warehouse);
+            dbm.dbmgr.ClientTableAdapter.Fill(db.Client);
+            dbm.dbmgr.ItemTableAdapter.Fill(db.Item);
+            dbm.dbmgr.WarehouseTableAdapter.Fill(db.Warehouse);
 
-            dbm.dbmgr.ItemInventoryTableAdapter.Fill(dbm.db.ItemInventory);
+            dbm.dbmgr.ItemInventoryTableAdapter.Fill(db.ItemInventory);
 
-            dbm.dbmgr.InvoiceTableAdapter.Fill(dbm.db.Invoice);
-            dbm.dbmgr.InvoiceItemTableAdapter.Fill(dbm.db.InvoiceItem);
+            dbm.dbmgr.InvoiceTableAdapter.Fill(db.Invoice);
+            dbm.dbmgr.InvoiceItemTableAdapter.Fill(db.InvoiceItem);
 
-            dbm.dbmgr.ItemServedTableAdapter.Fill(dbm.db.ItemServed);
-            dbm.dbmgr.ItemReturnedTableAdapter.Fill(dbm.db.ItemReturned);
+            dbm.dbmgr.ItemServedTableAdapter.Fill(db.ItemServed);
+            dbm.dbmgr.ItemReturnedTableAdapter.Fill(db.ItemReturned);
         }
 
         private void fillItemComboBox()
         {
             var r =
-                from item in dbm.db.ItemServed
+                from item in db.ItemServed
                 where item.invoiceNo.Equals(disp_invoiceNo.Text)
                 select item.ItemInventoryRowParent.ItemRow;
 
@@ -63,14 +63,14 @@ namespace ItemInventory
         {
             RecordsDataSet.ItemRow r = input_itemId.SelectedItem as RecordsDataSet.ItemRow;
             RecordsDataSet.ItemServedRow itemServed =
-                dbm.db.ItemServed.FindByinvoiceNoitemId(disp_invoiceNo.Text, r.id);
+                db.ItemServed.FindByinvoiceNoitemId(disp_invoiceNo.Text, r.id);
             disp_grid.Rows.Add(
                 r,
                 r.itemName,
                 itemServed.ItemInventoryRowParent.WarehouseRow.warehouseName,
                 itemServed.quantity);
 
-            dbm.db.ItemReturned.AddItemReturnedRow(
+            db.ItemReturned.AddItemReturnedRow(
                 disp_invoiceNo.Text,
                 r.id,
                 itemServed.warehouseId,
@@ -116,12 +116,12 @@ namespace ItemInventory
                 }
                 else
                 {
-                    dbm.db.RejectChanges();
+                    db.RejectChanges();
                 }
             }
             catch(Exception ex)
             {
-                dbm.db.RejectChanges();
+                db.RejectChanges();
                 MainForm.showErrorMessage(
                     "An Error occured.\nDetails:\n\n" + ex.Message);
             }

@@ -22,16 +22,16 @@ namespace ItemInventory
          */
          private void invoice_initTables ()
         {
-            dbm.dbmgr.ClientTableAdapter.Fill(dbm.db.Client);
-            dbm.dbmgr.InvoiceTableAdapter.Fill(dbm.db.Invoice);
-            dbm.dbmgr.InvoiceItemTableAdapter.Fill(dbm.db.InvoiceItem);
+            dbm.dbmgr.ClientTableAdapter.Fill(db.Client);
+            dbm.dbmgr.InvoiceTableAdapter.Fill(db.Invoice);
+            dbm.dbmgr.InvoiceItemTableAdapter.Fill(db.InvoiceItem);
         }
 
         private void invoice_fillInvoiceNoComboBox()
         {
             input_invoiceNo.Items.Clear();
             input_invoiceNo.Items.AddRange(
-                (from invoice in dbm.db.Invoice select invoice).ToArray());
+                (from invoice in db.Invoice select invoice).ToArray());
         }
 
         private void showInvoiceInfo(RecordsDataSet.InvoiceRow invoice)
@@ -49,7 +49,7 @@ namespace ItemInventory
             input_invoiceNo.Text = invoice.invoiceNo;
 
             RecordsDataSet.InvoiceItemRow[] rows =
-                (from invoiceItem in dbm.db.InvoiceItem
+                (from invoiceItem in db.InvoiceItem
                 where invoiceItem.InvoiceRow.Equals(invoice)
                 select invoiceItem).ToArray();
 
@@ -74,7 +74,7 @@ namespace ItemInventory
                 int itemId = int.Parse(c["itemId"].Value.ToString());
                 int qty = int.Parse(c["quantity"].Value.ToString());
 
-                dbm.db.ItemServed.AddItemServedRow(
+                db.ItemServed.AddItemServedRow(
                     invoiceNoTxt, itemId, mfields.warehouse.id, qty, mfields.date);
             }
 
@@ -91,7 +91,7 @@ namespace ItemInventory
                 int itemId = int.Parse(c["itemId"].Value.ToString());
 
                 RecordsDataSet.InvoiceItemRow invItem =
-                    dbm.db.InvoiceItem.FindByinvoiceNoitemId(invoiceNo, itemId);
+                    db.InvoiceItem.FindByinvoiceNoitemId(invoiceNo, itemId);
 
                 invItem.orderStatus = "CANCELLED";
             }
@@ -158,7 +158,7 @@ namespace ItemInventory
                 ServeItemsForm.InputFields inf = new ServeItemsForm.InputFields();
                 DialogResult res;
 
-                using (ServeItemsForm sf = new ServeItemsForm(inf))
+                using (ServeItemsForm sf = new ServeItemsForm(inf, parent as DbForm))
                 {
                     res = sf.ShowDialog();
                 }
@@ -184,12 +184,12 @@ namespace ItemInventory
                     }
                     else
                     {
-                        dbm.db.RejectChanges();
+                        db.RejectChanges();
                     }
                 }
                 catch (Exception ex)
                 {
-                    dbm.db.RejectChanges();
+                    db.RejectChanges();
                     MainForm.showErrorMessage("An error occured.\n\nDetails:\n" + ex.Message);
                 }
             }

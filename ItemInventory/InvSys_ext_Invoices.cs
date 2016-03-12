@@ -15,16 +15,16 @@ namespace ItemInventory
          */
         public void invoice_initTables()
         {
-            dbm.dbmgr.ClientTableAdapter.Fill(dbm.db.Client);
-            dbm.dbmgr.InvoiceTableAdapter.Fill(dbm.db.Invoice);
-            dbm.dbmgr.InvoiceItemTableAdapter.Fill(dbm.db.InvoiceItem);
+            dbm.dbmgr.ClientTableAdapter.Fill(db.Client);
+            dbm.dbmgr.InvoiceTableAdapter.Fill(db.Invoice);
+            dbm.dbmgr.InvoiceItemTableAdapter.Fill(db.InvoiceItem);
         }
 
         public void invoice_fillInvoiceNoComboBox()
         {
             input_invoiceNo.Items.Clear();
             input_invoiceNo.Items.AddRange(
-                (from invoice in dbm.db.Invoice select invoice).ToArray());
+                (from invoice in db.Invoice select invoice).ToArray());
         }
 
         private void showInvoiceInfo(RecordsDataSet.InvoiceRow invoice)
@@ -38,8 +38,8 @@ namespace ItemInventory
             disp_grid_inv.Rows.Clear();
 
             RecordsDataSet.InvoiceItemRow[] rows =
-                (from invoiceItem in dbm.db.InvoiceItem
-                 where invoiceItem.InvoiceRow.Equals(invoice)
+                (from invoiceItem in db.InvoiceItem
+                 where invoiceItem.invoiceNo.Equals(invoice.invoiceNo)
                  select invoiceItem).ToArray();
 
             foreach (RecordsDataSet.InvoiceItemRow r in rows)
@@ -59,10 +59,12 @@ namespace ItemInventory
                 RecordsDataSet.InvoiceItemRow invoice =
                     input_invoiceNo.SelectedItem as RecordsDataSet.InvoiceItemRow;
 
-                int itemId = int.Parse(c["invoice_itemId"].Value.ToString());
+                RecordsDataSet.ItemRow item = c["invoice_itemId"].Value as RecordsDataSet.ItemRow;
+
+                int itemId = item.id;                
                 int qty = int.Parse(c["invoice_quantity"].Value.ToString());
 
-                dbm.db.ItemServed.AddItemServedRow(
+                db.ItemServed.AddItemServedRow(
                     invoiceNoTxt, itemId, mfields.warehouse.id, qty, mfields.date);
             }
 
@@ -79,7 +81,7 @@ namespace ItemInventory
                 int itemId = int.Parse(c["invoice_itemId"].Value.ToString());
 
                 RecordsDataSet.InvoiceItemRow invItem =
-                    dbm.db.InvoiceItem.FindByinvoiceNoitemId(invoiceNo, itemId);
+                    db.InvoiceItem.FindByinvoiceNoitemId(invoiceNo, itemId);
 
                 invItem.orderStatus = "CANCELLED";
             }
@@ -138,6 +140,8 @@ namespace ItemInventory
 
         private void serve_items_option_Click(object sender, EventArgs e)
         {
+            string wname = (input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow).warehouseName;
+
             if (disp_grid_inv.SelectedRows.Count == 0)
             {
                 showErrorMessage("No Rows Selected.");
@@ -147,16 +151,26 @@ namespace ItemInventory
                 ServeItemsForm.InputFields inf = new ServeItemsForm.InputFields();
                 DialogResult res;
 
-                using (ServeItemsForm sf = new ServeItemsForm(inf))
+                using (ServeItemsForm sf = new ServeItemsForm(inf, this))
                 {
                     res = sf.ShowDialog();
                 }
 
+                if(res.Equals(DialogResult.OK))
                 try
                 {
-                    int rowsAff = serveSelectedItems(inf);
-
+                    int rowsAff = serveSelectedItems(inf);       
+                                           
                     dbm.dbmgr.UpdateAll(dbm.db);
+                    dbmgr.ItemInventoryTableAdapter.Fill(db.ItemInventory);
+                    dbmgr.InvoiceItemTableAdapter.Fill(db.InvoiceItem);
+
+                    fillWarehouseComboBox();
+
+                    input_warehouse.SelectedIndex = input_warehouse.FindStringExact(wname);
+                        int wid = (input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow).id;
+
+                    fillInventoryGrid(wid);
                     invoice_fillDataGrid(input_invoiceNo.SelectedItem as RecordsDataSet.InvoiceRow);
 
                     showSuccessMessage("Operation successful. " + rowsAff + " affected.");
@@ -173,16 +187,15 @@ namespace ItemInventory
                     }
                     else
                     {
-                        dbm.db.RejectChanges();
+                        db.RejectChanges();
                     }
                 }
                 catch (Exception ex)
                 {
-                    dbm.db.RejectChanges();
+                    db.RejectChanges();
                     showErrorMessage("An error occured.\n\nDetails:\n" + ex.Message);
                 }
             }
-
         }
 
         private void cancel_items_option_Click(object sender, EventArgs e)

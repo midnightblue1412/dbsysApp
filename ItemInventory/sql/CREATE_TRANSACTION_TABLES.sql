@@ -55,7 +55,7 @@ CREATE TABLE InventoryMovement
 		REFERENCES ItemInventory(warehouseId, itemId),
 	FOREIGN KEY(warehouseId, itemId)
 		REFERENCES ReturnsInventory(warehouseId, itemId),
-	CONSTRAINT LIMIT_IA CHECK(quantity > 0)
+	CONSTRAINT LIMIT_IA CHECK(quantity = 0)
 );
 
 CREATE TABLE ItemServed

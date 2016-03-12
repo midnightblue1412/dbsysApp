@@ -51,7 +51,7 @@ namespace ItemInventory
         {
             input_warehouse.Items.Clear();
 
-            foreach (RecordsDataSet.WarehouseRow r in dbm.db.Warehouse)
+            foreach (RecordsDataSet.WarehouseRow r in db.Warehouse)
             {
                 if (r.warehouseStatus.Equals("OP"))
                 {
@@ -60,15 +60,15 @@ namespace ItemInventory
             }   
         }
 
-        public void invoice_fillDataGrid()
+        public void fillInventoryGrid(int wid)
         {
             disp_ItemInventory.Rows.Clear();
 
             var a =
-                from inv in dbm.db.ItemInventory
-                join ret in dbm.db.ReturnsInventory on inv equals ret.ItemInventoryRowParent
-                join item in dbm.db.Item on inv.itemId equals item.id
-                where inv.WarehouseRow == (RecordsDataSet.WarehouseRow)input_warehouse.SelectedItem
+                from inv in db.ItemInventory
+                join ret in db.ReturnsInventory on inv equals ret.ItemInventoryRowParent
+                join item in db.Item on inv.itemId equals item.id
+                where inv.WarehouseRow == db.Warehouse.FindByid(wid)
                 orderby inv.itemId
                 select new
                 {
@@ -83,6 +83,38 @@ namespace ItemInventory
                 disp_ItemInventory.Rows.Add(r.itemId, r.itemName, r.qty, r.qty_ret);
             }
         }
+
+        internal void fillWarehouseGrid()
+        {
+            Utils.fillDataGrid(db.Warehouse, disp_grid_warehouse);
+        }
+
+        internal void fillItemGrid()
+        {
+            Utils.fillDataGrid(db.Item, disp_grid_item);
+        }
+
+        internal void fillClientGrid()
+        {
+            Utils.fillDataGrid(db.Client, disp_grid_client);
+        }
+        
+        internal void fillHistoryGrid()
+        {
+            disp_grid_history.Rows.Clear();
+
+            dbmgr.InventoryMovementTableAdapter.Fill(db.InventoryMovement);
+            var a = from invm in db.InventoryMovement
+                    join item in db.Item on invm.itemId equals item.id
+                    join warehouse in db.Warehouse on invm.warehouseId equals warehouse.id
+                    select new { invm.refno, warehouse.warehouseName, item.itemName, invm.quantity };
+
+            foreach (var r in a)
+            {
+                disp_grid_history.Rows.Add(r.refno, r.warehouseName, r.itemName, r.quantity);
+            }
+        }
+
         /*
          * EVENT HANDLERS
          */
@@ -136,12 +168,19 @@ namespace ItemInventory
             }
         }
 
+        internal void inv_setSelectedWarehouse(string wname)
+        {
+            input_warehouse.SelectedIndex = input_warehouse.FindStringExact(wname);
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
-            dbm.dbmgr.ItemTableAdapter.Fill(dbm.db.Item);
-            dbm.dbmgr.WarehouseTableAdapter.Fill(dbm.db.Warehouse);
-            dbm.dbmgr.ItemInventoryTableAdapter.Fill(dbm.db.ItemInventory);
-            dbm.dbmgr.ReturnsInventoryTableAdapter.Fill(dbm.db.ReturnsInventory);
+            dbmgr.ItemTableAdapter.Fill(db.Item);
+            dbmgr.WarehouseTableAdapter.Fill(db.Warehouse);
+            dbmgr.ClientTableAdapter.Fill(db.Client);
+            dbmgr.InventoryMovementTableAdapter.Fill(db.InventoryMovement);
+            dbmgr.ItemInventoryTableAdapter.Fill(db.ItemInventory);
+            dbmgr.ReturnsInventoryTableAdapter.Fill(db.ReturnsInventory);
             
             fillWarehouseComboBox();
             input_warehouse.SelectedIndex = input_warehouse.Items.Count > 0 ? 0 : -1;
@@ -151,7 +190,8 @@ namespace ItemInventory
 
         private void input_warehouse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            invoice_fillDataGrid();
+            RecordsDataSet.WarehouseRow w = input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow;
+            fillInventoryGrid(w.id);
         }
 
         private void btn_newInvoice_Click(object sender, EventArgs e)
@@ -170,24 +210,24 @@ namespace ItemInventory
             invoice_fillInvoiceNoComboBox();
         }
 
-        private void tab_InventoryMov_Click(object sender, EventArgs e)
+        private void tab_warehouses_Enter(object sender, EventArgs e)
         {
-
+            fillWarehouseGrid();
         }
 
-        private void tab_Warehouses_Click(object sender, EventArgs e)
+        private void tab_items_Enter(object sender, EventArgs e)
         {
-
+            fillItemGrid();
         }
 
-        private void tab_Items_Click(object sender, EventArgs e)
+        private void tab_clients_Enter(object sender, EventArgs e)
         {
-
+            fillClientGrid();
         }
 
-        private void tab_Clients_Click(object sender, EventArgs e)
+        private void tab_history_Enter(object sender, EventArgs e)
         {
-
+            fillHistoryGrid();
         }
     }
 }

@@ -38,16 +38,16 @@ namespace ItemInventory
          */
         private void initTables()
         {
-            dbm.dbmgr.InvoiceTableAdapter.Fill(dbm.db.Invoice);
-            dbm.dbmgr.InvoiceItemTableAdapter.Fill(dbm.db.InvoiceItem);
-            dbm.dbmgr.ItemTableAdapter.Fill(dbm.db.Item);
-            dbm.dbmgr.ClientTableAdapter.Fill(dbm.db.Client);
+            dbm.dbmgr.InvoiceTableAdapter.Fill(db.Invoice);
+            dbm.dbmgr.InvoiceItemTableAdapter.Fill(db.InvoiceItem);
+            dbm.dbmgr.ItemTableAdapter.Fill(db.Item);
+            dbm.dbmgr.ClientTableAdapter.Fill(db.Client);
         }
 
         private void fillItemComboBox()
         {
             RecordsDataSet.ItemRow[] items =
-                (from item in dbm.db.Item
+                (from item in db.Item
                 where item.itemStatus.Equals("AV")
                 select item).ToArray();
 
@@ -57,7 +57,7 @@ namespace ItemInventory
         private void fillClientComboBox()
         {
             RecordsDataSet.ClientRow[] clients =
-                (from client in dbm.db.Client
+                (from client in db.Client
                  where client.clientStatus.Equals("AC")
                  select client).ToArray();
 
@@ -83,7 +83,7 @@ namespace ItemInventory
 
         private RecordsDataSet.InvoiceRow makeInvoice()
         {
-            return dbm.db.Invoice.AddInvoiceRow(
+            return db.Invoice.AddInvoiceRow(
                 input_invoiceNo.Text,
                 input_date.Value,
                 input_clientName.SelectedItem as RecordsDataSet.ClientRow);
@@ -95,7 +95,7 @@ namespace ItemInventory
             {
                 DataGridViewCellCollection c = r.Cells;
 
-                dbm.db.InvoiceItem.AddInvoiceItemRow(
+                db.InvoiceItem.AddInvoiceItemRow(
                     invoice,
                     c["itemName"].Value as RecordsDataSet.ItemRow,
                     (int)c["quantity"].Value,
@@ -224,13 +224,13 @@ namespace ItemInventory
                 }
                 else
                 {
-                    dbm.db.RejectChanges();
+                    db.RejectChanges();
                 }
             }
             catch(Exception ex)
             when (ex is ConstraintException || ex is Exception)
             {
-                dbm.db.RejectChanges();
+                db.RejectChanges();
                 if (ex is ConstraintException)
                 {
                     MainForm.showErrorMessage(
@@ -252,7 +252,6 @@ namespace ItemInventory
             MainForm p = parent as MainForm;
             p.invoice_initTables();
             p.invoice_fillInvoiceNoComboBox();
-            p.invoice_fillDataGrid();
         }
     }
 }

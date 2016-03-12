@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.window_tabs = new System.Windows.Forms.TabControl();
             this.tab_Inventory = new System.Windows.Forms.TabPage();
             this.btn_addItems = new System.Windows.Forms.Button();
@@ -37,11 +38,11 @@
             this.disp_ItemInventory = new System.Windows.Forms.DataGridView();
             this.inv_itemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.inv_itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.returns = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inv_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inv_returns = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.input_warehouse = new System.Windows.Forms.ComboBox();
             this.tab_InventoryMov = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.disp_grid_history = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,38 +68,41 @@
             this.tab_Warehouses = new System.Windows.Forms.TabPage();
             this.btn_registerWarehouse = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.input_grid_warehouse = new System.Windows.Forms.DataGridView();
-            this.warehouseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.warehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disp_grid_warehouse = new System.Windows.Forms.DataGridView();
+            this.col_warehouseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_warehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_warehouseDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_warehouseStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_Items = new System.Windows.Forms.TabPage();
             this.btn_registerItem = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.input_grid_item = new System.Windows.Forms.DataGridView();
-            this.itemIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itemDescCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disp_grid_item = new System.Windows.Forms.DataGridView();
+            this.col_itemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_itemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_itemStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_Clients = new System.Windows.Forms.TabPage();
             this.btn_registerClients = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.input_grid_client = new System.Windows.Forms.DataGridView();
-            this.clientId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disp_grid_client = new System.Windows.Forms.DataGridView();
+            this.col_clientId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_clientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_clientAddr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_clientStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.window_tabs.SuspendLayout();
             this.tab_Inventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_ItemInventory)).BeginInit();
             this.tab_InventoryMov.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.disp_grid_history)).BeginInit();
             this.tab_Invoices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid_inv)).BeginInit();
             this.tab_Warehouses.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.input_grid_warehouse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.disp_grid_warehouse)).BeginInit();
             this.tab_Items.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.input_grid_item)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.disp_grid_item)).BeginInit();
             this.tab_Clients.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.input_grid_client)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.disp_grid_client)).BeginInit();
             this.SuspendLayout();
             // 
             // window_tabs
@@ -188,15 +192,14 @@
             this.disp_ItemInventory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.inv_itemId,
             this.inv_itemName,
-            this.quantity,
-            this.returns});
+            this.inv_quantity,
+            this.inv_returns});
             this.disp_ItemInventory.Location = new System.Drawing.Point(6, 127);
             this.disp_ItemInventory.Name = "disp_ItemInventory";
             this.disp_ItemInventory.ReadOnly = true;
             this.disp_ItemInventory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.disp_ItemInventory.Size = new System.Drawing.Size(1065, 442);
             this.disp_ItemInventory.TabIndex = 15;
-            this.disp_ItemInventory.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.disp_grid_inv_RowStateChanged);
             // 
             // inv_itemId
             // 
@@ -212,18 +215,18 @@
             this.inv_itemName.Name = "inv_itemName";
             this.inv_itemName.ReadOnly = true;
             // 
-            // quantity
+            // inv_quantity
             // 
-            this.quantity.HeaderText = "Qty";
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
+            this.inv_quantity.HeaderText = "Qty";
+            this.inv_quantity.Name = "inv_quantity";
+            this.inv_quantity.ReadOnly = true;
             // 
-            // returns
+            // inv_returns
             // 
-            this.returns.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.returns.HeaderText = "Returns";
-            this.returns.Name = "returns";
-            this.returns.ReadOnly = true;
+            this.inv_returns.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.inv_returns.HeaderText = "Returns";
+            this.inv_returns.Name = "inv_returns";
+            this.inv_returns.ReadOnly = true;
             // 
             // input_warehouse
             // 
@@ -234,11 +237,12 @@
             this.input_warehouse.Name = "input_warehouse";
             this.input_warehouse.Size = new System.Drawing.Size(184, 25);
             this.input_warehouse.TabIndex = 14;
+            this.input_warehouse.SelectedIndexChanged += new System.EventHandler(this.input_warehouse_SelectedIndexChanged);
             // 
             // tab_InventoryMov
             // 
             this.tab_InventoryMov.BackColor = System.Drawing.Color.MidnightBlue;
-            this.tab_InventoryMov.Controls.Add(this.dataGridView1);
+            this.tab_InventoryMov.Controls.Add(this.disp_grid_history);
             this.tab_InventoryMov.Controls.Add(this.label11);
             this.tab_InventoryMov.Location = new System.Drawing.Point(4, 26);
             this.tab_InventoryMov.Name = "tab_InventoryMov";
@@ -246,28 +250,30 @@
             this.tab_InventoryMov.Size = new System.Drawing.Size(1077, 577);
             this.tab_InventoryMov.TabIndex = 4;
             this.tab_InventoryMov.Text = "Inventory History";
-            this.tab_InventoryMov.Click += new System.EventHandler(this.tab_InventoryMov_Click);
+            this.tab_InventoryMov.Enter += new System.EventHandler(this.tab_history_Enter);
             // 
-            // dataGridView1
+            // disp_grid_history
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.disp_grid_history.AllowUserToAddRows = false;
+            this.disp_grid_history.AllowUserToDeleteRows = false;
+            this.disp_grid_history.AllowUserToResizeColumns = false;
+            this.disp_grid_history.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.disp_grid_history.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.disp_grid_history.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 66);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1065, 503);
-            this.dataGridView1.TabIndex = 24;
+            this.disp_grid_history.Location = new System.Drawing.Point(6, 66);
+            this.disp_grid_history.Name = "disp_grid_history";
+            this.disp_grid_history.ReadOnly = true;
+            this.disp_grid_history.RowHeadersVisible = false;
+            this.disp_grid_history.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.disp_grid_history.Size = new System.Drawing.Size(1065, 503);
+            this.disp_grid_history.TabIndex = 24;
+            this.disp_grid_history.Enter += new System.EventHandler(this.tab_history_Enter);
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -335,7 +341,7 @@
             // 
             this.btn_recordReturns.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_recordReturns.ForeColor = System.Drawing.Color.White;
-            this.btn_recordReturns.Location = new System.Drawing.Point(374, 52);
+            this.btn_recordReturns.Location = new System.Drawing.Point(343, 52);
             this.btn_recordReturns.Name = "btn_recordReturns";
             this.btn_recordReturns.Size = new System.Drawing.Size(134, 28);
             this.btn_recordReturns.TabIndex = 32;
@@ -347,7 +353,7 @@
             // 
             this.btn_cancelSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancelSelected.ForeColor = System.Drawing.Color.White;
-            this.btn_cancelSelected.Location = new System.Drawing.Point(234, 52);
+            this.btn_cancelSelected.Location = new System.Drawing.Point(212, 52);
             this.btn_cancelSelected.Name = "btn_cancelSelected";
             this.btn_cancelSelected.Size = new System.Drawing.Size(134, 28);
             this.btn_cancelSelected.TabIndex = 31;
@@ -359,7 +365,7 @@
             // 
             this.btn_serveSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_serveSelected.ForeColor = System.Drawing.Color.White;
-            this.btn_serveSelected.Location = new System.Drawing.Point(102, 52);
+            this.btn_serveSelected.Location = new System.Drawing.Point(90, 52);
             this.btn_serveSelected.Name = "btn_serveSelected";
             this.btn_serveSelected.Size = new System.Drawing.Size(126, 28);
             this.btn_serveSelected.TabIndex = 30;
@@ -473,6 +479,7 @@
             this.disp_grid_inv.Location = new System.Drawing.Point(6, 158);
             this.disp_grid_inv.Name = "disp_grid_inv";
             this.disp_grid_inv.ReadOnly = true;
+            this.disp_grid_inv.RowHeadersVisible = false;
             this.disp_grid_inv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.disp_grid_inv.Size = new System.Drawing.Size(1063, 411);
             this.disp_grid_inv.TabIndex = 21;
@@ -509,14 +516,14 @@
             this.tab_Warehouses.BackColor = System.Drawing.Color.MidnightBlue;
             this.tab_Warehouses.Controls.Add(this.btn_registerWarehouse);
             this.tab_Warehouses.Controls.Add(this.label8);
-            this.tab_Warehouses.Controls.Add(this.input_grid_warehouse);
+            this.tab_Warehouses.Controls.Add(this.disp_grid_warehouse);
             this.tab_Warehouses.Location = new System.Drawing.Point(4, 26);
             this.tab_Warehouses.Name = "tab_Warehouses";
             this.tab_Warehouses.Padding = new System.Windows.Forms.Padding(3);
             this.tab_Warehouses.Size = new System.Drawing.Size(1077, 577);
             this.tab_Warehouses.TabIndex = 1;
             this.tab_Warehouses.Text = "Warehouses";
-            this.tab_Warehouses.Click += new System.EventHandler(this.tab_Warehouses_Click);
+            this.tab_Warehouses.Enter += new System.EventHandler(this.tab_warehouses_Enter);
             // 
             // btn_registerWarehouse
             // 
@@ -541,58 +548,66 @@
             this.label8.TabIndex = 11;
             this.label8.Text = "Warehouses";
             // 
-            // input_grid_warehouse
+            // disp_grid_warehouse
             // 
-            this.input_grid_warehouse.AllowUserToAddRows = false;
-            this.input_grid_warehouse.AllowUserToDeleteRows = false;
-            this.input_grid_warehouse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.disp_grid_warehouse.AllowUserToAddRows = false;
+            this.disp_grid_warehouse.AllowUserToDeleteRows = false;
+            this.disp_grid_warehouse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.input_grid_warehouse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.input_grid_warehouse.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.warehouseId,
-            this.warehouseName,
-            this.description});
-            this.input_grid_warehouse.Location = new System.Drawing.Point(6, 83);
-            this.input_grid_warehouse.Name = "input_grid_warehouse";
-            this.input_grid_warehouse.ReadOnly = true;
-            this.input_grid_warehouse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.input_grid_warehouse.Size = new System.Drawing.Size(1063, 486);
-            this.input_grid_warehouse.TabIndex = 10;
+            this.disp_grid_warehouse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.disp_grid_warehouse.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_warehouseId,
+            this.col_warehouseName,
+            this.col_warehouseDesc,
+            this.col_warehouseStatus});
+            this.disp_grid_warehouse.Location = new System.Drawing.Point(6, 83);
+            this.disp_grid_warehouse.Name = "disp_grid_warehouse";
+            this.disp_grid_warehouse.ReadOnly = true;
+            this.disp_grid_warehouse.RowHeadersVisible = false;
+            this.disp_grid_warehouse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.disp_grid_warehouse.Size = new System.Drawing.Size(1063, 486);
+            this.disp_grid_warehouse.TabIndex = 10;
             // 
-            // warehouseId
+            // col_warehouseId
             // 
-            this.warehouseId.HeaderText = "ID";
-            this.warehouseId.Name = "warehouseId";
-            this.warehouseId.ReadOnly = true;
+            this.col_warehouseId.HeaderText = "Id";
+            this.col_warehouseId.Name = "col_warehouseId";
+            this.col_warehouseId.ReadOnly = true;
             // 
-            // warehouseName
+            // col_warehouseName
             // 
-            this.warehouseName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.warehouseName.HeaderText = "Name";
-            this.warehouseName.Name = "warehouseName";
-            this.warehouseName.ReadOnly = true;
+            this.col_warehouseName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_warehouseName.HeaderText = "Name";
+            this.col_warehouseName.Name = "col_warehouseName";
+            this.col_warehouseName.ReadOnly = true;
             // 
-            // description
+            // col_warehouseDesc
             // 
-            this.description.HeaderText = "Description";
-            this.description.Name = "description";
-            this.description.ReadOnly = true;
-            this.description.Width = 150;
+            this.col_warehouseDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_warehouseDesc.HeaderText = "Description";
+            this.col_warehouseDesc.Name = "col_warehouseDesc";
+            this.col_warehouseDesc.ReadOnly = true;
+            // 
+            // col_warehouseStatus
+            // 
+            this.col_warehouseStatus.HeaderText = "Status";
+            this.col_warehouseStatus.Name = "col_warehouseStatus";
+            this.col_warehouseStatus.ReadOnly = true;
             // 
             // tab_Items
             // 
             this.tab_Items.BackColor = System.Drawing.Color.MidnightBlue;
             this.tab_Items.Controls.Add(this.btn_registerItem);
             this.tab_Items.Controls.Add(this.label9);
-            this.tab_Items.Controls.Add(this.input_grid_item);
+            this.tab_Items.Controls.Add(this.disp_grid_item);
             this.tab_Items.Location = new System.Drawing.Point(4, 26);
             this.tab_Items.Name = "tab_Items";
             this.tab_Items.Padding = new System.Windows.Forms.Padding(3);
             this.tab_Items.Size = new System.Drawing.Size(1077, 577);
             this.tab_Items.TabIndex = 2;
             this.tab_Items.Text = "Items";
-            this.tab_Items.Click += new System.EventHandler(this.tab_Items_Click);
+            this.tab_Items.Enter += new System.EventHandler(this.tab_items_Enter);
             // 
             // btn_registerItem
             // 
@@ -617,66 +632,76 @@
             this.label9.TabIndex = 12;
             this.label9.Text = "Items";
             // 
-            // input_grid_item
+            // disp_grid_item
             // 
-            this.input_grid_item.AllowUserToAddRows = false;
-            this.input_grid_item.AllowUserToDeleteRows = false;
-            this.input_grid_item.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.disp_grid_item.AllowUserToAddRows = false;
+            this.disp_grid_item.AllowUserToDeleteRows = false;
+            this.disp_grid_item.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.input_grid_item.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.input_grid_item.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.itemIdCol,
-            this.itemNameCol,
-            this.itemDescCol,
-            this.unitPrice});
-            this.input_grid_item.Location = new System.Drawing.Point(6, 83);
-            this.input_grid_item.Name = "input_grid_item";
-            this.input_grid_item.ReadOnly = true;
-            this.input_grid_item.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.input_grid_item.Size = new System.Drawing.Size(1063, 486);
-            this.input_grid_item.TabIndex = 11;
+            this.disp_grid_item.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.disp_grid_item.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_itemId,
+            this.col_itemName,
+            this.col_itemDesc,
+            this.col_unitPrice,
+            this.col_itemStatus});
+            this.disp_grid_item.Location = new System.Drawing.Point(6, 83);
+            this.disp_grid_item.Name = "disp_grid_item";
+            this.disp_grid_item.ReadOnly = true;
+            this.disp_grid_item.RowHeadersVisible = false;
+            this.disp_grid_item.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.disp_grid_item.Size = new System.Drawing.Size(1063, 486);
+            this.disp_grid_item.TabIndex = 11;
             // 
-            // itemIdCol
+            // col_itemId
             // 
-            this.itemIdCol.HeaderText = "ID";
-            this.itemIdCol.Name = "itemIdCol";
-            this.itemIdCol.ReadOnly = true;
+            this.col_itemId.HeaderText = "Id";
+            this.col_itemId.Name = "col_itemId";
+            this.col_itemId.ReadOnly = true;
             // 
-            // itemNameCol
+            // col_itemName
             // 
-            this.itemNameCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.itemNameCol.HeaderText = "Name";
-            this.itemNameCol.Name = "itemNameCol";
-            this.itemNameCol.ReadOnly = true;
+            this.col_itemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_itemName.HeaderText = "Name";
+            this.col_itemName.Name = "col_itemName";
+            this.col_itemName.ReadOnly = true;
             // 
-            // itemDescCol
+            // col_itemDesc
             // 
-            this.itemDescCol.FillWeight = 200F;
-            this.itemDescCol.HeaderText = "Description";
-            this.itemDescCol.Name = "itemDescCol";
-            this.itemDescCol.ReadOnly = true;
-            this.itemDescCol.Width = 220;
+            this.col_itemDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_itemDesc.HeaderText = "Description";
+            this.col_itemDesc.Name = "col_itemDesc";
+            this.col_itemDesc.ReadOnly = true;
             // 
-            // unitPrice
+            // col_unitPrice
             // 
-            this.unitPrice.HeaderText = "Unit Price";
-            this.unitPrice.Name = "unitPrice";
-            this.unitPrice.ReadOnly = true;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = "--";
+            this.col_unitPrice.DefaultCellStyle = dataGridViewCellStyle1;
+            this.col_unitPrice.HeaderText = "Unit Price";
+            this.col_unitPrice.Name = "col_unitPrice";
+            this.col_unitPrice.ReadOnly = true;
+            // 
+            // col_itemStatus
+            // 
+            this.col_itemStatus.HeaderText = "Status";
+            this.col_itemStatus.Name = "col_itemStatus";
+            this.col_itemStatus.ReadOnly = true;
             // 
             // tab_Clients
             // 
             this.tab_Clients.BackColor = System.Drawing.Color.MidnightBlue;
             this.tab_Clients.Controls.Add(this.btn_registerClients);
             this.tab_Clients.Controls.Add(this.label10);
-            this.tab_Clients.Controls.Add(this.input_grid_client);
+            this.tab_Clients.Controls.Add(this.disp_grid_client);
             this.tab_Clients.Location = new System.Drawing.Point(4, 26);
             this.tab_Clients.Name = "tab_Clients";
             this.tab_Clients.Padding = new System.Windows.Forms.Padding(3);
             this.tab_Clients.Size = new System.Drawing.Size(1077, 577);
             this.tab_Clients.TabIndex = 3;
             this.tab_Clients.Text = "Clients";
-            this.tab_Clients.Click += new System.EventHandler(this.tab_Clients_Click);
+            this.tab_Clients.Enter += new System.EventHandler(this.tab_clients_Enter);
             // 
             // btn_registerClients
             // 
@@ -701,44 +726,53 @@
             this.label10.TabIndex = 12;
             this.label10.Text = "Clients";
             // 
-            // input_grid_client
+            // disp_grid_client
             // 
-            this.input_grid_client.AllowUserToAddRows = false;
-            this.input_grid_client.AllowUserToDeleteRows = false;
-            this.input_grid_client.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.disp_grid_client.AllowUserToAddRows = false;
+            this.disp_grid_client.AllowUserToDeleteRows = false;
+            this.disp_grid_client.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.input_grid_client.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.input_grid_client.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clientId,
-            this.clientName,
-            this.clientAddress});
-            this.input_grid_client.Location = new System.Drawing.Point(6, 83);
-            this.input_grid_client.Name = "input_grid_client";
-            this.input_grid_client.ReadOnly = true;
-            this.input_grid_client.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.input_grid_client.Size = new System.Drawing.Size(1063, 486);
-            this.input_grid_client.TabIndex = 11;
+            this.disp_grid_client.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.disp_grid_client.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_clientId,
+            this.col_clientName,
+            this.col_clientAddr,
+            this.col_clientStatus});
+            this.disp_grid_client.Location = new System.Drawing.Point(6, 83);
+            this.disp_grid_client.Name = "disp_grid_client";
+            this.disp_grid_client.ReadOnly = true;
+            this.disp_grid_client.RowHeadersVisible = false;
+            this.disp_grid_client.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.disp_grid_client.Size = new System.Drawing.Size(1063, 486);
+            this.disp_grid_client.TabIndex = 11;
+            this.disp_grid_client.Enter += new System.EventHandler(this.tab_clients_Enter);
             // 
-            // clientId
+            // col_clientId
             // 
-            this.clientId.HeaderText = "ID";
-            this.clientId.Name = "clientId";
-            this.clientId.ReadOnly = true;
+            this.col_clientId.HeaderText = "Id";
+            this.col_clientId.Name = "col_clientId";
+            this.col_clientId.ReadOnly = true;
             // 
-            // clientName
+            // col_clientName
             // 
-            this.clientName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clientName.HeaderText = "Name";
-            this.clientName.Name = "clientName";
-            this.clientName.ReadOnly = true;
+            this.col_clientName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_clientName.HeaderText = "Name";
+            this.col_clientName.Name = "col_clientName";
+            this.col_clientName.ReadOnly = true;
             // 
-            // clientAddress
+            // col_clientAddr
             // 
-            this.clientAddress.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clientAddress.HeaderText = "Address";
-            this.clientAddress.Name = "clientAddress";
-            this.clientAddress.ReadOnly = true;
+            this.col_clientAddr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_clientAddr.HeaderText = "Address";
+            this.col_clientAddr.Name = "col_clientAddr";
+            this.col_clientAddr.ReadOnly = true;
+            // 
+            // col_clientStatus
+            // 
+            this.col_clientStatus.HeaderText = "Status";
+            this.col_clientStatus.Name = "col_clientStatus";
+            this.col_clientStatus.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -759,19 +793,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.disp_ItemInventory)).EndInit();
             this.tab_InventoryMov.ResumeLayout(false);
             this.tab_InventoryMov.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.disp_grid_history)).EndInit();
             this.tab_Invoices.ResumeLayout(false);
             this.tab_Invoices.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid_inv)).EndInit();
             this.tab_Warehouses.ResumeLayout(false);
             this.tab_Warehouses.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.input_grid_warehouse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.disp_grid_warehouse)).EndInit();
             this.tab_Items.ResumeLayout(false);
             this.tab_Items.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.input_grid_item)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.disp_grid_item)).EndInit();
             this.tab_Clients.ResumeLayout(false);
             this.tab_Clients.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.input_grid_client)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.disp_grid_client)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -799,20 +833,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView disp_grid_inv;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView input_grid_warehouse;
+        private System.Windows.Forms.DataGridView disp_grid_warehouse;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridView input_grid_item;
-        private System.Windows.Forms.DataGridViewTextBoxColumn warehouseId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemIdCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemNameCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itemDescCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn warehouseName;
+        private System.Windows.Forms.DataGridView disp_grid_item;
         private System.Windows.Forms.Button btn_registerItem;
         private System.Windows.Forms.Button btn_registerWarehouse;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridView input_grid_client;
+        private System.Windows.Forms.DataGridView disp_grid_client;
         private System.Windows.Forms.Button btn_registerClients;
         private System.Windows.Forms.Button btn_newInvoice;
         private System.Windows.Forms.Button btn_cancelSelected;
@@ -822,19 +849,29 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn inv_itemId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn inv_itemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn returns;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridView disp_grid_history;
         private System.Windows.Forms.Button btn_recordReturns;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientId;
         private System.Windows.Forms.DataGridViewTextBoxColumn invoice_itemId;
         private System.Windows.Forms.DataGridViewTextBoxColumn invoice_itemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn invoice_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn invoice_orderStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_warehouseId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_warehouseName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_warehouseDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_warehouseStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_clientId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_clientName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_clientAddr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_clientStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inv_quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inv_returns;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inv_itemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inv_itemId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_itemStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_unitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_itemDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_itemName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_itemId;
     }
 }
 

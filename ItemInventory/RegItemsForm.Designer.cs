@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.input_grid = new System.Windows.Forms.DataGridView();
             this.btn_register = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
@@ -100,6 +101,9 @@
             // 
             // unitPrice
             // 
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = "--";
+            this.unitPrice.DefaultCellStyle = dataGridViewCellStyle1;
             this.unitPrice.HeaderText = "Unit Price";
             this.unitPrice.Name = "unitPrice";
             // 

@@ -31,7 +31,7 @@ namespace ItemInventory
         public void fillItemComboBox()
         {
             RecordsDataSet.ItemRow[] items =
-                (from item in dbm.db.Item
+                (from item in db.Item
                 where item.itemStatus.Equals("AV")
                 select item).ToArray();
 
@@ -66,7 +66,7 @@ namespace ItemInventory
                 int quantity = int.Parse(c["quantity"].Value.ToString());
 
                 RecordsDataSet.ItemInventoryRow inventoryRow =
-                    dbm.db.ItemInventory.FindBywarehouseIditemId(warehouse.id, i_itemId);
+                    db.ItemInventory.FindBywarehouseIditemId(warehouse.id, i_itemId);
 
                 if (inventoryRow != null)
                 {
@@ -74,9 +74,9 @@ namespace ItemInventory
                 }
                 else
                 {
-                    dbm.db.ItemInventory.AddItemInventoryRow(
+                    db.ItemInventory.AddItemInventoryRow(
                         warehouse,
-                        dbm.db.Item.FindByid(i_itemId),
+                        db.Item.FindByid(i_itemId),
                         quantity);
                 }
             }
@@ -86,7 +86,7 @@ namespace ItemInventory
 
         private void initTable()
         {
-            dbm.dbmgr.ItemInventoryTableAdapter.Fill(dbm.db.ItemInventory);           
+            dbm.dbmgr.ItemInventoryTableAdapter.Fill(db.ItemInventory);           
         }
 
         /*
@@ -116,7 +116,11 @@ namespace ItemInventory
         private void btn_add_Click(object sender, EventArgs e)
         {
             RecordsDataSet.ItemRow item = input_itemId.SelectedItem as RecordsDataSet.ItemRow;
-            int index = findRow(item.id.ToString());
+            int index = -1;
+            if (item != null)
+            {
+                index = findRow(item.id.ToString());
+            }
 
             if (input_itemId.SelectedIndex < 0)
             {
@@ -146,19 +150,25 @@ namespace ItemInventory
         {
             try
             {
-                LoadingPrompt l = new LoadingPrompt("Processing Request...");
                 int rowsAdded = updateDataSet();       
 
                 if (rowsAdded > 0)
                 {
-                    dbm.dbmgr.ItemInventoryTableAdapter.Update(dbm.db);
-                    dbm.dbmgr.ReturnsInventoryTableAdapter.Fill(dbm.db.ReturnsInventory);
-                    ((MainForm)parent).invoice_fillDataGrid();
+                    dbmgr.ItemInventoryTableAdapter.Update(dbm.db);
+                    dbmgr.ReturnsInventoryTableAdapter.Fill(db.ReturnsInventory);
+
+                    MainForm p = parent as MainForm;
+                    p.fillInventoryGrid(warehouse.id);
+                    p.fillWarehouseComboBox();
+                    p.inv_setSelectedWarehouse(warehouse.warehouseName);
+                    p.fillHistoryGrid();
                     MainForm.showSuccessMessage("Successfuly updated " + rowsAdded + " item(s) in inventory.");
+
+                    Close();
                 }
                 else
                 {
-                    dbm.db.RejectChanges();
+                    db.RejectChanges();
                     MainForm.showErrorMessage("No item(s) were updated in inventory.");
                 }
             }
@@ -168,7 +178,7 @@ namespace ItemInventory
                     ex is SqlException ||
                     ex is Exception)
             {
-                dbm.db.RejectChanges();
+                db.RejectChanges();
 
                 if (ex is ConstraintException)
                 {
@@ -187,8 +197,6 @@ namespace ItemInventory
                     MainForm.showErrorMessage(ex.Message);
                 }
             }
-
-            this.Dispose();
         }
     }
 }

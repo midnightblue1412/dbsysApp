@@ -20,7 +20,7 @@ namespace ItemInventory
 
         internal void initTable()
         {
-            dbm.dbmgr.ClientTableAdapter.Fill(dbm.db.Client);
+            dbm.dbmgr.ClientTableAdapter.Fill(db.Client);
         }
         
         private void RegClientsForm_Load(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace ItemInventory
             {
                 Utils.RowProcessor proc = (c) =>
                 {
-                    dbm.db.Client.AddClientRow(
+                    db.Client.AddClientRow(
                         c["id"].Value.ToString(),
                         c["clientName"].Value.ToString(),
                         c["contactNo"].Value.ToString());
@@ -48,7 +48,7 @@ namespace ItemInventory
                 Utils.ErrorCallBack callback = (col) =>
                 {
                     MainForm.showErrorMessage("Missing Input in column '" + col + "'");
-                    dbm.db.RejectChanges();
+                    db.RejectChanges();
                 };
 
                 int rowsAdded =
@@ -56,11 +56,16 @@ namespace ItemInventory
 
                 if (rowsAdded > 0)
                 {
-                    dbm.dbmgr.ClientTableAdapter.Update(dbm.db.Client);
+                    dbm.dbmgr.ClientTableAdapter.Update(db.Client);
                     input_grid.Rows.Clear();
-                    Close();
+
+                    MainForm p = parent as MainForm;
+                    p.fillClientGrid();
+
                     MainForm.showSuccessMessage(
                         "Successfuly registered " + rowsAdded + " client(s)");
+                    
+                    Close();
                 }
                 else if(rowsAdded == 0)
                 {
@@ -72,7 +77,7 @@ namespace ItemInventory
                     ex is DBConcurrencyException ||
                     ex is SqlException)
             {
-                dbm.db.RejectChanges();
+                db.RejectChanges();
 
                 if (ex is ConstraintException)
                 {

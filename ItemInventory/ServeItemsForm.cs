@@ -20,13 +20,11 @@ namespace ItemInventory
 
         InputFields input;
 
-        public ServeItemsForm()
+        public ServeItemsForm() : this(null, null) { }
+
+        public ServeItemsForm(InputFields input, DbForm parent):base(parent)
         {
             InitializeComponent();
-        }
-
-        public ServeItemsForm(InputFields input)
-        {
             this.input = input;
         }
 
@@ -35,13 +33,18 @@ namespace ItemInventory
          */
          private void initTable()
         {
-            dbm.dbmgr.WarehouseTableAdapter.Fill(dbm.db.Warehouse);
+            dbm.dbmgr.WarehouseTableAdapter.Fill(db.Warehouse);
+        }
+
+        public void useInput(InputFields input)
+        {
+            this.input = input;
         }
 
         private void fillWarehouseComboBox()
         {
             RecordsDataSet.WarehouseRow[] r = 
-                (from warehouse in dbm.db.Warehouse
+                (from warehouse in db.Warehouse
                 where warehouse.warehouseStatus.Equals("OP")
                 select warehouse).ToArray();
 
@@ -59,12 +62,21 @@ namespace ItemInventory
 
         private void btn_continue_Click(object sender, EventArgs e)
         {
-            input.warehouse = input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow;
-            input.date = input_date.Value;
+            //TODO: CHECK IF WAREHOUSE HAS ENOUGH STOCK
+            RecordsDataSet.WarehouseRow wh = input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow;
+            if (wh == null)
+            {
+                MainForm.showErrorMessage("Select Warehouse First.");
+            }
+            else
+            {
+                input.warehouse = input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow;
+                input.date = input_date.Value;
 
-            DialogResult = DialogResult.OK;
+                DialogResult = DialogResult.OK;
 
-            Close();
+                Close();
+            }            
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)

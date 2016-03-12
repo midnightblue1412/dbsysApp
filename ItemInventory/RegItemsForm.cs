@@ -25,7 +25,7 @@ namespace ItemInventory
 
         internal void initTable()
         {
-            dbm.dbmgr.ItemTableAdapter.Fill(dbm.db.Item);
+            dbm.dbmgr.ItemTableAdapter.Fill(db.Item);
         }
         
         private void btn_register_Click(object sender, EventArgs e)
@@ -38,10 +38,12 @@ namespace ItemInventory
                 {
                     dbm.dbmgr.ItemTableAdapter.Update(dbm.db);
                     MainForm.showSuccessMessage("Successfuly registered " + rowsAdded + " item(s).");
+                    MainForm p = parent as MainForm;
+                    p.fillItemGrid();
                     Close();
                 }
                 else {
-                    dbm.db.Item.RejectChanges();
+                    db.Item.RejectChanges();
                     MainForm.showErrorMessage("Failed to register item(s).");                        
                 }                
             }
@@ -51,7 +53,7 @@ namespace ItemInventory
                     ex is SqlException ||
                     ex is InvalidPriceException)
             {
-                dbm.db.RejectChanges();
+                db.RejectChanges();
 
                 if (ex is ConstraintException)
                 {
@@ -80,7 +82,7 @@ namespace ItemInventory
 
                 if (decimal.TryParse(c["unitPrice"].Value.ToString(), out uPrice))
                 {
-                    dbm.db.Item.AddItemRow(
+                    db.Item.AddItemRow(
                     c["itemName"].Value.ToString(),
                     c["description"].Value.ToString(),
                     uPrice,
@@ -96,7 +98,7 @@ namespace ItemInventory
             Utils.ErrorCallBack callback = (col) =>
             {
                 MainForm.showErrorMessage("Missing Input in column '" + col + "'");
-                dbm.db.RejectChanges();
+                db.RejectChanges();
             };
 
             int rowsAdded =

@@ -74,5 +74,25 @@ namespace ItemInventory
 
             return dataGrid.Rows.Count - (dataGrid.AllowUserToAddRows ? 1 : 0);
         }
+
+        public static void fillDataGrid(DataTable table, DataGridView grid, bool clearBeforeFill = true)
+        {
+            if (clearBeforeFill)
+            {
+                grid.Rows.Clear();
+            }
+
+            int cols = table.Columns.Count;
+            object[] c = new object[cols];
+            foreach (DataRow row in table.AsEnumerable())
+            {
+                for (int i = 0; i < cols; i++)
+                {
+                    c[i] = row[i];
+                }
+
+                grid.Rows.Add(c);
+            }
+        }
     }
 }
