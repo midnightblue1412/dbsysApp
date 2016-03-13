@@ -31,11 +31,6 @@ namespace ItemInventory
         /*
          *  METHODS
          */
-         private void initTable()
-        {
-            dbm.dbmgr.WarehouseTableAdapter.Fill(db.Warehouse);
-        }
-
         public void setInvoice(string invoiceNo)
         {
             input_date.MinDate = (DateTime)dbm.qadp.GetOrderDate(invoiceNo);
@@ -61,13 +56,11 @@ namespace ItemInventory
          */
         private void ServeItemsForm_Load(object sender, EventArgs e)
         {
-            initTable();
             fillWarehouseComboBox();
         }
 
         private void btn_continue_Click(object sender, EventArgs e)
         {
-            //TODO: CHECK IF WAREHOUSE HAS ENOUGH STOCK
             RecordsDataSet.WarehouseRow wh = input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow;
             if (wh == null)
             {

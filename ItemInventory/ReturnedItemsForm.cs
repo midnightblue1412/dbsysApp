@@ -35,7 +35,8 @@ namespace ItemInventory
         {
             var r =
                 from item in db.ItemServed
-                where item.invoiceNo.Equals(disp_invoiceNo.Text)
+                where item.invoiceNo.Equals(disp_invoiceNo.Text) &&
+                        db.ItemReturned.FindByinvoiceNoitemId(item.invoiceNo, item.itemId) == null                 
                 select item.ItemInventoryRowParent.ItemRow;
 
             input_itemId.Items.AddRange(r.ToArray());
@@ -97,6 +98,9 @@ namespace ItemInventory
             try
             {
                 recordReturns();
+
+                MainForm p = parent as MainForm;
+
                 MainForm.showSuccessMessage("Operation Successful.");
                 Close();
             }

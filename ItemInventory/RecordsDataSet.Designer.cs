@@ -60,9 +60,9 @@ namespace ItemInventory {
         
         private global::System.Data.DataRelation relationFK__ItemInven__wareh__22AA2996;
         
-        private global::System.Data.DataRelation relationFK__ItemReturned__3A81B327;
-        
         private global::System.Data.DataRelation relationFK__ItemReturned__3B75D760;
+        
+        private global::System.Data.DataRelation relationFK__ItemReturned__71D1E811;
         
         private global::System.Data.DataRelation relationFK__ItemServed__403A8C7D;
         
@@ -469,8 +469,8 @@ namespace ItemInventory {
             this.relationFK__InvoiceIt__itemI__300424B4 = this.Relations["FK__InvoiceIt__itemI__300424B4"];
             this.relationFK__ItemInven__itemI__239E4DCF = this.Relations["FK__ItemInven__itemI__239E4DCF"];
             this.relationFK__ItemInven__wareh__22AA2996 = this.Relations["FK__ItemInven__wareh__22AA2996"];
-            this.relationFK__ItemReturned__3A81B327 = this.Relations["FK__ItemReturned__3A81B327"];
             this.relationFK__ItemReturned__3B75D760 = this.Relations["FK__ItemReturned__3B75D760"];
+            this.relationFK__ItemReturned__71D1E811 = this.Relations["FK__ItemReturned__71D1E811"];
             this.relationFK__ItemServed__403A8C7D = this.Relations["FK__ItemServed__403A8C7D"];
             this.relationFK__ItemServed__412EB0B6 = this.Relations["FK__ItemServed__412EB0B6"];
             this.relationFK__ReturnServed__46E78A0C = this.Relations["FK__ReturnServed__46E78A0C"];
@@ -540,18 +540,18 @@ namespace ItemInventory {
                         this.tableWarehouse.idColumn}, new global::System.Data.DataColumn[] {
                         this.tableItemInventory.warehouseIdColumn}, false);
             this.Relations.Add(this.relationFK__ItemInven__wareh__22AA2996);
-            this.relationFK__ItemReturned__3A81B327 = new global::System.Data.DataRelation("FK__ItemReturned__3A81B327", new global::System.Data.DataColumn[] {
-                        this.tableInvoiceItem.invoiceNoColumn,
-                        this.tableInvoiceItem.itemIdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableItemReturned.invoiceNoColumn,
-                        this.tableItemReturned.itemIdColumn}, false);
-            this.Relations.Add(this.relationFK__ItemReturned__3A81B327);
             this.relationFK__ItemReturned__3B75D760 = new global::System.Data.DataRelation("FK__ItemReturned__3B75D760", new global::System.Data.DataColumn[] {
                         this.tableItemInventory.warehouseIdColumn,
                         this.tableItemInventory.itemIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableItemReturned.warehouseIdColumn,
                         this.tableItemReturned.itemIdColumn}, false);
             this.Relations.Add(this.relationFK__ItemReturned__3B75D760);
+            this.relationFK__ItemReturned__71D1E811 = new global::System.Data.DataRelation("FK__ItemReturned__71D1E811", new global::System.Data.DataColumn[] {
+                        this.tableItemServed.invoiceNoColumn,
+                        this.tableItemServed.itemIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableItemReturned.invoiceNoColumn,
+                        this.tableItemReturned.itemIdColumn}, false);
+            this.Relations.Add(this.relationFK__ItemReturned__71D1E811);
             this.relationFK__ItemServed__403A8C7D = new global::System.Data.DataRelation("FK__ItemServed__403A8C7D", new global::System.Data.DataColumn[] {
                         this.tableInvoiceItem.invoiceNoColumn,
                         this.tableInvoiceItem.itemIdColumn}, new global::System.Data.DataColumn[] {
@@ -4448,17 +4448,6 @@ namespace ItemInventory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ItemReturnedRow[] GetItemReturnedRows() {
-                if ((this.Table.ChildRelations["FK__ItemReturned__3A81B327"] == null)) {
-                    return new ItemReturnedRow[0];
-                }
-                else {
-                    return ((ItemReturnedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ItemReturned__3A81B327"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemServedRow[] GetItemServedRows() {
                 if ((this.Table.ChildRelations["FK__ItemServed__403A8C7D"] == null)) {
                     return new ItemServedRow[0];
@@ -4757,23 +4746,23 @@ namespace ItemInventory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public InvoiceItemRow InvoiceItemRowParent {
-                get {
-                    return ((InvoiceItemRow)(this.GetParentRow(this.Table.ParentRelations["FK__ItemReturned__3A81B327"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ItemReturned__3A81B327"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ItemInventoryRow ItemInventoryRowParent {
                 get {
                     return ((ItemInventoryRow)(this.GetParentRow(this.Table.ParentRelations["FK__ItemReturned__3B75D760"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK__ItemReturned__3B75D760"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemServedRow ItemServedRowParent {
+                get {
+                    return ((ItemServedRow)(this.GetParentRow(this.Table.ParentRelations["FK__ItemReturned__71D1E811"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ItemReturned__71D1E811"]);
                 }
             }
         }
@@ -4866,6 +4855,17 @@ namespace ItemInventory {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK__ItemServed__412EB0B6"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ItemReturnedRow[] GetItemReturnedRows() {
+                if ((this.Table.ChildRelations["FK__ItemReturned__71D1E811"] == null)) {
+                    return new ItemReturnedRow[0];
+                }
+                else {
+                    return ((ItemReturnedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ItemReturned__71D1E811"])));
                 }
             }
         }
@@ -9354,7 +9354,7 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[4])).Connection = new global::System.Data.SqlClient.SqlConnection(global::ItemInventory.Properties.Settings.Default.RecordsConnectionString);
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[4])).CommandText = "dbo.GetOrderStatus";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[4])).CommandType = global::System.Data.CommandType.StoredProcedure;
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[4])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.VarChar, 2, global::System.Data.ParameterDirection.ReturnValue, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[4])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.VarChar, 16, global::System.Data.ParameterDirection.ReturnValue, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[4])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invoiceNo", global::System.Data.SqlDbType.VarChar, 8, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[4])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
@@ -9921,6 +9921,15 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._invoiceTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._invoiceTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._itemTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -9930,21 +9939,12 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._warehouseTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Warehouse.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._invoiceItemTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._warehouseTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._invoiceTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._invoiceTableAdapter.Update(updatedRows));
+                    result = (result + this._invoiceItemTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -9957,12 +9957,21 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._invoiceItemTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._warehouseTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Warehouse.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._invoiceItemTableAdapter.Update(updatedRows));
+                    result = (result + this._warehouseTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._itemServedTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ItemServed.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._itemServedTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -9993,15 +10002,6 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._itemServedTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ItemServed.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._itemServedTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._returnServedTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ReturnServed.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -10029,6 +10029,14 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._invoiceTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._invoiceTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._itemTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -10037,19 +10045,11 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._warehouseTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Warehouse.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._invoiceItemTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._warehouseTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._invoiceTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._invoiceTableAdapter.Update(addedRows));
+                    result = (result + this._invoiceItemTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -10061,11 +10061,19 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._invoiceItemTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._warehouseTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Warehouse.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._invoiceItemTableAdapter.Update(addedRows));
+                    result = (result + this._warehouseTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._itemServedTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ItemServed.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._itemServedTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -10090,14 +10098,6 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._itemReturnedTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._itemServedTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ItemServed.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._itemServedTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -10127,14 +10127,6 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._itemServedTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ItemServed.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._itemServedTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._itemReturnedTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ItemReturned.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -10159,27 +10151,11 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._invoiceItemTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._itemServedTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ItemServed.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._invoiceItemTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._itemInventoryTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ItemInventory.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._itemInventoryTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._invoiceTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._invoiceTableAdapter.Update(deletedRows));
+                    result = (result + this._itemServedTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -10191,11 +10167,35 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._itemInventoryTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ItemInventory.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._itemInventoryTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._invoiceItemTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.InvoiceItem.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._invoiceItemTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._itemTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Item.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._itemTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._invoiceTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Invoice.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._invoiceTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

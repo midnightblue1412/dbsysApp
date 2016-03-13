@@ -66,7 +66,8 @@ namespace ItemInventory
 
             var a =
                 from inv in db.ItemInventory
-                join ret in db.ReturnsInventory on inv equals ret.ItemInventoryRowParent
+                join ret in db.ReturnsInventory 
+                    on new{ inv.warehouseId, inv.itemId} equals new { ret.warehouseId, ret.itemId}
                 join item in db.Item on inv.itemId equals item.id
                 where inv.WarehouseRow == db.Warehouse.FindByid(wid)
                 orderby inv.itemId
@@ -211,7 +212,7 @@ namespace ItemInventory
         {
             dbm.initAllTables();
             refreshWarehouseComboBox();
-            invoice_fillInvoiceNoComboBox();
+            refreshInvoiceNoComboBox();
         }
 
         private void tab_warehouses_Enter(object sender, EventArgs e)
@@ -232,6 +233,15 @@ namespace ItemInventory
         private void tab_history_Enter(object sender, EventArgs e)
         {
             fillHistoryGrid();
+        }
+
+        private void tab_Inventory_Enter(object sender, EventArgs e)
+        {
+            RecordsDataSet.WarehouseRow wh = input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow;
+            if (wh != null)
+            {
+                fillInventoryGrid(wh.id);
+            }            
         }
     }
 }

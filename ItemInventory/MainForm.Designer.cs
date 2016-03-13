@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.window_tabs = new System.Windows.Forms.TabControl();
             this.tab_Inventory = new System.Windows.Forms.TabPage();
             this.btn_addItems = new System.Windows.Forms.Button();
@@ -142,7 +142,7 @@
             this.tab_Inventory.Size = new System.Drawing.Size(1077, 577);
             this.tab_Inventory.TabIndex = 0;
             this.tab_Inventory.Text = "Inventory";
-            this.tab_Inventory.Click += new System.EventHandler(this.serve_items_option_Click);
+            this.tab_Inventory.Enter += new System.EventHandler(this.tab_Inventory_Enter);
             // 
             // btn_addItems
             // 
@@ -729,9 +729,9 @@
             // 
             // col_unitPrice
             // 
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = "--";
-            this.col_unitPrice.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = "--";
+            this.col_unitPrice.DefaultCellStyle = dataGridViewCellStyle4;
             this.col_unitPrice.HeaderText = "Unit Price";
             this.col_unitPrice.Name = "col_unitPrice";
             this.col_unitPrice.ReadOnly = true;

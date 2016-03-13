@@ -20,6 +20,13 @@ namespace ItemInventory
                 (from invoice in db.Invoice select invoice).ToArray());
         }
 
+        public void refreshInvoiceNoComboBox()
+        {
+            string orig = input_invoiceNo.Text;
+            invoice_fillInvoiceNoComboBox();
+            input_invoiceNo.Text = orig;
+        }
+
         private void showInvoiceInfo(RecordsDataSet.InvoiceRow invoice)
         {
             disp_client.Text = invoice.ClientRow.clientName;
@@ -59,8 +66,9 @@ namespace ItemInventory
 
                 int itemId = int.Parse(c["invoice_itemId"].Value.ToString());
                 int qty = int.Parse(c["invoice_quantity"].Value.ToString());
+                int? stock = dbm.getItemQuantity(mfields.warehouse.id, itemId);
 
-                if (dbm.qadp.GetItemQuantity(mfields.warehouse.id, itemId) < qty)
+                if (stock < qty || stock == null)
                 {
                     showErrorMessage("Not enough stock for item '" + c["invoice_itemName"].Value + "'");
                     return -1;
@@ -92,7 +100,9 @@ namespace ItemInventory
                 int itemId = int.Parse(c["invoice_itemId"].Value.ToString());
                 int qty = int.Parse(c["invoice_quantity"].Value.ToString());
 
-                if (dbm.qadp.GetRetItemQuantity(mfields.warehouse.id, itemId) < qty)
+                int? stock = dbm.getRetInventoryQty(mfields.warehouse.id, itemId);
+
+                if (stock < qty || stock == null)
                 {
                     showErrorMessage("Not enough stock for item '" + c["invoice_itemName"].Value + "'");
                     return -1;
@@ -156,7 +166,7 @@ namespace ItemInventory
 
         private void btn_recordReturns_Click(object sender, EventArgs e)
         {
-            if (input_invoiceNo.SelectedItem == null)
+            if (input_invoiceNo.SelectedIndex < 0)
             {
                 showErrorMessage("Please select an invoice.");
             }
@@ -214,6 +224,7 @@ namespace ItemInventory
                     }
                     catch (DBConcurrencyException ex)
                     {
+                        refreshWarehouseComboBox();
                         DialogResult r = showErrorPrompt(
                             "An error occured while trying to sync with database.\n\n" +
                             "Details:\n" + ex.Message);
@@ -229,6 +240,7 @@ namespace ItemInventory
                     }
                     catch (Exception ex)
                     {
+                        refreshWarehouseComboBox();
                         db.RejectChanges();
                         showErrorMessage("An error occured.\n\nDetails:\n" + ex.Message);
                     }
