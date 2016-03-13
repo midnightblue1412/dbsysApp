@@ -75,7 +75,10 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>dbsys_icon.ico</ApplicationIcon>
+    <ApplicationIcon>dbsys_icon_stroked.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ItemInventory.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -198,6 +201,12 @@
     <EmbeddedResource Include="AddItemsForm.resx">
       <DependentUpon>AddItemsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChildForm.resx">
+      <DependentUpon>ChildForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DbForm.resx">
+      <DependentUpon>DbForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InvoiceForm.resx">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,6 +283,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dbsys_icon.ico" />
+    <Content Include="dbsys_icon_stroked.ico" />
     <Content Include="db\Records.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

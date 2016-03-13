@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,7 +19,7 @@ namespace ItemInventory
             System.Globalization.CultureInfo c = new System.Globalization.CultureInfo("en-PH");
             System.Threading.Thread.CurrentThread.CurrentCulture = c;
 
-            InitializeComponent();                               
+            InitializeComponent();                                           
         }
         
         /*
@@ -185,7 +186,7 @@ namespace ItemInventory
         private void MainForm_Load(object sender, EventArgs e)
         {
             dbm.initAllTables();
-            
+
             fillWarehouseComboBox();
             input_warehouse.SelectedIndex = input_warehouse.Items.Count > 0 ? 0 : -1;
 

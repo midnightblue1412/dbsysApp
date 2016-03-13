@@ -12,10 +12,7 @@ namespace ItemInventory
 {
     public partial class LoadingPrompt : Form
     {
-        public LoadingPrompt()
-        {
-            InitializeComponent();
-        }
+        public LoadingPrompt() : this("Loading...") { }
 
         public LoadingPrompt(string message)
         {
