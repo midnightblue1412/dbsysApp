@@ -40,9 +40,9 @@ namespace ItemInventory
                 Utils.RowProcessor proc = (c) =>
                 {
                     db.Client.AddClientRow(
-                        c["id"].Value.ToString(),
-                        c["clientName"].Value.ToString(),
-                        c["contactNo"].Value.ToString());
+                        c["clientName"].Value.ToString().Trim().ToUpper(),
+                        c["clientAddress"].Value.ToString().Trim().ToUpper(),
+                        "AC");
                 };
 
                 Utils.ErrorCallBack callback = (col) =>

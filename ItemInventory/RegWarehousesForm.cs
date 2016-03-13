@@ -30,8 +30,8 @@ namespace ItemInventory
                 Utils.RowProcessor proc = (c) =>
                 {
                     db.Warehouse.AddWarehouseRow(
-                        c["warehouseName"].Value.ToString(),
-                        c["description"].Value.ToString(),
+                        c["warehouseName"].Value.ToString().Trim().ToUpper(),
+                        c["description"].Value.ToString().Trim().ToUpper(),
                         "OP");
                 };
 

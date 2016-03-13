@@ -83,8 +83,8 @@ namespace ItemInventory
                 if (decimal.TryParse(c["unitPrice"].Value.ToString(), out uPrice))
                 {
                     db.Item.AddItemRow(
-                    c["itemName"].Value.ToString(),
-                    c["description"].Value.ToString(),
+                    c["itemName"].Value.ToString().Trim().ToUpper(),
+                    c["description"].Value.ToString().Trim().ToUpper(),
                     uPrice,
                     "AV");
                 }

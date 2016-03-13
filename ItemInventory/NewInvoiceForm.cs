@@ -84,7 +84,7 @@ namespace ItemInventory
         private RecordsDataSet.InvoiceRow makeInvoice()
         {
             return db.Invoice.AddInvoiceRow(
-                input_invoiceNo.Text,
+                input_invoiceNo.Text.Trim().ToUpper(),
                 input_date.Value,
                 input_clientName.SelectedItem as RecordsDataSet.ClientRow);
         }
