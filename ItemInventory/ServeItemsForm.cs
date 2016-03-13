@@ -36,6 +36,11 @@ namespace ItemInventory
             dbm.dbmgr.WarehouseTableAdapter.Fill(db.Warehouse);
         }
 
+        public void setInvoice(string invoiceNo)
+        {
+            input_date.MinDate = (DateTime)dbm.qadp.GetOrderDate(invoiceNo);
+        }
+
         public void useInput(InputFields input)
         {
             this.input = input;

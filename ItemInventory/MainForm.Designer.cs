@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.window_tabs = new System.Windows.Forms.TabControl();
             this.tab_Inventory = new System.Windows.Forms.TabPage();
@@ -49,6 +50,7 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label11 = new System.Windows.Forms.Label();
             this.tab_Invoices = new System.Windows.Forms.TabPage();
+            this.btn_serveWRet = new System.Windows.Forms.Button();
             this.btn_recordReturns = new System.Windows.Forms.Button();
             this.btn_cancelSelected = new System.Windows.Forms.Button();
             this.btn_serveSelected = new System.Windows.Forms.Button();
@@ -65,6 +67,10 @@
             this.invoice_itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoice_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.invoice_orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.invoiceItemsCtxMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.serveItemsOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelItemsOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.serveWithReturnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tab_Warehouses = new System.Windows.Forms.TabPage();
             this.btn_registerWarehouse = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -97,6 +103,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid_history)).BeginInit();
             this.tab_Invoices.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid_inv)).BeginInit();
+            this.invoiceItemsCtxMenu.SuspendLayout();
             this.tab_Warehouses.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid_warehouse)).BeginInit();
             this.tab_Items.SuspendLayout();
@@ -135,6 +142,7 @@
             this.tab_Inventory.Size = new System.Drawing.Size(1077, 577);
             this.tab_Inventory.TabIndex = 0;
             this.tab_Inventory.Text = "Inventory";
+            this.tab_Inventory.Click += new System.EventHandler(this.serve_items_option_Click);
             // 
             // btn_addItems
             // 
@@ -317,6 +325,7 @@
             // tab_Invoices
             // 
             this.tab_Invoices.BackColor = System.Drawing.Color.MidnightBlue;
+            this.tab_Invoices.Controls.Add(this.btn_serveWRet);
             this.tab_Invoices.Controls.Add(this.btn_recordReturns);
             this.tab_Invoices.Controls.Add(this.btn_cancelSelected);
             this.tab_Invoices.Controls.Add(this.btn_serveSelected);
@@ -335,13 +344,25 @@
             this.tab_Invoices.Size = new System.Drawing.Size(1077, 577);
             this.tab_Invoices.TabIndex = 5;
             this.tab_Invoices.Text = "Invoices";
-            this.tab_Invoices.Enter += new System.EventHandler(this.tab_Invoices_Selected);
+            this.tab_Invoices.Enter += new System.EventHandler(this.tab_Invoices_Enter);
+            // 
+            // btn_serveWRet
+            // 
+            this.btn_serveWRet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_serveWRet.ForeColor = System.Drawing.Color.White;
+            this.btn_serveWRet.Location = new System.Drawing.Point(479, 52);
+            this.btn_serveWRet.Name = "btn_serveWRet";
+            this.btn_serveWRet.Size = new System.Drawing.Size(156, 28);
+            this.btn_serveWRet.TabIndex = 33;
+            this.btn_serveWRet.Text = "Serve &With Returns";
+            this.btn_serveWRet.UseVisualStyleBackColor = true;
+            this.btn_serveWRet.Click += new System.EventHandler(this.serveWRet_option_Click);
             // 
             // btn_recordReturns
             // 
             this.btn_recordReturns.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_recordReturns.ForeColor = System.Drawing.Color.White;
-            this.btn_recordReturns.Location = new System.Drawing.Point(343, 52);
+            this.btn_recordReturns.Location = new System.Drawing.Point(346, 52);
             this.btn_recordReturns.Name = "btn_recordReturns";
             this.btn_recordReturns.Size = new System.Drawing.Size(134, 28);
             this.btn_recordReturns.TabIndex = 32;
@@ -353,7 +374,7 @@
             // 
             this.btn_cancelSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancelSelected.ForeColor = System.Drawing.Color.White;
-            this.btn_cancelSelected.Location = new System.Drawing.Point(212, 52);
+            this.btn_cancelSelected.Location = new System.Drawing.Point(215, 52);
             this.btn_cancelSelected.Name = "btn_cancelSelected";
             this.btn_cancelSelected.Size = new System.Drawing.Size(134, 28);
             this.btn_cancelSelected.TabIndex = 31;
@@ -476,6 +497,7 @@
             this.invoice_itemName,
             this.invoice_quantity,
             this.invoice_orderStatus});
+            this.disp_grid_inv.ContextMenuStrip = this.invoiceItemsCtxMenu;
             this.disp_grid_inv.Location = new System.Drawing.Point(6, 158);
             this.disp_grid_inv.Name = "disp_grid_inv";
             this.disp_grid_inv.ReadOnly = true;
@@ -510,6 +532,37 @@
             this.invoice_orderStatus.HeaderText = "Status";
             this.invoice_orderStatus.Name = "invoice_orderStatus";
             this.invoice_orderStatus.ReadOnly = true;
+            // 
+            // invoiceItemsCtxMenu
+            // 
+            this.invoiceItemsCtxMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serveItemsOption,
+            this.cancelItemsOption,
+            this.serveWithReturnsToolStripMenuItem});
+            this.invoiceItemsCtxMenu.Name = "invoiceItemsCtxMenu";
+            this.invoiceItemsCtxMenu.ShowImageMargin = false;
+            this.invoiceItemsCtxMenu.Size = new System.Drawing.Size(149, 70);
+            // 
+            // serveItemsOption
+            // 
+            this.serveItemsOption.Name = "serveItemsOption";
+            this.serveItemsOption.Size = new System.Drawing.Size(148, 22);
+            this.serveItemsOption.Text = "Serve Selected";
+            this.serveItemsOption.Click += new System.EventHandler(this.serve_items_option_Click);
+            // 
+            // cancelItemsOption
+            // 
+            this.cancelItemsOption.Name = "cancelItemsOption";
+            this.cancelItemsOption.Size = new System.Drawing.Size(148, 22);
+            this.cancelItemsOption.Text = "Cancel Selected";
+            this.cancelItemsOption.Click += new System.EventHandler(this.cancel_items_option_Click);
+            // 
+            // serveWithReturnsToolStripMenuItem
+            // 
+            this.serveWithReturnsToolStripMenuItem.Name = "serveWithReturnsToolStripMenuItem";
+            this.serveWithReturnsToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.serveWithReturnsToolStripMenuItem.Text = "Serve With Returns";
+            this.serveWithReturnsToolStripMenuItem.Click += new System.EventHandler(this.serveWRet_option_Click);
             // 
             // tab_Warehouses
             // 
@@ -797,6 +850,7 @@
             this.tab_Invoices.ResumeLayout(false);
             this.tab_Invoices.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid_inv)).EndInit();
+            this.invoiceItemsCtxMenu.ResumeLayout(false);
             this.tab_Warehouses.ResumeLayout(false);
             this.tab_Warehouses.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid_warehouse)).EndInit();
@@ -872,6 +926,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_itemDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_itemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_itemId;
+        private System.Windows.Forms.ContextMenuStrip invoiceItemsCtxMenu;
+        private System.Windows.Forms.ToolStripMenuItem serveItemsOption;
+        private System.Windows.Forms.ToolStripMenuItem cancelItemsOption;
+        private System.Windows.Forms.Button btn_serveWRet;
+        private System.Windows.Forms.ToolStripMenuItem serveWithReturnsToolStripMenuItem;
     }
 }
 

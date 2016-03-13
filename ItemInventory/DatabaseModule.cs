@@ -41,6 +41,27 @@ namespace ItemInventory
             dbmgr.ReturnServedTableAdapter = new ReturnServedTableAdapter();
         }        
 
+        public void initAllTables()
+        {
+            dbmgr.ClientTableAdapter.Fill(db.Client);
+            dbmgr.ItemTableAdapter.Fill(db.Item);
+            dbmgr.WarehouseTableAdapter.Fill(db.Warehouse);
+
+            dbmgr.ItemInventoryTableAdapter.Fill(db.ItemInventory);
+            dbmgr.ReturnsInventoryTableAdapter.Fill(db.ReturnsInventory);
+
+            dbmgr.ItemReturnedTableAdapter.Fill(db.ItemReturned);
+
+            dbmgr.InvoiceTableAdapter.Fill(db.Invoice);
+            dbmgr.InvoiceItemTableAdapter.Fill(db.InvoiceItem);
+
+            dbmgr.InventoryMovementTableAdapter.Fill(db.InventoryMovement);
+            dbmgr.ItemServedTableAdapter.Fill(db.ItemServed);
+
+            dbmgr.ItemReturnedTableAdapter.Fill(db.ItemReturned);
+            dbmgr.ReturnServedTableAdapter.Fill(db.ReturnServed);
+        }
+
         public string getItemStatus(int? itemId)
         {
             return qadp.GetItemStatus(itemId);

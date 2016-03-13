@@ -12,43 +12,25 @@ namespace ItemInventory
 {
     public partial class ReturnedItemsForm : ChildForm
     {
-        private RecordsDataSet.WarehouseRow wh;
-        private DateTime date;
+        public ReturnedItemsForm():this(null) {
 
-        public ReturnedItemsForm()
+        }
+
+        public ReturnedItemsForm(DbForm parent)
         {
             InitializeComponent();
+            setParent(parent);
         }
 
-        public ReturnedItemsForm(string invoiceNo):this()
+        public ReturnedItemsForm(DbForm parent, string invoiceNo):this(parent)
         {
             disp_invoiceNo.Text = invoiceNo;
-        }
-
-        public ReturnedItemsForm(string invoiceNo, ref RecordsDataSet.WarehouseRow wh, ref DateTime date) : this(invoiceNo)
-        {
-            this.wh = wh;
-            this.date = date;
+            input_date.MinDate = db.Invoice.FindByinvoiceNo(invoiceNo).orderDate;
         }
 
         /*
          *  METHODS
          */
-        private void initTables()
-        {
-            dbm.dbmgr.ClientTableAdapter.Fill(db.Client);
-            dbm.dbmgr.ItemTableAdapter.Fill(db.Item);
-            dbm.dbmgr.WarehouseTableAdapter.Fill(db.Warehouse);
-
-            dbm.dbmgr.ItemInventoryTableAdapter.Fill(db.ItemInventory);
-
-            dbm.dbmgr.InvoiceTableAdapter.Fill(db.Invoice);
-            dbm.dbmgr.InvoiceItemTableAdapter.Fill(db.InvoiceItem);
-
-            dbm.dbmgr.ItemServedTableAdapter.Fill(db.ItemServed);
-            dbm.dbmgr.ItemReturnedTableAdapter.Fill(db.ItemReturned);
-        }
-
         private void fillItemComboBox()
         {
             var r =
@@ -62,20 +44,28 @@ namespace ItemInventory
         private void addItem()
         {
             RecordsDataSet.ItemRow r = input_itemId.SelectedItem as RecordsDataSet.ItemRow;
-            RecordsDataSet.ItemServedRow itemServed =
-                db.ItemServed.FindByinvoiceNoitemId(disp_invoiceNo.Text, r.id);
-            disp_grid.Rows.Add(
-                r,
-                r.itemName,
-                itemServed.ItemInventoryRowParent.WarehouseRow.warehouseName,
-                itemServed.quantity);
 
-            db.ItemReturned.AddItemReturnedRow(
-                disp_invoiceNo.Text,
-                r.id,
-                itemServed.warehouseId,
-                itemServed.quantity,
-                input_date.Value);
+            if (r != null)
+            {
+                RecordsDataSet.ItemServedRow itemServed =
+                db.ItemServed.FindByinvoiceNoitemId(disp_invoiceNo.Text, r.id);
+                disp_grid.Rows.Add(
+                    r,
+                    r.itemName,
+                    itemServed.ItemInventoryRowParent.WarehouseRow.warehouseName,
+                    itemServed.quantity);
+
+                db.ItemReturned.AddItemReturnedRow(
+                    disp_invoiceNo.Text,
+                    r.id,
+                    itemServed.warehouseId,
+                    itemServed.quantity,
+                    input_date.Value);
+            }
+            else
+            {
+                MainForm.showErrorMessage("Please select an item.");
+            }            
         }
 
         private void recordReturns()
@@ -88,7 +78,6 @@ namespace ItemInventory
          */
         private void ReturnedItemsForm_Load(object sender, EventArgs e)
         {
-            initTables();
             fillItemComboBox();
         }
 
@@ -99,13 +88,21 @@ namespace ItemInventory
 
         private void btn_ok_Click(object sender, EventArgs e)
         {
+            if (disp_grid.Rows.Count == 0)
+            {
+                MainForm.showErrorMessage("Form is empty.");
+                return;
+            }
+
             try
             {
                 recordReturns();
+                MainForm.showSuccessMessage("Operation Successful.");
                 Close();
             }
             catch (DBConcurrencyException ex)
             {
+                disp_grid.Rows.Clear();
                 DialogResult r = MainForm.showErrorPrompt(
                     "An error occured while trying to sync with database.\n\n" +
                     "Details:\n" + ex.Message);
@@ -116,11 +113,13 @@ namespace ItemInventory
                 }
                 else
                 {
+                    disp_grid.Rows.Clear();
                     db.RejectChanges();
                 }
             }
             catch(Exception ex)
             {
+                disp_grid.Rows.Clear();
                 db.RejectChanges();
                 MainForm.showErrorMessage(
                     "An Error occured.\nDetails:\n\n" + ex.Message);

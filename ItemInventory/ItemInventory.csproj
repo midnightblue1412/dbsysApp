@@ -287,6 +287,7 @@
     <Content Include="sql\CREATE FUNCTION - GetOrderedQuantity.sql" />
     <Content Include="sql\CREATE FUNCTION - GetItemStatus.sql" />
     <Content Include="sql\CREATE FUNCTION - GetOrderDate.sql" />
+    <Content Include="sql\CREATE TRIGGER - RET_INVENTORY_UPDATE.sql" />
     <Content Include="sql\CREATE TRIGGER - INVENTORY_UPDATE.sql" />
     <Content Include="sql\CREATE TRIGGER - RETURN_SERVED.sql" />
     <Content Include="sql\CREATE TRIGGER - ITEM_SERVED.sql" />

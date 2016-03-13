@@ -250,7 +250,7 @@ namespace ItemInventory
         private void NewInvoiceForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             MainForm p = parent as MainForm;
-            p.invoice_initTables();
+            dbm.initAllTables();
             p.invoice_fillInvoiceNoComboBox();
         }
     }

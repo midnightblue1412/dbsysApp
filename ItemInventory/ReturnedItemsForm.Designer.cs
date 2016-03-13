@@ -37,14 +37,14 @@
             this.input_itemId = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.disp_grid = new System.Windows.Forms.DataGridView();
-            this.disp_invoiceNo = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.input_date = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
             this.itemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.warehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disp_invoiceNo = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.input_date = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.input_qty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid)).BeginInit();
             this.SuspendLayout();
@@ -103,6 +103,7 @@
             // 
             // input_qty
             // 
+            this.input_qty.Enabled = false;
             this.input_qty.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.input_qty.Location = new System.Drawing.Point(224, 113);
             this.input_qty.Name = "input_qty";
@@ -163,6 +164,35 @@
             this.disp_grid.Size = new System.Drawing.Size(505, 239);
             this.disp_grid.TabIndex = 36;
             // 
+            // itemId
+            // 
+            this.itemId.HeaderText = "Item ID";
+            this.itemId.Name = "itemId";
+            this.itemId.ReadOnly = true;
+            this.itemId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.itemId.Width = 75;
+            // 
+            // itemName
+            // 
+            this.itemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.itemName.HeaderText = "Name";
+            this.itemName.Name = "itemName";
+            this.itemName.ReadOnly = true;
+            // 
+            // warehouseName
+            // 
+            this.warehouseName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.warehouseName.HeaderText = "Warehouse";
+            this.warehouseName.Name = "warehouseName";
+            this.warehouseName.ReadOnly = true;
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "Qty";
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            this.quantity.Width = 50;
+            // 
             // disp_invoiceNo
             // 
             this.disp_invoiceNo.AutoSize = true;
@@ -205,35 +235,6 @@
             this.label4.Size = new System.Drawing.Size(38, 17);
             this.label4.TabIndex = 48;
             this.label4.Text = "Date:";
-            // 
-            // itemId
-            // 
-            this.itemId.HeaderText = "Item ID";
-            this.itemId.Name = "itemId";
-            this.itemId.ReadOnly = true;
-            this.itemId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.itemId.Width = 75;
-            // 
-            // itemName
-            // 
-            this.itemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.itemName.HeaderText = "Name";
-            this.itemName.Name = "itemName";
-            this.itemName.ReadOnly = true;
-            // 
-            // warehouseName
-            // 
-            this.warehouseName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.warehouseName.HeaderText = "Warehouse";
-            this.warehouseName.Name = "warehouseName";
-            this.warehouseName.ReadOnly = true;
-            // 
-            // quantity
-            // 
-            this.quantity.HeaderText = "Qty";
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            this.quantity.Width = 50;
             // 
             // ReturnedItemsForm
             // 

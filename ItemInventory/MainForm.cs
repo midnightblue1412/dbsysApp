@@ -115,6 +115,14 @@ namespace ItemInventory
             }
         }
 
+        public void refreshWarehouseComboBox()
+        {
+            string wname = input_warehouse.Text;
+            dbmgr.WarehouseTableAdapter.Fill(db.Warehouse);
+            fillWarehouseComboBox();
+            input_warehouse.SelectedIndex = input_warehouse.FindStringExact(wname);
+        }
+
         /*
          * EVENT HANDLERS
          */
@@ -175,12 +183,7 @@ namespace ItemInventory
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            dbmgr.ItemTableAdapter.Fill(db.Item);
-            dbmgr.WarehouseTableAdapter.Fill(db.Warehouse);
-            dbmgr.ClientTableAdapter.Fill(db.Client);
-            dbmgr.InventoryMovementTableAdapter.Fill(db.InventoryMovement);
-            dbmgr.ItemInventoryTableAdapter.Fill(db.ItemInventory);
-            dbmgr.ReturnsInventoryTableAdapter.Fill(db.ReturnsInventory);
+            dbm.initAllTables();
             
             fillWarehouseComboBox();
             input_warehouse.SelectedIndex = input_warehouse.Items.Count > 0 ? 0 : -1;
@@ -204,9 +207,10 @@ namespace ItemInventory
             }
         }
         
-        private void tab_Invoices_Selected(object sender, EventArgs e)
+        private void tab_Invoices_Enter(object sender, EventArgs e)
         {
-            invoice_initTables();
+            dbm.initAllTables();
+            refreshWarehouseComboBox();
             invoice_fillInvoiceNoComboBox();
         }
 
