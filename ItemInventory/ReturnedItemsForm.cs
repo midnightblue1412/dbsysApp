@@ -153,6 +153,9 @@ namespace ItemInventory
             {
                 RecordsDataSet.ItemRow item = input_itemId.SelectedItem as RecordsDataSet.ItemRow;
 
+                DateTime? sdate = dbm.getServeDate(disp_invoiceNo.Text, item.id);
+                input_date.MinDate = (DateTime)sdate;
+
                 int? ordered = dbm.getOrderedQuantity(disp_invoiceNo.Text, item.id);
                 int? returned = dbm.getReturnedQuantity(disp_invoiceNo.Text, item.id);
                 int diff = (int)(ordered - returned);
