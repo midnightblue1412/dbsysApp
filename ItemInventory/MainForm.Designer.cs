@@ -128,6 +128,7 @@
             // 
             // window_tabs
             // 
+            this.window_tabs.ContextMenuStrip = this.warehousesCtxMenu;
             this.window_tabs.Controls.Add(this.tab_Inventory);
             this.window_tabs.Controls.Add(this.tab_InventoryMov);
             this.window_tabs.Controls.Add(this.tab_Invoices);
@@ -866,6 +867,7 @@
             this.col_clientName,
             this.col_clientAddr,
             this.col_clientStatus});
+            this.disp_grid_client.ContextMenuStrip = this.clientsCtxMenu;
             this.disp_grid_client.Location = new System.Drawing.Point(6, 83);
             this.disp_grid_client.Name = "disp_grid_client";
             this.disp_grid_client.ReadOnly = true;
@@ -907,7 +909,7 @@
             this.markAsActiveToolStripMenuItem,
             this.markAsInactiveToolStripMenuItem});
             this.clientsCtxMenu.Name = "clientsCtxMenu";
-            this.clientsCtxMenu.Size = new System.Drawing.Size(160, 70);
+            this.clientsCtxMenu.Size = new System.Drawing.Size(160, 48);
             this.clientsCtxMenu.Opening += new System.ComponentModel.CancelEventHandler(this.clientsCtxMenu_Opening);
             // 
             // markAsActiveToolStripMenuItem
