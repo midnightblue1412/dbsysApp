@@ -56,8 +56,8 @@
             this.input_date.Location = new System.Drawing.Point(273, 50);
             this.input_date.Name = "input_date";
             this.input_date.Size = new System.Drawing.Size(121, 25);
-            this.input_date.TabIndex = 49;
-            this.input_date.Value = System.DateTime.Now;
+            this.input_date.TabIndex = 0;
+            this.input_date.Value = new System.DateTime(2016, 3, 14, 20, 9, 38, 817);
             // 
             // label4
             // 
@@ -101,7 +101,7 @@
             this.btn_cancel.Location = new System.Drawing.Point(433, 403);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(84, 28);
-            this.btn_cancel.TabIndex = 43;
+            this.btn_cancel.TabIndex = 5;
             this.btn_cancel.Text = "&Cancel";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -115,7 +115,7 @@
             this.btn_ok.Location = new System.Drawing.Point(343, 403);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(84, 28);
-            this.btn_ok.TabIndex = 42;
+            this.btn_ok.TabIndex = 4;
             this.btn_ok.Text = "&Ok";
             this.btn_ok.UseVisualStyleBackColor = true;
             this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
@@ -128,7 +128,7 @@
             this.btn_add.Location = new System.Drawing.Point(310, 108);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(84, 28);
-            this.btn_add.TabIndex = 41;
+            this.btn_add.TabIndex = 3;
             this.btn_add.Text = "&Add";
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
@@ -139,7 +139,7 @@
             this.input_qty.Location = new System.Drawing.Point(224, 113);
             this.input_qty.Name = "input_qty";
             this.input_qty.Size = new System.Drawing.Size(67, 23);
-            this.input_qty.TabIndex = 40;
+            this.input_qty.TabIndex = 2;
             // 
             // label5
             // 
@@ -160,7 +160,7 @@
             this.input_itemId.Location = new System.Drawing.Point(55, 110);
             this.input_itemId.Name = "input_itemId";
             this.input_itemId.Size = new System.Drawing.Size(121, 25);
-            this.input_itemId.TabIndex = 38;
+            this.input_itemId.TabIndex = 1;
             this.input_itemId.TextChanged += new System.EventHandler(this.input_itemId_TextChanged);
             // 
             // label1
@@ -194,7 +194,8 @@
             this.disp_grid.RowHeadersVisible = false;
             this.disp_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.disp_grid.Size = new System.Drawing.Size(505, 239);
-            this.disp_grid.TabIndex = 36;
+            this.disp_grid.TabIndex = 10;
+            this.disp_grid.TabStop = false;
             // 
             // itemId
             // 

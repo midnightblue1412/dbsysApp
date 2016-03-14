@@ -102,9 +102,9 @@ namespace ItemInventory
             return qadp.GetReturnedQuantity(invoiceNo, itemId);
         }
 
-        public int? getRetInventoryQty(int? itemId, int? warehouseId)
+        public int? getRetInventoryQty(int? warehouseId, int? itemId)
         {
-            return qadp.GetRetItemQuantity(itemId, warehouseId);
+            return qadp.GetRetItemQuantity(warehouseId, itemId);
         }
     }
 }

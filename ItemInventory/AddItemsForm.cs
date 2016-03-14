@@ -158,9 +158,7 @@ namespace ItemInventory
                     dbmgr.ReturnsInventoryTableAdapter.Fill(db.ReturnsInventory);
 
                     MainForm p = parent as MainForm;
-                    p.fillInventoryGrid(warehouse.id);
-                    p.fillWarehouseComboBox();
-                    p.inv_setSelectedWarehouse(warehouse.warehouseName);
+                    p.refreshWarehouseComboBox();
                     p.fillHistoryGrid();
                     MainForm.showSuccessMessage("Successfuly updated " + rowsAdded + " item(s) in inventory.");
 

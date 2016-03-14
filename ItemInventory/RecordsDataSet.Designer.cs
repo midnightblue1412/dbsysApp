@@ -68,9 +68,9 @@ namespace ItemInventory {
         
         private global::System.Data.DataRelation relationFK__ItemServed__412EB0B6;
         
-        private global::System.Data.DataRelation relationFK__ReturnServed__46E78A0C;
+        private global::System.Data.DataRelation relationFK__ReturnServed__1387E197;
         
-        private global::System.Data.DataRelation relationFK__ReturnServed__47DBAE45;
+        private global::System.Data.DataRelation relationFK__ReturnServed__147C05D0;
         
         private global::System.Data.DataRelation relationFK__ReturnsInventory__286302EC;
         
@@ -473,8 +473,8 @@ namespace ItemInventory {
             this.relationFK__ItemReturned__09746778 = this.Relations["FK__ItemReturned__09746778"];
             this.relationFK__ItemServed__403A8C7D = this.Relations["FK__ItemServed__403A8C7D"];
             this.relationFK__ItemServed__412EB0B6 = this.Relations["FK__ItemServed__412EB0B6"];
-            this.relationFK__ReturnServed__46E78A0C = this.Relations["FK__ReturnServed__46E78A0C"];
-            this.relationFK__ReturnServed__47DBAE45 = this.Relations["FK__ReturnServed__47DBAE45"];
+            this.relationFK__ReturnServed__1387E197 = this.Relations["FK__ReturnServed__1387E197"];
+            this.relationFK__ReturnServed__147C05D0 = this.Relations["FK__ReturnServed__147C05D0"];
             this.relationFK__ReturnsInventory__286302EC = this.Relations["FK__ReturnsInventory__286302EC"];
         }
         
@@ -564,18 +564,18 @@ namespace ItemInventory {
                         this.tableItemServed.warehouseIdColumn,
                         this.tableItemServed.itemIdColumn}, false);
             this.Relations.Add(this.relationFK__ItemServed__412EB0B6);
-            this.relationFK__ReturnServed__46E78A0C = new global::System.Data.DataRelation("FK__ReturnServed__46E78A0C", new global::System.Data.DataColumn[] {
+            this.relationFK__ReturnServed__1387E197 = new global::System.Data.DataRelation("FK__ReturnServed__1387E197", new global::System.Data.DataColumn[] {
                         this.tableInvoiceItem.invoiceNoColumn,
                         this.tableInvoiceItem.itemIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableReturnServed.invoiceNoColumn,
                         this.tableReturnServed.itemIdColumn}, false);
-            this.Relations.Add(this.relationFK__ReturnServed__46E78A0C);
-            this.relationFK__ReturnServed__47DBAE45 = new global::System.Data.DataRelation("FK__ReturnServed__47DBAE45", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK__ReturnServed__1387E197);
+            this.relationFK__ReturnServed__147C05D0 = new global::System.Data.DataRelation("FK__ReturnServed__147C05D0", new global::System.Data.DataColumn[] {
                         this.tableReturnsInventory.warehouseIdColumn,
                         this.tableReturnsInventory.itemIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableReturnServed.warehouseIdColumn,
                         this.tableReturnServed.itemIdColumn}, false);
-            this.Relations.Add(this.relationFK__ReturnServed__47DBAE45);
+            this.Relations.Add(this.relationFK__ReturnServed__147C05D0);
             this.relationFK__ReturnsInventory__286302EC = new global::System.Data.DataRelation("FK__ReturnsInventory__286302EC", new global::System.Data.DataColumn[] {
                         this.tableItemInventory.warehouseIdColumn,
                         this.tableItemInventory.itemIdColumn}, new global::System.Data.DataColumn[] {
@@ -3268,9 +3268,9 @@ namespace ItemInventory {
             
             private global::System.Data.DataColumn columninvoiceNo;
             
-            private global::System.Data.DataColumn columnwarehouseId;
-            
             private global::System.Data.DataColumn columnitemId;
+            
+            private global::System.Data.DataColumn columnwarehouseId;
             
             private global::System.Data.DataColumn columnquantity;
             
@@ -3319,17 +3319,17 @@ namespace ItemInventory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn warehouseIdColumn {
+            public global::System.Data.DataColumn itemIdColumn {
                 get {
-                    return this.columnwarehouseId;
+                    return this.columnitemId;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn itemIdColumn {
+            public global::System.Data.DataColumn warehouseIdColumn {
                 get {
-                    return this.columnitemId;
+                    return this.columnwarehouseId;
                 }
             }
             
@@ -3386,12 +3386,12 @@ namespace ItemInventory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ReturnServedRow AddReturnServedRow(string invoiceNo, int warehouseId, int itemId, int quantity, System.DateTime serveDate) {
+            public ReturnServedRow AddReturnServedRow(string invoiceNo, int itemId, int warehouseId, int quantity, System.DateTime serveDate) {
                 ReturnServedRow rowReturnServedRow = ((ReturnServedRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         invoiceNo,
-                        warehouseId,
                         itemId,
+                        warehouseId,
                         quantity,
                         serveDate};
                 rowReturnServedRow.ItemArray = columnValuesArray;
@@ -3425,8 +3425,8 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columninvoiceNo = base.Columns["invoiceNo"];
-                this.columnwarehouseId = base.Columns["warehouseId"];
                 this.columnitemId = base.Columns["itemId"];
+                this.columnwarehouseId = base.Columns["warehouseId"];
                 this.columnquantity = base.Columns["quantity"];
                 this.columnserveDate = base.Columns["serveDate"];
             }
@@ -3436,10 +3436,10 @@ namespace ItemInventory {
             private void InitClass() {
                 this.columninvoiceNo = new global::System.Data.DataColumn("invoiceNo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninvoiceNo);
-                this.columnwarehouseId = new global::System.Data.DataColumn("warehouseId", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnwarehouseId);
                 this.columnitemId = new global::System.Data.DataColumn("itemId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnitemId);
+                this.columnwarehouseId = new global::System.Data.DataColumn("warehouseId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnwarehouseId);
                 this.columnquantity = new global::System.Data.DataColumn("quantity", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnquantity);
                 this.columnserveDate = new global::System.Data.DataColumn("serveDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -3449,8 +3449,8 @@ namespace ItemInventory {
                                 this.columnitemId}, true));
                 this.columninvoiceNo.AllowDBNull = false;
                 this.columninvoiceNo.MaxLength = 8;
-                this.columnwarehouseId.AllowDBNull = false;
                 this.columnitemId.AllowDBNull = false;
+                this.columnwarehouseId.AllowDBNull = false;
                 this.columnquantity.AllowDBNull = false;
                 this.columnserveDate.AllowDBNull = false;
             }
@@ -4504,11 +4504,11 @@ namespace ItemInventory {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ReturnServedRow[] GetReturnServedRows() {
-                if ((this.Table.ChildRelations["FK__ReturnServed__46E78A0C"] == null)) {
+                if ((this.Table.ChildRelations["FK__ReturnServed__1387E197"] == null)) {
                     return new ReturnServedRow[0];
                 }
                 else {
-                    return ((ReturnServedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ReturnServed__46E78A0C"])));
+                    return ((ReturnServedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ReturnServed__1387E197"])));
                 }
             }
         }
@@ -4952,23 +4952,23 @@ namespace ItemInventory {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int warehouseId {
-                get {
-                    return ((int)(this[this.tableReturnServed.warehouseIdColumn]));
-                }
-                set {
-                    this[this.tableReturnServed.warehouseIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int itemId {
                 get {
                     return ((int)(this[this.tableReturnServed.itemIdColumn]));
                 }
                 set {
                     this[this.tableReturnServed.itemIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int warehouseId {
+                get {
+                    return ((int)(this[this.tableReturnServed.warehouseIdColumn]));
+                }
+                set {
+                    this[this.tableReturnServed.warehouseIdColumn] = value;
                 }
             }
             
@@ -4998,10 +4998,10 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public InvoiceItemRow InvoiceItemRowParent {
                 get {
-                    return ((InvoiceItemRow)(this.GetParentRow(this.Table.ParentRelations["FK__ReturnServed__46E78A0C"])));
+                    return ((InvoiceItemRow)(this.GetParentRow(this.Table.ParentRelations["FK__ReturnServed__1387E197"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ReturnServed__46E78A0C"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ReturnServed__1387E197"]);
                 }
             }
             
@@ -5009,10 +5009,10 @@ namespace ItemInventory {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ReturnsInventoryRow ReturnsInventoryRowParent {
                 get {
-                    return ((ReturnsInventoryRow)(this.GetParentRow(this.Table.ParentRelations["FK__ReturnServed__47DBAE45"])));
+                    return ((ReturnsInventoryRow)(this.GetParentRow(this.Table.ParentRelations["FK__ReturnServed__147C05D0"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__ReturnServed__47DBAE45"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__ReturnServed__147C05D0"]);
                 }
             }
         }
@@ -5089,11 +5089,11 @@ namespace ItemInventory {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ReturnServedRow[] GetReturnServedRows() {
-                if ((this.Table.ChildRelations["FK__ReturnServed__47DBAE45"] == null)) {
+                if ((this.Table.ChildRelations["FK__ReturnServed__147C05D0"] == null)) {
                     return new ReturnServedRow[0];
                 }
                 else {
-                    return ((ReturnServedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ReturnServed__47DBAE45"])));
+                    return ((ReturnServedRow[])(base.GetChildRows(this.Table.ChildRelations["FK__ReturnServed__147C05D0"])));
                 }
             }
         }
@@ -8454,45 +8454,45 @@ SELECT invoiceNo, itemId, warehouseId, quantity, serveDate FROM ItemServed WHERE
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ReturnServed";
             tableMapping.ColumnMappings.Add("invoiceNo", "invoiceNo");
-            tableMapping.ColumnMappings.Add("warehouseId", "warehouseId");
             tableMapping.ColumnMappings.Add("itemId", "itemId");
+            tableMapping.ColumnMappings.Add("warehouseId", "warehouseId");
             tableMapping.ColumnMappings.Add("quantity", "quantity");
             tableMapping.ColumnMappings.Add("serveDate", "serveDate");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[ReturnServed] WHERE (([invoiceNo] = @Original_invoiceNo) AND (" +
-                "[warehouseId] = @Original_warehouseId) AND ([itemId] = @Original_itemId) AND ([q" +
+                "[itemId] = @Original_itemId) AND ([warehouseId] = @Original_warehouseId) AND ([q" +
                 "uantity] = @Original_quantity) AND ([serveDate] = @Original_serveDate))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invoiceNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invoiceNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_warehouseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_itemId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_warehouseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_serveDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "serveDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ReturnServed] ([invoiceNo], [warehouseId], [itemId], [quantity], [serveDate]) VALUES (@invoiceNo, @warehouseId, @itemId, @quantity, @serveDate);
-SELECT invoiceNo, warehouseId, itemId, quantity, serveDate FROM ReturnServed WHERE (invoiceNo = @invoiceNo) AND (itemId = @itemId)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ReturnServed] ([invoiceNo], [itemId], [warehouseId], [quantity], [serveDate]) VALUES (@invoiceNo, @itemId, @warehouseId, @quantity, @serveDate);
+SELECT invoiceNo, itemId, warehouseId, quantity, serveDate FROM ReturnServed WHERE (invoiceNo = @invoiceNo) AND (itemId = @itemId)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invoiceNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invoiceNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@warehouseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@warehouseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@serveDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "serveDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[ReturnServed] SET [invoiceNo] = @invoiceNo, [warehouseId] = @warehouseId, [itemId] = @itemId, [quantity] = @quantity, [serveDate] = @serveDate WHERE (([invoiceNo] = @Original_invoiceNo) AND ([warehouseId] = @Original_warehouseId) AND ([itemId] = @Original_itemId) AND ([quantity] = @Original_quantity) AND ([serveDate] = @Original_serveDate));
-SELECT invoiceNo, warehouseId, itemId, quantity, serveDate FROM ReturnServed WHERE (invoiceNo = @invoiceNo) AND (itemId = @itemId)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[ReturnServed] SET [invoiceNo] = @invoiceNo, [itemId] = @itemId, [warehouseId] = @warehouseId, [quantity] = @quantity, [serveDate] = @serveDate WHERE (([invoiceNo] = @Original_invoiceNo) AND ([itemId] = @Original_itemId) AND ([warehouseId] = @Original_warehouseId) AND ([quantity] = @Original_quantity) AND ([serveDate] = @Original_serveDate));
+SELECT invoiceNo, itemId, warehouseId, quantity, serveDate FROM ReturnServed WHERE (invoiceNo = @invoiceNo) AND (itemId = @itemId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@invoiceNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invoiceNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@warehouseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@warehouseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@serveDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "serveDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_invoiceNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "invoiceNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_warehouseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_itemId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "itemId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_warehouseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "warehouseId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_quantity", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_serveDate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "serveDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
@@ -8510,7 +8510,7 @@ SELECT invoiceNo, warehouseId, itemId, quantity, serveDate FROM ReturnServed WHE
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT invoiceNo, warehouseId, itemId, quantity, serveDate FROM dbo.ReturnServed";
+            this._commandCollection[0].CommandText = "SELECT invoiceNo, itemId, warehouseId, quantity, serveDate FROM dbo.ReturnServed";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8571,15 +8571,15 @@ SELECT invoiceNo, warehouseId, itemId, quantity, serveDate FROM ReturnServed WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_invoiceNo, int Original_warehouseId, int Original_itemId, int Original_quantity, System.DateTime Original_serveDate) {
+        public virtual int Delete(string Original_invoiceNo, int Original_itemId, int Original_warehouseId, int Original_quantity, System.DateTime Original_serveDate) {
             if ((Original_invoiceNo == null)) {
                 throw new global::System.ArgumentNullException("Original_invoiceNo");
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_invoiceNo));
             }
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_warehouseId));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_itemId));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_itemId));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_warehouseId));
             this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_quantity));
             this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_serveDate));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
@@ -8602,15 +8602,15 @@ SELECT invoiceNo, warehouseId, itemId, quantity, serveDate FROM ReturnServed WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string invoiceNo, int warehouseId, int itemId, int quantity, System.DateTime serveDate) {
+        public virtual int Insert(string invoiceNo, int itemId, int warehouseId, int quantity, System.DateTime serveDate) {
             if ((invoiceNo == null)) {
                 throw new global::System.ArgumentNullException("invoiceNo");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(invoiceNo));
             }
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(warehouseId));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(itemId));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(itemId));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(warehouseId));
             this.Adapter.InsertCommand.Parameters[3].Value = ((int)(quantity));
             this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(serveDate));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
@@ -8633,15 +8633,15 @@ SELECT invoiceNo, warehouseId, itemId, quantity, serveDate FROM ReturnServed WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string invoiceNo, int warehouseId, int itemId, int quantity, System.DateTime serveDate, string Original_invoiceNo, int Original_warehouseId, int Original_itemId, int Original_quantity, System.DateTime Original_serveDate) {
+        public virtual int Update(string invoiceNo, int itemId, int warehouseId, int quantity, System.DateTime serveDate, string Original_invoiceNo, int Original_itemId, int Original_warehouseId, int Original_quantity, System.DateTime Original_serveDate) {
             if ((invoiceNo == null)) {
                 throw new global::System.ArgumentNullException("invoiceNo");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(invoiceNo));
             }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(warehouseId));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(itemId));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(itemId));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(warehouseId));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(quantity));
             this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(serveDate));
             if ((Original_invoiceNo == null)) {
@@ -8650,8 +8650,8 @@ SELECT invoiceNo, warehouseId, itemId, quantity, serveDate FROM ReturnServed WHE
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_invoiceNo));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_warehouseId));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_itemId));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_itemId));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_warehouseId));
             this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_quantity));
             this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_serveDate));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
@@ -8674,8 +8674,8 @@ SELECT invoiceNo, warehouseId, itemId, quantity, serveDate FROM ReturnServed WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int warehouseId, int quantity, System.DateTime serveDate, string Original_invoiceNo, int Original_warehouseId, int Original_itemId, int Original_quantity, System.DateTime Original_serveDate) {
-            return this.Update(Original_invoiceNo, warehouseId, Original_itemId, quantity, serveDate, Original_invoiceNo, Original_warehouseId, Original_itemId, Original_quantity, Original_serveDate);
+        public virtual int Update(int warehouseId, int quantity, System.DateTime serveDate, string Original_invoiceNo, int Original_itemId, int Original_warehouseId, int Original_quantity, System.DateTime Original_serveDate) {
+            return this.Update(Original_invoiceNo, Original_itemId, warehouseId, quantity, serveDate, Original_invoiceNo, Original_itemId, Original_warehouseId, Original_quantity, Original_serveDate);
         }
     }
     
@@ -9439,8 +9439,8 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[6])).CommandText = "dbo.GetRetItemQuantity";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[6])).CommandType = global::System.Data.CommandType.StoredProcedure;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[6])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[6])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[6])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@warehouseId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[6])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@itemId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[7])).Connection = new global::System.Data.SqlClient.SqlConnection(global::ItemInventory.Properties.Settings.Default.RecordsConnectionString);
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[7])).CommandText = "dbo.GetReturnedQuantity";
@@ -9682,16 +9682,16 @@ SELECT id, warehouseName, warehouseDesc, warehouseStatus FROM Warehouse WHERE (i
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> GetRetItemQuantity(global::System.Nullable<int> itemId, global::System.Nullable<int> warehouseId) {
+        public virtual global::System.Nullable<int> GetRetItemQuantity(global::System.Nullable<int> warehouseId, global::System.Nullable<int> itemId) {
             global::System.Data.SqlClient.SqlCommand command = ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[6]));
-            if ((itemId.HasValue == true)) {
-                command.Parameters[1].Value = ((int)(itemId.Value));
+            if ((warehouseId.HasValue == true)) {
+                command.Parameters[1].Value = ((int)(warehouseId.Value));
             }
             else {
                 command.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((warehouseId.HasValue == true)) {
-                command.Parameters[2].Value = ((int)(warehouseId.Value));
+            if ((itemId.HasValue == true)) {
+                command.Parameters[2].Value = ((int)(itemId.Value));
             }
             else {
                 command.Parameters[2].Value = global::System.DBNull.Value;

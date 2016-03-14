@@ -106,6 +106,7 @@
             this.disp_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.disp_grid.Size = new System.Drawing.Size(581, 215);
             this.disp_grid.TabIndex = 13;
+            this.disp_grid.TabStop = false;
             this.disp_grid.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.disp_grid_UserDeletingRow);
             // 
             // itemId
@@ -151,7 +152,7 @@
             this.input_clientName.Location = new System.Drawing.Point(98, 94);
             this.input_clientName.Name = "input_clientName";
             this.input_clientName.Size = new System.Drawing.Size(121, 25);
-            this.input_clientName.TabIndex = 19;
+            this.input_clientName.TabIndex = 1;
             this.input_clientName.TextChanged += new System.EventHandler(this.input_clientName_TextChanged);
             // 
             // input_date
@@ -161,7 +162,7 @@
             this.input_date.Location = new System.Drawing.Point(98, 125);
             this.input_date.Name = "input_date";
             this.input_date.Size = new System.Drawing.Size(121, 25);
-            this.input_date.TabIndex = 20;
+            this.input_date.TabIndex = 2;
             this.input_date.Value = new System.DateTime(2016, 3, 10, 19, 53, 13, 573);
             // 
             // input_itemName
@@ -172,7 +173,7 @@
             this.input_itemName.Location = new System.Drawing.Point(59, 183);
             this.input_itemName.Name = "input_itemName";
             this.input_itemName.Size = new System.Drawing.Size(121, 25);
-            this.input_itemName.TabIndex = 22;
+            this.input_itemName.TabIndex = 3;
             this.input_itemName.TextChanged += new System.EventHandler(this.input_itemName_TextChanged);
             // 
             // label3
@@ -208,7 +209,7 @@
             0});
             this.input_qty.Name = "input_qty";
             this.input_qty.Size = new System.Drawing.Size(67, 23);
-            this.input_qty.TabIndex = 24;
+            this.input_qty.TabIndex = 4;
             // 
             // btn_add
             // 
@@ -218,7 +219,7 @@
             this.btn_add.Location = new System.Drawing.Point(314, 181);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(84, 28);
-            this.btn_add.TabIndex = 25;
+            this.btn_add.TabIndex = 5;
             this.btn_add.Text = "&Add";
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
@@ -230,7 +231,7 @@
             this.input_invoiceNo.Location = new System.Drawing.Point(98, 64);
             this.input_invoiceNo.Name = "input_invoiceNo";
             this.input_invoiceNo.Size = new System.Drawing.Size(124, 25);
-            this.input_invoiceNo.TabIndex = 26;
+            this.input_invoiceNo.TabIndex = 0;
             // 
             // label6
             // 
@@ -263,7 +264,7 @@
             this.btn_save.Location = new System.Drawing.Point(509, 437);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(84, 28);
-            this.btn_save.TabIndex = 30;
+            this.btn_save.TabIndex = 6;
             this.btn_save.Text = "&Save";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
@@ -277,6 +278,7 @@
             this.disp_total.ReadOnly = true;
             this.disp_total.Size = new System.Drawing.Size(124, 25);
             this.disp_total.TabIndex = 31;
+            this.disp_total.TabStop = false;
             // 
             // NewInvoiceForm
             // 

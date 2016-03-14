@@ -43,22 +43,15 @@ namespace ItemInventory
         {
             RecordsDataSet.ItemRow item = input_itemId.SelectedItem as RecordsDataSet.ItemRow;
 
-            if (item != null)
-            {
-                int qty = (int)input_qty.Value;
+            int qty = (int)input_qty.Value;
 
-                RecordsDataSet.ItemServedRow itemServed =
-                db.ItemServed.FindByinvoiceNoitemId(disp_invoiceNo.Text, item.id);
-                disp_grid.Rows.Add(
-                    item.id,
-                    item,
-                    itemServed.ItemInventoryRowParent.WarehouseRow,
-                    qty);
-            }
-            else
-            {
-                MainForm.showErrorMessage("Please select an item.");
-            }            
+            RecordsDataSet.ItemServedRow itemServed =
+            db.ItemServed.FindByinvoiceNoitemId(disp_invoiceNo.Text, item.id);
+            disp_grid.Rows.Add(
+                item.id,
+                item,
+                itemServed.ItemInventoryRowParent.WarehouseRow,
+                qty);
         }
 
         private void recordReturns()
@@ -81,6 +74,23 @@ namespace ItemInventory
             }
         }
 
+        private DataGridViewRow findRow(int itemId)
+        {
+            foreach (DataGridViewRow r in disp_grid.Rows)
+            {
+                DataGridViewCellCollection c = r.Cells;
+
+                int id = int.Parse(c["itemId"].Value.ToString());
+
+                if (id == itemId)
+                {
+                    return r;
+                }
+            }
+
+            return null;
+        }
+
         /*
          *  EVENT HANDLERS
          */
@@ -91,7 +101,25 @@ namespace ItemInventory
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            addItem();
+            RecordsDataSet.ItemRow item = input_itemId.SelectedItem as RecordsDataSet.ItemRow;
+
+            if (item == null)
+            {
+                MainForm.showErrorMessage("Please select an item.");
+                return;
+            }
+
+            int itemId = item.id;
+            DataGridViewRow r = findRow(itemId);
+
+            if (r == null)
+            {
+                addItem();
+            }
+            else
+            {
+                r.Cells["quantity"].Value = input_qty.Value;
+            }
         }
 
         private void btn_ok_Click(object sender, EventArgs e)
@@ -108,7 +136,9 @@ namespace ItemInventory
                 dbm.dbmgr.UpdateAll(dbm.db);
 
                 MainForm p = parent as MainForm;
+                dbm.initAllTables();
                 p.refreshWarehouseComboBox();
+                p.refreshInvoiceNoComboBox();
 
                 MainForm.showSuccessMessage("Operation Successful.");
                 Close();

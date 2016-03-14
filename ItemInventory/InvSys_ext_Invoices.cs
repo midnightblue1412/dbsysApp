@@ -80,7 +80,7 @@ namespace ItemInventory
                 db.ItemServed.AddItemServedRow(
                     invoiceNoTxt, itemId, mfields.warehouse.id, qty, mfields.date);
             }
-
+           
             return disp_grid_inv.SelectedRows.Count;
         }
 
@@ -184,6 +184,12 @@ namespace ItemInventory
 
         private void serve_items_option_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(input_invoiceNo.Text))
+            {
+                showErrorMessage("No Invoice Selected.");
+                return;
+            }
+
             if (disp_grid_inv.SelectedRows.Count == 0)
             {
                 showErrorMessage("No Rows Selected.");
@@ -283,6 +289,12 @@ namespace ItemInventory
 
         private void serveWRet_option_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(input_invoiceNo.Text))
+            {
+                showErrorMessage("No Invoice Selected.");
+                return;
+            }
+
             if (disp_grid_inv.SelectedRows.Count == 0)
             {
                 showErrorMessage("No Rows Selected.");

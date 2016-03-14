@@ -122,6 +122,11 @@ namespace ItemInventory
             string wname = input_warehouse.Text;
             fillWarehouseComboBox();
             input_warehouse.SelectedIndex = input_warehouse.FindStringExact(wname);
+
+            if (input_warehouse.SelectedIndex == -1)
+            {
+                disp_ItemInventory.Rows.Clear();
+            }
         }
 
         private void itemsChangeStat(AvailabilityStatus stat)
@@ -255,18 +260,10 @@ namespace ItemInventory
             }
         }
 
-        internal void inv_setSelectedWarehouse(string wname)
-        {
-            input_warehouse.SelectedIndex = input_warehouse.FindStringExact(wname);
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             dbm.initAllTables();
-
-            fillWarehouseComboBox();
-            input_warehouse.SelectedIndex = input_warehouse.Items.Count > 0 ? 0 : -1;
-
+            
             WindowState = FormWindowState.Maximized;
         }
 
@@ -295,28 +292,33 @@ namespace ItemInventory
 
         private void tab_warehouses_Enter(object sender, EventArgs e)
         {
+            dbm.initAllTables();
             fillWarehouseGrid();
         }
 
         private void tab_items_Enter(object sender, EventArgs e)
         {
+            dbm.initAllTables();
             fillItemGrid();
         }
 
         private void tab_clients_Enter(object sender, EventArgs e)
         {
+            dbm.initAllTables();
             fillClientGrid();
         }
 
         private void tab_history_Enter(object sender, EventArgs e)
         {
+            dbm.initAllTables();
             fillHistoryGrid();
         }
 
         private void tab_Inventory_Enter(object sender, EventArgs e)
         {
-            dbm.initAllTables();
-            refreshWarehouseComboBox();        
+            fillWarehouseComboBox();
+            input_warehouse.SelectedIndex = input_warehouse.Items.Count > 0 ? 0 : -1;
+            refreshWarehouseComboBox();
         }
 
         private void makeUnavalableToolStripMenuItem_Click(object sender, EventArgs e)
