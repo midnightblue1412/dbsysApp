@@ -145,6 +145,7 @@ namespace ItemInventory
             }
             catch (Exception ex)
             {
+                db.RejectChanges();
                 showErrorMessage("An Error Occured.\n\nDetails:\n" + ex.Message);
             }
         }
@@ -164,12 +165,13 @@ namespace ItemInventory
                 }
 
                 dbmgr.UpdateAll(db);
-                fillItemGrid();
+                fillWarehouseGrid();
 
                 showSuccessMessage("Updated " + rows.Count + " item(s)");
             }
             catch (Exception ex)
             {
+                db.RejectChanges();
                 showErrorMessage("An Error Occured.\n\nDetails:\n" + ex.Message);
             }
         }
@@ -189,12 +191,13 @@ namespace ItemInventory
                 }
 
                 dbmgr.UpdateAll(db);
-                fillItemGrid();
+                fillClientGrid();
 
                 showSuccessMessage("Updated " + rows.Count + " item(s)");
             }
             catch (Exception ex)
             {
+                db.RejectChanges();
                 showErrorMessage("An Error Occured.\n\nDetails:\n" + ex.Message);
             }
         }
