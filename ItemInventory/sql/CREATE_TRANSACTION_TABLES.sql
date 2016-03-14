@@ -48,6 +48,7 @@ CREATE TABLE InvoiceItem
 CREATE TABLE InventoryMovement
 (
 	refno		INT			IDENTITY(420160, 1)	PRIMARY KEY,
+	movDate		DATETIME	NOT NULL	DEFAULT GETDATE(),
 	warehouseId	INT	NOT NULL,
 	itemId		INT	NOT NULL,
 	quantity	INT			NOT NULL,
@@ -74,9 +75,8 @@ CREATE TABLE ItemServed
 		ON UPDATE CASCADE,
 	CONSTRAINT LIMIT_SI
 		CHECK (quantity > 0 AND
-				 quantity <= dbo.GetOrderedQuantity(itemId, invoiceNo) AND
-				 quantity <= dbo.GetItemQuantity(warehouseId, itemId) AND
-				 quantity <= dbo.GetOrderedQuantity(itemId, invoiceNo)),
+				 quantity <= dbo.GetOrderedQuantity(invoiceNo, itemId) AND
+				 quantity <= dbo.GetItemQuantity(warehouseId, itemId)),
 	CONSTRAINT SI_DATE
 		CHECK (serveDate > dbo.GetOrderDate(invoiceNo)),
 	CONSTRAINT SI_ORDERSTAT
@@ -85,12 +85,12 @@ CREATE TABLE ItemServed
 
 CREATE TABLE ItemReturned
 (
+	refno		INT			IDENTITY(520160, 1)	PRIMARY KEY,
 	invoiceNo	VARCHAR(8)	NOT NULL,
 	itemId		INT			NOT NULL,
 	warehouseId	INT			NOT NULL,
 	quantity	INT			NOT NULL,
 	returnDate	DATE		NOT NULL,
-	PRIMARY KEY(invoiceNo, itemId),
 	FOREIGN KEY(invoiceNo, itemId)
 		REFERENCES ItemServed(invoiceNo, itemId),
 	FOREIGN KEY(warehouseId, itemId)
@@ -99,7 +99,7 @@ CREATE TABLE ItemReturned
 	CONSTRAINT IR_ORDER_STATUS
 		CHECK (dbo.GetOrderStatus(invoiceNo, itemId) = 'SERVED'),
 	CONSTRAINT LIMIT_RI
-		CHECK (quantity > 0 AND quantity <= dbo.GetOrderedQuantity(itemId, invoiceNo)),
+		CHECK (quantity>(0) AND dbo.GetOrderedQuantity(invoiceNo,itemId) < dbo.GetReturnedQuantity(invoiceNo,itemId)),
 	CONSTRAINT RI_DATE
 		CHECK (returnDate > dbo.GetOrderDate(invoiceNo))
 );
@@ -120,7 +120,7 @@ CREATE TABLE ReturnServed
 		ON UPDATE CASCADE,
 	CONSTRAINT	LIMIT_SR
 		CHECK (quantity > 0 AND
-				 quantity <= dbo.GetOrderedQuantity(itemId, invoiceNo) AND
+				 quantity <= dbo.GetOrderedQuantity(invoiceNo, itemId) AND
 				 quantity <= dbo.GetRetItemQuantity(warehouseId, itemId)),
 	CONSTRAINT SR_DATE
 		CHECK (serveDate > dbo.GetOrderDate(invoiceNo)),

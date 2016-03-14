@@ -37,15 +37,18 @@ namespace ItemInventory
         {
             disp_grid_inv.Rows.Clear();
 
-            RecordsDataSet.InvoiceItemRow[] rows =
+            if (invoice != null)
+            {
+                RecordsDataSet.InvoiceItemRow[] rows =
                 (from invoiceItem in db.InvoiceItem
                  where invoiceItem.invoiceNo.Equals(invoice.invoiceNo)
                  select invoiceItem).ToArray();
 
-            foreach (RecordsDataSet.InvoiceItemRow r in rows)
-            {
-                disp_grid_inv.Rows.Add(r.itemId, r.ItemRow.itemName, r.quantity, r.orderStatus);
-            }
+                foreach (RecordsDataSet.InvoiceItemRow r in rows)
+                {
+                    disp_grid_inv.Rows.Add(r.itemId, r.ItemRow.itemName, r.quantity, r.orderStatus);
+                }
+            }            
         }
 
         private int serveSelectedItems(ServeItemsForm.InputFields mfields)
@@ -186,8 +189,7 @@ namespace ItemInventory
                 showErrorMessage("No Rows Selected.");
             }
             else
-            {
-                string wname = (input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow).warehouseName;
+            {                              
                 ServeItemsForm.InputFields inf = new ServeItemsForm.InputFields();
                 DialogResult res;
 
@@ -210,9 +212,6 @@ namespace ItemInventory
                             dbmgr.InvoiceItemTableAdapter.Fill(db.InvoiceItem);
 
                             refreshWarehouseComboBox();
-                            int wid = (input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow).id;
-
-                            fillInventoryGrid(wid);
                             invoice_fillDataGrid(input_invoiceNo.SelectedItem as RecordsDataSet.InvoiceRow);
 
                             showSuccessMessage("Operation successful. " + rowsAff + " affected.");
@@ -312,9 +311,6 @@ namespace ItemInventory
                             dbmgr.InvoiceItemTableAdapter.Fill(db.InvoiceItem);
 
                             refreshWarehouseComboBox();
-                            int wid = (input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow).id;
-
-                            fillInventoryGrid(wid);
                             invoice_fillDataGrid(input_invoiceNo.SelectedItem as RecordsDataSet.InvoiceRow);
 
                             showSuccessMessage("Operation successful. " + rowsAff + " affected.");

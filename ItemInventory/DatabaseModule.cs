@@ -72,6 +72,11 @@ namespace ItemInventory
             return qadp.GetOrderDate(invoiceNo);
         }
 
+        public DateTime? getServeDate(string invoiceNo, int? itemId)
+        {
+            return qadp.GetServeDate(invoiceNo, itemId);
+        }
+
         public string getOrderStatus(string invoiceNo, int? itemId)
         {
             return qadp.GetOrderStatus(invoiceNo, itemId);
@@ -85,6 +90,16 @@ namespace ItemInventory
         public int? getOrderedQuantity(string invoiceNo, int? itemId)
         {
             return qadp.GetOrderedQuantity(invoiceNo, itemId);
+        }
+
+        public int? getPendingQuantity(string invoiceNo, int? itemId)
+        {
+            return qadp.GetPendingQuantity(invoiceNo, itemId);
+        }
+
+        public int? getReturnedQuantity(string invoiceNo, int? itemId)
+        {
+            return qadp.GetReturnedQuantity(invoiceNo, itemId);
         }
 
         public int? getRetInventoryQty(int? itemId, int? warehouseId)

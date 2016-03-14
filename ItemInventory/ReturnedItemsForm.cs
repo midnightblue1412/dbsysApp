@@ -12,9 +12,7 @@ namespace ItemInventory
 {
     public partial class ReturnedItemsForm : ChildForm
     {
-        public ReturnedItemsForm():this(null) {
-
-        }
+        public ReturnedItemsForm():this(null) {}
 
         public ReturnedItemsForm(DbForm parent)
         {
@@ -23,9 +21,8 @@ namespace ItemInventory
         }
 
         public ReturnedItemsForm(DbForm parent, string invoiceNo):this(parent)
-        {
-            disp_invoiceNo.Text = invoiceNo;
-            input_date.MinDate = db.Invoice.FindByinvoiceNo(invoiceNo).orderDate;
+        {           
+            disp_invoiceNo.Text = invoiceNo;            
         }
 
         /*
@@ -36,7 +33,7 @@ namespace ItemInventory
             var r =
                 from item in db.ItemServed
                 where item.invoiceNo.Equals(disp_invoiceNo.Text) &&
-                        db.ItemReturned.FindByinvoiceNoitemId(item.invoiceNo, item.itemId) == null                 
+                        db.ItemReturned.Select("invoiceNo='" + item.invoiceNo + "' AND itemId=" + item.itemId).Count() == 0                 
                 select item.ItemInventoryRowParent.ItemRow;
 
             input_itemId.Items.AddRange(r.ToArray());
@@ -44,24 +41,19 @@ namespace ItemInventory
 
         private void addItem()
         {
-            RecordsDataSet.ItemRow r = input_itemId.SelectedItem as RecordsDataSet.ItemRow;
+            RecordsDataSet.ItemRow item = input_itemId.SelectedItem as RecordsDataSet.ItemRow;
 
-            if (r != null)
+            if (item != null)
             {
-                RecordsDataSet.ItemServedRow itemServed =
-                db.ItemServed.FindByinvoiceNoitemId(disp_invoiceNo.Text, r.id);
-                disp_grid.Rows.Add(
-                    r,
-                    r.itemName,
-                    itemServed.ItemInventoryRowParent.WarehouseRow.warehouseName,
-                    itemServed.quantity);
+                int qty = (int)input_qty.Value;
 
-                db.ItemReturned.AddItemReturnedRow(
-                    disp_invoiceNo.Text,
-                    r.id,
-                    itemServed.warehouseId,
-                    itemServed.quantity,
-                    input_date.Value);
+                RecordsDataSet.ItemServedRow itemServed =
+                db.ItemServed.FindByinvoiceNoitemId(disp_invoiceNo.Text, item.id);
+                disp_grid.Rows.Add(
+                    item.id,
+                    item,
+                    itemServed.ItemInventoryRowParent.WarehouseRow,
+                    qty);
             }
             else
             {
@@ -71,14 +63,29 @@ namespace ItemInventory
 
         private void recordReturns()
         {
-            dbm.dbmgr.UpdateAll(dbm.db);
+            foreach (DataGridViewRow row in disp_grid.Rows)
+            {
+                DataGridViewCellCollection c = row.Cells;
+                int qty = int.Parse(c["quantity"].Value.ToString());
+
+                RecordsDataSet.ItemRow item = c["itemName"].Value as RecordsDataSet.ItemRow;
+                RecordsDataSet.ItemServedRow itemServed =
+                db.ItemServed.FindByinvoiceNoitemId(disp_invoiceNo.Text, item.id);
+
+                db.ItemReturned.AddItemReturnedRow(
+                    disp_invoiceNo.Text,
+                    item.id,
+                    itemServed.warehouseId,
+                    qty,
+                    input_date.Value);
+            }
         }
 
         /*
          *  EVENT HANDLERS
          */
         private void ReturnedItemsForm_Load(object sender, EventArgs e)
-        {
+        {                
             fillItemComboBox();
         }
 
@@ -98,8 +105,10 @@ namespace ItemInventory
             try
             {
                 recordReturns();
+                dbm.dbmgr.UpdateAll(dbm.db);
 
                 MainForm p = parent as MainForm;
+                p.refreshWarehouseComboBox();
 
                 MainForm.showSuccessMessage("Operation Successful.");
                 Close();
@@ -139,6 +148,18 @@ namespace ItemInventory
         {
             int index = input_itemId.FindStringExact(input_itemId.Text);
             input_itemId.SelectedIndex = index;
+
+            if (index >= 0)
+            {
+                RecordsDataSet.ItemRow item = input_itemId.SelectedItem as RecordsDataSet.ItemRow;
+
+                int? ordered = dbm.getOrderedQuantity(disp_invoiceNo.Text, item.id);
+                int? returned = dbm.getReturnedQuantity(disp_invoiceNo.Text, item.id);
+                int diff = (int)(ordered - returned);
+
+                input_qty.Maximum = diff;
+                input_qty.Value = diff;
+            }
         }
     }
 }

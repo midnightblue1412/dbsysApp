@@ -291,6 +291,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Records.mdf</DependentUpon>
     </Content>
+    <Content Include="sql\CREATE FUNCTION - GetServeDate.sql" />
+    <Content Include="sql\CREATE FUNCTION - GetReturnedQuantity.sql" />
+    <Content Include="sql\CREATE FUNCTION - GetPendingQuantity.sql" />
     <Content Include="sql\CREATE FUNCTION - GetOrderStatus.sql" />
     <Content Include="sql\CREATE FUNCTION - GetRetItemQty.sql" />
     <Content Include="sql\CREATE FUNCTION - GetItemQuantity.sql" />

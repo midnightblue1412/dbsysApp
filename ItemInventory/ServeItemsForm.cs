@@ -33,7 +33,8 @@ namespace ItemInventory
          */
         public void setInvoice(string invoiceNo)
         {
-            input_date.MinDate = (DateTime)dbm.qadp.GetOrderDate(invoiceNo);
+            DateTime odate = (DateTime)dbm.qadp.GetOrderDate(invoiceNo);
+            input_date.MinDate = odate.AddDays(1);
         }
 
         public void useInput(InputFields input)

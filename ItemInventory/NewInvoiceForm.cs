@@ -140,14 +140,17 @@ namespace ItemInventory
         private void btn_add_Click(object sender, EventArgs e)
         {
             RecordsDataSet.ItemRow item = input_itemName.SelectedItem as RecordsDataSet.ItemRow;
-            int index = findRow(item.id);
-            int qty = (int)input_qty.Value;
-
+            
             if (input_itemName.SelectedItem == null)
             {
                 MainForm.showErrorMessage("Select an item first!");
+                return;
             }
-            else if (qty < 1)
+
+            int index = findRow(item.id);
+            int qty = (int)input_qty.Value;
+
+            if (qty < 1)
             {
                 MainForm.showErrorMessage("Invalid Quantity");
             }

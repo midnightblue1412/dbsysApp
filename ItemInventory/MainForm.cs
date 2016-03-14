@@ -109,18 +109,17 @@ namespace ItemInventory
             var a = from invm in db.InventoryMovement
                     join item in db.Item on invm.itemId equals item.id
                     join warehouse in db.Warehouse on invm.warehouseId equals warehouse.id
-                    select new { invm.refno, warehouse.warehouseName, item.itemName, invm.quantity };
+                    select new { invm.refno, invm.movDate, warehouse.warehouseName, item.itemName, invm.quantity };
 
             foreach (var r in a)
             {
-                disp_grid_history.Rows.Add(r.refno, r.warehouseName, r.itemName, r.quantity);
+                disp_grid_history.Rows.Add(r.refno, r.movDate, r.warehouseName, r.itemName, r.quantity);
             }
         }
 
         public void refreshWarehouseComboBox()
         {
             string wname = input_warehouse.Text;
-            dbmgr.WarehouseTableAdapter.Fill(db.Warehouse);
             fillWarehouseComboBox();
             input_warehouse.SelectedIndex = input_warehouse.FindStringExact(wname);
         }
@@ -238,11 +237,8 @@ namespace ItemInventory
 
         private void tab_Inventory_Enter(object sender, EventArgs e)
         {
-            RecordsDataSet.WarehouseRow wh = input_warehouse.SelectedItem as RecordsDataSet.WarehouseRow;
-            if (wh != null)
-            {
-                fillInventoryGrid(wh.id);
-            }            
+            dbm.initAllTables();
+            refreshWarehouseComboBox();        
         }
     }
 }

@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
+            this.input_date = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.disp_invoiceNo = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_ok = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
@@ -41,24 +44,53 @@
             this.itemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.warehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.disp_invoiceNo = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.input_date = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.input_qty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid)).BeginInit();
             this.SuspendLayout();
             // 
-            // label3
+            // input_date
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 21);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "Returned Items";
+            this.input_date.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.input_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.input_date.Location = new System.Drawing.Point(273, 50);
+            this.input_date.Name = "input_date";
+            this.input_date.Size = new System.Drawing.Size(121, 25);
+            this.input_date.TabIndex = 49;
+            this.input_date.Value = System.DateTime.Now;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(187, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 17);
+            this.label4.TabIndex = 48;
+            this.label4.Text = "Date:";
+            // 
+            // disp_invoiceNo
+            // 
+            this.disp_invoiceNo.AutoSize = true;
+            this.disp_invoiceNo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.disp_invoiceNo.ForeColor = System.Drawing.Color.White;
+            this.disp_invoiceNo.Location = new System.Drawing.Point(94, 56);
+            this.disp_invoiceNo.Name = "disp_invoiceNo";
+            this.disp_invoiceNo.Size = new System.Drawing.Size(18, 17);
+            this.disp_invoiceNo.TabIndex = 47;
+            this.disp_invoiceNo.Text = "--";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(12, 56);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 17);
+            this.label6.TabIndex = 46;
+            this.label6.Text = "Invoice No.:";
             // 
             // btn_cancel
             // 
@@ -103,7 +135,6 @@
             // 
             // input_qty
             // 
-            this.input_qty.Enabled = false;
             this.input_qty.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.input_qty.Location = new System.Drawing.Point(224, 113);
             this.input_qty.Name = "input_qty";
@@ -160,6 +191,7 @@
             this.disp_grid.Location = new System.Drawing.Point(12, 148);
             this.disp_grid.Name = "disp_grid";
             this.disp_grid.ReadOnly = true;
+            this.disp_grid.RowHeadersVisible = false;
             this.disp_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.disp_grid.Size = new System.Drawing.Size(505, 239);
             this.disp_grid.TabIndex = 36;
@@ -193,48 +225,16 @@
             this.quantity.ReadOnly = true;
             this.quantity.Width = 50;
             // 
-            // disp_invoiceNo
+            // label3
             // 
-            this.disp_invoiceNo.AutoSize = true;
-            this.disp_invoiceNo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.disp_invoiceNo.ForeColor = System.Drawing.Color.White;
-            this.disp_invoiceNo.Location = new System.Drawing.Point(94, 56);
-            this.disp_invoiceNo.Name = "disp_invoiceNo";
-            this.disp_invoiceNo.Size = new System.Drawing.Size(18, 17);
-            this.disp_invoiceNo.TabIndex = 47;
-            this.disp_invoiceNo.Text = "--";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(12, 56);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 17);
-            this.label6.TabIndex = 46;
-            this.label6.Text = "Invoice No.:";
-            // 
-            // input_date
-            // 
-            this.input_date.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.input_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.input_date.Location = new System.Drawing.Point(273, 50);
-            this.input_date.Name = "input_date";
-            this.input_date.Size = new System.Drawing.Size(121, 25);
-            this.input_date.TabIndex = 49;
-            this.input_date.Value = new System.DateTime(2016, 3, 7, 18, 1, 17, 963);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(187, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 17);
-            this.label4.TabIndex = 48;
-            this.label4.Text = "Date:";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(12, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 21);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Returned Items";
             // 
             // ReturnedItemsForm
             // 
