@@ -114,25 +114,7 @@
     <Compile Include="DbForm.Designer.cs">
       <DependentUpon>DbForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="InvoiceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InvoiceForm.Designer.cs">
-      <DependentUpon>InvoiceForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InvSys_ext_Clients.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InvSys_ext_InvHistory.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="InvSys_ext_Invoices.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InvSys_ext_Items.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InvSys_ext_Warehouses.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -206,9 +188,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DbForm.resx">
       <DependentUpon>DbForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InvoiceForm.resx">
-      <DependentUpon>InvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

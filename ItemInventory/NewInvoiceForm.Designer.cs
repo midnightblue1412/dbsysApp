@@ -45,10 +45,10 @@
             this.input_qty = new System.Windows.Forms.NumericUpDown();
             this.btn_add = new System.Windows.Forms.Button();
             this.input_invoiceNo = new System.Windows.Forms.TextBox();
-            this.disp_total = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btn_save = new System.Windows.Forms.Button();
+            this.disp_total = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_qty)).BeginInit();
             this.SuspendLayout();
@@ -100,7 +100,7 @@
             this.unitPrice,
             this.quantity,
             this.subtotal});
-            this.disp_grid.Location = new System.Drawing.Point(15, 216);
+            this.disp_grid.Location = new System.Drawing.Point(12, 216);
             this.disp_grid.Name = "disp_grid";
             this.disp_grid.ReadOnly = true;
             this.disp_grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -232,17 +232,6 @@
             this.input_invoiceNo.Size = new System.Drawing.Size(124, 25);
             this.input_invoiceNo.TabIndex = 26;
             // 
-            // disp_total
-            // 
-            this.disp_total.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.disp_total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.disp_total.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.disp_total.Location = new System.Drawing.Point(56, 437);
-            this.disp_total.Name = "disp_total";
-            this.disp_total.ReadOnly = true;
-            this.disp_total.Size = new System.Drawing.Size(124, 25);
-            this.disp_total.TabIndex = 28;
-            // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -279,15 +268,25 @@
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
+            // disp_total
+            // 
+            this.disp_total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.disp_total.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.disp_total.Location = new System.Drawing.Point(56, 437);
+            this.disp_total.Name = "disp_total";
+            this.disp_total.ReadOnly = true;
+            this.disp_total.Size = new System.Drawing.Size(124, 25);
+            this.disp_total.TabIndex = 31;
+            // 
             // NewInvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;
             this.ClientSize = new System.Drawing.Size(605, 472);
+            this.Controls.Add(this.disp_total);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.disp_total);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.input_invoiceNo);
             this.Controls.Add(this.btn_add);
@@ -327,7 +326,6 @@
         private System.Windows.Forms.NumericUpDown input_qty;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.TextBox input_invoiceNo;
-        private System.Windows.Forms.TextBox disp_total;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
@@ -336,5 +334,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn itemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemId;
         private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.TextBox disp_total;
     }
 }

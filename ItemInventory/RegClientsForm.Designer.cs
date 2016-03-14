@@ -29,16 +29,19 @@
         private void InitializeComponent()
         {
             this.input_grid = new System.Windows.Forms.DataGridView();
+            this.clientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_register = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.clientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.input_grid)).BeginInit();
             this.SuspendLayout();
             // 
             // input_grid
             // 
+            this.input_grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.input_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.input_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clientName,
@@ -48,8 +51,21 @@
             this.input_grid.Size = new System.Drawing.Size(443, 340);
             this.input_grid.TabIndex = 5;
             // 
+            // clientName
+            // 
+            this.clientName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.clientName.HeaderText = "Name";
+            this.clientName.Name = "clientName";
+            // 
+            // clientAddress
+            // 
+            this.clientAddress.HeaderText = "Address";
+            this.clientAddress.Name = "clientAddress";
+            this.clientAddress.Width = 125;
+            // 
             // btn_register
             // 
+            this.btn_register.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_register.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_register.ForeColor = System.Drawing.Color.White;
             this.btn_register.Location = new System.Drawing.Point(281, 407);
@@ -62,6 +78,7 @@
             // 
             // btn_clear
             // 
+            this.btn_clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_clear.ForeColor = System.Drawing.Color.White;
             this.btn_clear.Location = new System.Drawing.Point(371, 407);
@@ -82,18 +99,6 @@
             this.label2.Size = new System.Drawing.Size(124, 21);
             this.label2.TabIndex = 10;
             this.label2.Text = "Register Clients";
-            // 
-            // clientName
-            // 
-            this.clientName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clientName.HeaderText = "Name";
-            this.clientName.Name = "clientName";
-            // 
-            // clientAddress
-            // 
-            this.clientAddress.HeaderText = "Address";
-            this.clientAddress.Name = "clientAddress";
-            this.clientAddress.Width = 125;
             // 
             // RegClientsForm
             // 

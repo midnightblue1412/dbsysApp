@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.window_tabs = new System.Windows.Forms.TabControl();
             this.tab_Inventory = new System.Windows.Forms.TabPage();
             this.btn_addItems = new System.Windows.Forms.Button();
@@ -45,6 +45,11 @@
             this.input_warehouse = new System.Windows.Forms.ComboBox();
             this.tab_InventoryMov = new System.Windows.Forms.TabPage();
             this.disp_grid_history = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label11 = new System.Windows.Forms.Label();
             this.tab_Invoices = new System.Windows.Forms.TabPage();
             this.btn_serveWRet = new System.Windows.Forms.Button();
@@ -76,6 +81,9 @@
             this.col_warehouseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_warehouseDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_warehouseStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.warehousesCtxMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.markAsOpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markAsClosedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tab_Items = new System.Windows.Forms.TabPage();
             this.btn_registerItem = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -85,6 +93,9 @@
             this.col_itemDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_itemStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemsCtxMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.makeUnavalableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.makeAvailableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tab_Clients = new System.Windows.Forms.TabPage();
             this.btn_registerClients = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -93,11 +104,9 @@
             this.col_clientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_clientAddr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_clientStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.movDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientsCtxMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.markAsActiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.markAsInactiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.window_tabs.SuspendLayout();
             this.tab_Inventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_ItemInventory)).BeginInit();
@@ -108,10 +117,13 @@
             this.invoiceItemsCtxMenu.SuspendLayout();
             this.tab_Warehouses.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid_warehouse)).BeginInit();
+            this.warehousesCtxMenu.SuspendLayout();
             this.tab_Items.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid_item)).BeginInit();
+            this.itemsCtxMenu.SuspendLayout();
             this.tab_Clients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid_client)).BeginInit();
+            this.clientsCtxMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // window_tabs
@@ -285,6 +297,45 @@
             this.disp_grid_history.Size = new System.Drawing.Size(1065, 503);
             this.disp_grid_history.TabIndex = 24;
             this.disp_grid_history.Enter += new System.EventHandler(this.tab_history_Enter);
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Refno";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 75;
+            // 
+            // movDate
+            // 
+            dataGridViewCellStyle3.Format = "g";
+            dataGridViewCellStyle3.NullValue = null;
+            this.movDate.DefaultCellStyle = dataGridViewCellStyle3;
+            this.movDate.FillWeight = 200F;
+            this.movDate.HeaderText = "Date";
+            this.movDate.Name = "movDate";
+            this.movDate.ReadOnly = true;
+            this.movDate.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Warehouse";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Item";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Qty";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 50;
             // 
             // label11
             // 
@@ -589,6 +640,7 @@
             this.col_warehouseName,
             this.col_warehouseDesc,
             this.col_warehouseStatus});
+            this.disp_grid_warehouse.ContextMenuStrip = this.warehousesCtxMenu;
             this.disp_grid_warehouse.Location = new System.Drawing.Point(6, 83);
             this.disp_grid_warehouse.Name = "disp_grid_warehouse";
             this.disp_grid_warehouse.ReadOnly = true;
@@ -622,6 +674,29 @@
             this.col_warehouseStatus.HeaderText = "Status";
             this.col_warehouseStatus.Name = "col_warehouseStatus";
             this.col_warehouseStatus.ReadOnly = true;
+            // 
+            // warehousesCtxMenu
+            // 
+            this.warehousesCtxMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.markAsOpenToolStripMenuItem,
+            this.markAsClosedToolStripMenuItem});
+            this.warehousesCtxMenu.Name = "warehousesCtxMenu";
+            this.warehousesCtxMenu.Size = new System.Drawing.Size(155, 48);
+            this.warehousesCtxMenu.Opening += new System.ComponentModel.CancelEventHandler(this.warehousesCtxMenu_Opening);
+            // 
+            // markAsOpenToolStripMenuItem
+            // 
+            this.markAsOpenToolStripMenuItem.Name = "markAsOpenToolStripMenuItem";
+            this.markAsOpenToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.markAsOpenToolStripMenuItem.Text = "Mark as &Open";
+            this.markAsOpenToolStripMenuItem.Click += new System.EventHandler(this.markAsOpenToolStripMenuItem_Click);
+            // 
+            // markAsClosedToolStripMenuItem
+            // 
+            this.markAsClosedToolStripMenuItem.Name = "markAsClosedToolStripMenuItem";
+            this.markAsClosedToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.markAsClosedToolStripMenuItem.Text = "Mark as &Closed";
+            this.markAsClosedToolStripMenuItem.Click += new System.EventHandler(this.markAsClosedToolStripMenuItem_Click);
             // 
             // tab_Items
             // 
@@ -674,6 +749,7 @@
             this.col_itemDesc,
             this.col_unitPrice,
             this.col_itemStatus});
+            this.disp_grid_item.ContextMenuStrip = this.itemsCtxMenu;
             this.disp_grid_item.Location = new System.Drawing.Point(6, 83);
             this.disp_grid_item.Name = "disp_grid_item";
             this.disp_grid_item.ReadOnly = true;
@@ -704,9 +780,9 @@
             // 
             // col_unitPrice
             // 
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = "--";
-            this.col_unitPrice.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = "--";
+            this.col_unitPrice.DefaultCellStyle = dataGridViewCellStyle4;
             this.col_unitPrice.HeaderText = "Unit Price";
             this.col_unitPrice.Name = "col_unitPrice";
             this.col_unitPrice.ReadOnly = true;
@@ -716,6 +792,29 @@
             this.col_itemStatus.HeaderText = "Status";
             this.col_itemStatus.Name = "col_itemStatus";
             this.col_itemStatus.ReadOnly = true;
+            // 
+            // itemsCtxMenu
+            // 
+            this.itemsCtxMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.makeUnavalableToolStripMenuItem,
+            this.makeAvailableToolStripMenuItem});
+            this.itemsCtxMenu.Name = "itemsCtxMenu";
+            this.itemsCtxMenu.Size = new System.Drawing.Size(165, 48);
+            this.itemsCtxMenu.Opening += new System.ComponentModel.CancelEventHandler(this.itemsCtxMenu_Opening);
+            // 
+            // makeUnavalableToolStripMenuItem
+            // 
+            this.makeUnavalableToolStripMenuItem.Name = "makeUnavalableToolStripMenuItem";
+            this.makeUnavalableToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.makeUnavalableToolStripMenuItem.Text = "Make &Unavalable";
+            this.makeUnavalableToolStripMenuItem.Click += new System.EventHandler(this.makeUnavalableToolStripMenuItem_Click);
+            // 
+            // makeAvailableToolStripMenuItem
+            // 
+            this.makeAvailableToolStripMenuItem.Name = "makeAvailableToolStripMenuItem";
+            this.makeAvailableToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.makeAvailableToolStripMenuItem.Text = "Make &Available";
+            this.makeAvailableToolStripMenuItem.Click += new System.EventHandler(this.makeAvailableToolStripMenuItem_Click);
             // 
             // tab_Clients
             // 
@@ -802,44 +901,28 @@
             this.col_clientStatus.Name = "col_clientStatus";
             this.col_clientStatus.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn3
+            // clientsCtxMenu
             // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Refno";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 75;
+            this.clientsCtxMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.markAsActiveToolStripMenuItem,
+            this.markAsInactiveToolStripMenuItem});
+            this.clientsCtxMenu.Name = "clientsCtxMenu";
+            this.clientsCtxMenu.Size = new System.Drawing.Size(160, 70);
+            this.clientsCtxMenu.Opening += new System.ComponentModel.CancelEventHandler(this.clientsCtxMenu_Opening);
             // 
-            // movDate
+            // markAsActiveToolStripMenuItem
             // 
-            dataGridViewCellStyle1.Format = "g";
-            dataGridViewCellStyle1.NullValue = null;
-            this.movDate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.movDate.FillWeight = 200F;
-            this.movDate.HeaderText = "Date";
-            this.movDate.Name = "movDate";
-            this.movDate.ReadOnly = true;
-            this.movDate.Width = 200;
+            this.markAsActiveToolStripMenuItem.Name = "markAsActiveToolStripMenuItem";
+            this.markAsActiveToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.markAsActiveToolStripMenuItem.Text = "Mark as &Active";
+            this.markAsActiveToolStripMenuItem.Click += new System.EventHandler(this.markAsActiveToolStripMenuItem_Click);
             // 
-            // dataGridViewTextBoxColumn4
+            // markAsInactiveToolStripMenuItem
             // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Warehouse";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Item";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Qty";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 50;
+            this.markAsInactiveToolStripMenuItem.Name = "markAsInactiveToolStripMenuItem";
+            this.markAsInactiveToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.markAsInactiveToolStripMenuItem.Text = "Mark as &Inactive";
+            this.markAsInactiveToolStripMenuItem.Click += new System.EventHandler(this.markAsInactiveToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -868,12 +951,15 @@
             this.tab_Warehouses.ResumeLayout(false);
             this.tab_Warehouses.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid_warehouse)).EndInit();
+            this.warehousesCtxMenu.ResumeLayout(false);
             this.tab_Items.ResumeLayout(false);
             this.tab_Items.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid_item)).EndInit();
+            this.itemsCtxMenu.ResumeLayout(false);
             this.tab_Clients.ResumeLayout(false);
             this.tab_Clients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.disp_grid_client)).EndInit();
+            this.clientsCtxMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -946,6 +1032,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn movDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.ContextMenuStrip itemsCtxMenu;
+        private System.Windows.Forms.ToolStripMenuItem makeUnavalableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem makeAvailableToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip warehousesCtxMenu;
+        private System.Windows.Forms.ToolStripMenuItem markAsOpenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem markAsClosedToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip clientsCtxMenu;
+        private System.Windows.Forms.ToolStripMenuItem markAsActiveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem markAsInactiveToolStripMenuItem;
     }
 }
 

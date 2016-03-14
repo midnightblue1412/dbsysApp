@@ -124,6 +124,81 @@ namespace ItemInventory
             input_warehouse.SelectedIndex = input_warehouse.FindStringExact(wname);
         }
 
+        private void itemsChangeStat(AvailabilityStatus stat)
+        {
+            try
+            {
+                var rows = disp_grid_item.SelectedRows;
+                foreach (DataGridViewRow r in rows)
+                {
+                    DataGridViewCellCollection c = r.Cells;
+                    int itemId = int.Parse(c["col_itemId"].Value.ToString());
+                    RecordsDataSet.ItemRow item = db.Item.FindByid(itemId);
+
+                    item.itemStatus = stat.ToString();
+                }
+
+                dbmgr.UpdateAll(db);
+                fillItemGrid();
+
+                showSuccessMessage("Updated " + rows.Count + " item(s)");
+            }
+            catch (Exception ex)
+            {
+                showErrorMessage("An Error Occured.\n\nDetails:\n" + ex.Message);
+            }
+        }
+
+        private void warehousesChangeStat(OpenCloseStatus stat)
+        {
+            try
+            {
+                var rows = disp_grid_warehouse.SelectedRows;
+                foreach (DataGridViewRow r in rows)
+                {
+                    DataGridViewCellCollection c = r.Cells;
+                    int warehouseId = int.Parse(c["col_warehouseId"].Value.ToString());
+                    RecordsDataSet.WarehouseRow warehouse = db.Warehouse.FindByid(warehouseId);
+
+                    warehouse.warehouseStatus = stat.ToString();
+                }
+
+                dbmgr.UpdateAll(db);
+                fillItemGrid();
+
+                showSuccessMessage("Updated " + rows.Count + " item(s)");
+            }
+            catch (Exception ex)
+            {
+                showErrorMessage("An Error Occured.\n\nDetails:\n" + ex.Message);
+            }
+        }
+
+        private void clientChangeStat(ActivityStatus stat)
+        {
+            try
+            {
+                var rows = disp_grid_warehouse.SelectedRows;
+                foreach (DataGridViewRow r in rows)
+                {
+                    DataGridViewCellCollection c = r.Cells;
+                    int clientId = int.Parse(c["col_warehouseId"].Value.ToString());
+                    RecordsDataSet.ClientRow client = db.Client.FindByid(clientId);
+
+                    client.clientStatus = stat.ToString();
+                }
+
+                dbmgr.UpdateAll(db);
+                fillItemGrid();
+
+                showSuccessMessage("Updated " + rows.Count + " item(s)");
+            }
+            catch (Exception ex)
+            {
+                showErrorMessage("An Error Occured.\n\nDetails:\n" + ex.Message);
+            }
+        }
+
         /*
          * EVENT HANDLERS
          */
@@ -239,6 +314,60 @@ namespace ItemInventory
         {
             dbm.initAllTables();
             refreshWarehouseComboBox();        
+        }
+
+        private void makeUnavalableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            itemsChangeStat(AvailabilityStatus.NA);
+        }
+
+        private void makeAvailableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            itemsChangeStat(AvailabilityStatus.AV);
+        }
+
+        private void itemsCtxMenu_Opening(object sender, CancelEventArgs e)
+        {
+            if (disp_grid_item.SelectedRows.Count == 0)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void warehousesCtxMenu_Opening(object sender, CancelEventArgs e)
+        {
+            if (disp_grid_warehouse.SelectedRows.Count == 0)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void clientsCtxMenu_Opening(object sender, CancelEventArgs e)
+        {
+            if (disp_grid_client.SelectedRows.Count == 0)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void markAsOpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            warehousesChangeStat(OpenCloseStatus.OP);
+        }
+
+        private void markAsClosedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            warehousesChangeStat(OpenCloseStatus.CL);
+        }
+
+        private void markAsActiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clientChangeStat(ActivityStatus.AC);
+        }
+
+        private void markAsInactiveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clientChangeStat(ActivityStatus.IN);
         }
     }
 }
