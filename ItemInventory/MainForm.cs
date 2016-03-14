@@ -178,11 +178,11 @@ namespace ItemInventory
         {
             try
             {
-                var rows = disp_grid_warehouse.SelectedRows;
+                var rows = disp_grid_client.SelectedRows;
                 foreach (DataGridViewRow r in rows)
                 {
                     DataGridViewCellCollection c = r.Cells;
-                    int clientId = int.Parse(c["col_warehouseId"].Value.ToString());
+                    int clientId = int.Parse(c["col_clientId"].Value.ToString());
                     RecordsDataSet.ClientRow client = db.Client.FindByid(clientId);
 
                     client.clientStatus = stat.ToString();
